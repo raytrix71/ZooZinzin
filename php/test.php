@@ -3,7 +3,7 @@
 $servername = "mysql_8.1.0_container";
 $username = "root";
 $password = "password";
-$dbname = "dbzoo";
+$dbname = "zoodb";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
 
     // Retrieve data from the CLIENT table
-    $sql = "SELECT * FROM client WHERE nom = :name";
+    $sql = "SELECT * FROM CLIENT WHERE nom = :name";
     $stmt = $conn->prepare($sql);
     $stmt->execute([':name' => $name]);
 
@@ -27,9 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "Name: " . $row["nom"] . "<br>";
             echo "Surname: " . $row["prenom"] . "<br>";
-            echo "Gender: " . $row["sexe"] . "<br>";
-            echo "Email: " . $row["email"] . "<br>";
-            echo "Phone: " . $row["tel"] . "<br>";
+           
+            
+           
         }
     } else {
         echo "No data found for the given name.";
