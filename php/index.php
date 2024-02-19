@@ -4,34 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Page de connexion</title>
+    <title>StarterPage</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body style="color: var(--bs-emphasis-color);background: rgba(0, 125, 5, 1);">
-    <section class="position-relative py-4 py-xl-5">
-        <div class="container">
-            <div class="row mb-5"></div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-5">
-                        <div class="card-body d-flex flex-column align-items-center">
-                            <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4" style="color: var(--bs-body-bg);background: var(--bs-body-bg);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person">
-                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"></path>
-                                </svg><img src="assets/img/clipboard-image.png" width="146" height="86"></div>
-                            <form class="text-center" method="post">
-                                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Mot de passe"></div>
-                                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(99,103,109);">Login</button></div>
-                                <p class="text-muted">Forgot your password?</p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+    <section class="py-4 py-xl-5">
+        <div class="container"></div>
     </section>
+    <div class="text-center p-4 p-lg-5">
+        <p class="fw-bold text-primary mb-2" style="color: rgb(80,93,113);background: #ffffff;">ADR consulting: Gestion parc animalier</p>
+        <h1 class="fw-bold mb-4">Bienvenue</h1><button class="btn btn-primary fs-5 me-2 py-2 px-4" type="button" style="background: var(--bs-form-valid-color);">Site Web Client</button><button class="btn btn-light fs-5 py-2 px-4" type="button" style="background: var(--bs-gray);">Gestion Du ZOO</button>
+    </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
