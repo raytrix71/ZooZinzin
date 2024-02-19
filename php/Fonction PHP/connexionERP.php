@@ -1,4 +1,6 @@
 <?php
+
+function connectionERO(){
 // Connect to the database
 $servername = "mysql_8.1.0_container";
 $username = "root";
@@ -13,4 +15,5 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
+}
 ?>
