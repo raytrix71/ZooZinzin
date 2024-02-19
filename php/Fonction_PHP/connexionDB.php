@@ -1,6 +1,6 @@
 <?php
 
-function connectionERO(){
+function connexionDB(){
 // Connect to the database
 $servername = "mysql_8.1.0_container";
 $username = "root";
