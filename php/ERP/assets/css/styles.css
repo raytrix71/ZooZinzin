@@ -1,0 +1,6 @@
+p {
+  --bs-primary: var(--bs-form-valid-color);
+  --bs-primary-rgb: 25,135,84;
+  font-size: 32px;
+}
+

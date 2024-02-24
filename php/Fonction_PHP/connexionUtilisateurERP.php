@@ -1,29 +1,25 @@
 <?php
 include 'connexionDB.php';
-function connERP($mail,$mdp){
-    $bdd=connexionDB();
-    $reqsql = "SELECT IDEmploye,PrenomEmploye,NomEmploye FROM EMPLOYE WHERE MailEmploye = :mail AND MDPEmploye = :mdp";
-    $connexion = $bdd->prepare($reqsql);
-    return $connexion;
-    $connexion->execute(array(
-        'mail' => $mail,
-        'mdp' => $mdp
-        
-    ));
-    try {
-        $connexion->execute();
-        echo "Connected successfully";
-    } catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
+function connERP(){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['mail']) && isset($_POST['mdp'])) {
+            $mail = $_POST['mail'];
+            $mdp = $_POST['mdp'];
+            $bdd=connexionDB();
+            $reqsql = 'SELECT IDEmploye,PrenomEmploye,NomEmploye FROM EMPLOYE WHERE MailEmploye = :mail AND MDPEmploye = :mdp';
+            $connexion = $bdd->prepare($reqsql);
+            $connexion->execute(array(
+                'mail' => $mail,
+                'mdp' => $mdp
+            ));
+            $resultat = $connexion->fetch();
+            var_dump($resultat);
+           
+        } else {
+            echo "Les champs mail et mdp doivent être renseignés.";
+        }
+    } else {
+        echo "Aucune donnée soumise par le formulaire.";
     }
-    print_r($connexion);
-    
-
-
-
-    
-    
-    
-
-
 }
+connERP();
