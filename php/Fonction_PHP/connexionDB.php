@@ -1,7 +1,7 @@
 <?php
 
 function connexionDB(){
-// Connect to the database
+// Connect to the database NE PAS TOUCHER
 $servername = "mysql_8.1.0_container";
 $username = "root";
 $password = "password";
