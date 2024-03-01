@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connexionDB.php';
 function connERP(){
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,7 +14,10 @@ function connERP(){
                 'mdp' => $mdp
             ));
             $resultat = $connexion->fetch();
-            var_dump($resultat);
+            $_SESSION['id'] = $resultat['IDEmploye'];
+            $_SESSION['prenom'] = $resultat['PrenomEmploye'];
+            $_SESSION['nom'] = $resultat['NomEmploye'];
+            header('Location: ../ERP/Dashboard/dashboard.php');
            
         } else {
             echo "Les champs mail et mdp doivent être renseignés.";
