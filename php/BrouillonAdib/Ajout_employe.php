@@ -18,5 +18,5 @@ $sql = "INSERT INTO EMPLOYE (PrenomEmploye, NomEmploye, AdresseEmploye, CPEmploy
 
 }
 $connDB->exec($sql);
-echo "oui mon gaté";
+
 ?>
