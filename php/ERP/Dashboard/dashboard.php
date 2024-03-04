@@ -1,1 +1,3 @@
-<?php include('../NavBar/navbar.php'); ?>
+<?php 
+session_start(); 
+include('../NavBar/navbar.php'); ?>

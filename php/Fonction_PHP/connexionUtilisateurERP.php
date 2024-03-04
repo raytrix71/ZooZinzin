@@ -13,12 +13,13 @@ function connERP(){
                 'mail' => $mail,
                 'mdp' => $mdp
             ));
-            $resultat = $connexion->fetch();
-            $_SESSION['id'] = $resultat['IDEmploye'];
-            $_SESSION['prenom'] = $resultat['PrenomEmploye'];
-            $_SESSION['nom'] = $resultat['NomEmploye'];
-            header('Location: ../ERP/Dashboard/dashboard.php');
-           
+            $resultat = $connexion->fetchAll();
+            // Stockez les informations de l'employé dans la session
+            $_SESSION['id'] = $resultat[0]['IDEmploye'];
+            $_SESSION['prenom'] = $resultat[0]['PrenomEmploye'];
+            $_SESSION['nom'] = $resultat[0]['NomEmploye'];
+            header("Location: ../ERP/Dashboard/dashboard.php");
+            
         } else {
             echo "Les champs mail et mdp doivent être renseignés.";
         }

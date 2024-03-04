@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -5,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>MenuNav</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
-    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="../NavBar/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/NavBar/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="assets/NavBar/css/Navbar-Right-Links-icons.css">
 </head>
 
 <body>
@@ -125,7 +126,7 @@
             </div>
             <div>
                 <hr>
-                <div class="dropdown"><a class="dropdown-toggle link-body-emphasis d-flex align-items-center text-decoration-none" aria-expanded="false" data-bs-toggle="dropdown" role="button"><img class="rounded-circle me-2" alt="" width="32" height="32" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" style="object-fit: cover;"><strong><?php $_SESSION['PrenomEmploye'] ?></strong>&nbsp;</a>
+                <div class="dropdown"><a class="dropdown-toggle link-body-emphasis d-flex align-items-center text-decoration-none" aria-expanded="false" data-bs-toggle="dropdown" role="button"><img class="rounded-circle me-2" alt="" width="32" height="32" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" style="object-fit: cover;"><strong><?php echo $_SESSION['prenom'] ?></strong>&nbsp;</a>
                     <div class="dropdown-menu shadow text-small" data-popper-placement="top-start"><a class="dropdown-item" href="#">Paramètres</a><a class="dropdown-item" href="#">Profile</a>
                         <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Deconnexion</a>
                     </div>
@@ -133,7 +134,7 @@
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../NavBar/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
