@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'connexionDB.php';
 function connERP(){
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,10 +14,6 @@ function connERP(){
                 'mdp' => $mdp
             ));
             $resultat = $connexion->fetchAll();
-            var_dump($resultat);
-        echo "\n Bienvenue " . $resultat[0]['PrenomEmploye'];
-        echo "\n Bienvenue " . $resultat[0]['NomEmploye'];
-        echo "\n Bienvenue " . $resultat[0]['IDEmploye'];
             // Stockez les informations de l'employé dans la session
             $_SESSION['id'] = $resultat[0]['IDEmploye'];
             $_SESSION['prenom'] = $resultat[0]['PrenomEmploye'];
