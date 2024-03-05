@@ -1,4 +1,7 @@
-<?php include 'afficherAliment.php'; ?>
+<?php include 'afficherAliment.php'; 
+include '../../Model/Aliment.php';
+?>
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -29,7 +32,12 @@
                                 <hr>
                                 <h3 class="text-center">Régime alimentaire</h3>
                                 <div class="mb-3"><select class="form-select" required="" name="aliement1">
-                                        <?php afficherAliment(); ?>
+                                        <?php //afficherAliment(); ?>
+                                        <?php foreach (Aliment::getListeAlim() as $row){
+                                            echo "<option value=\"" . $row->getIDAliment() . "\" selected> ". $row->getNomAliment() . "</option>\n";
+
+                                        }
+                                        ?>
                                     </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte1" placeholder="Quantité aliment 1 (KG)" required=""></div>
                                 <div class="mb-3"><select class="form-select" required="" name="aliment2">
                                         <option value="12" selected="">Aliment 2</option>
