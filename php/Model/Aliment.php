@@ -14,6 +14,7 @@ class Aliment{
         $this->qStock = $qStock;
         $this->seuil = $seuil;
         return $this;
+        
     }
 
     static function getListeAlim(){
