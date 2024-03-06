@@ -18,7 +18,7 @@
     </div>
     <div class="row register-form">
         <div class="col-md-8 offset-md-2">
-            <form method="post" action="Ajout_Employe.php"class="custom-form" style="margin-top: 13px;padding-right: 1px;padding-left: 0px;padding-bottom: 0px;">
+            <form method="post" action="ajoutemployertestobjet.php"class="custom-form" style="margin-top: 13px;padding-right: 1px;padding-left: 0px;padding-bottom: 0px;">
                 <h1 style="margin-bottom: 24px;margin-left: 28px;">Ajouter un nouvel employé</h1>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Nom</label></div>

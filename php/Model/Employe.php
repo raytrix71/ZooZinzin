@@ -1,4 +1,3 @@
-
 <?php
 include ('../Fonction_PHP/connexionDB.php');
 class Employe{
@@ -70,6 +69,12 @@ class Employe{
             array_push(self::$listeEmploye,$employe);
         }
 
+    }
+    
+    function ajoutEmployeDB(){
+        $bdd = connexionDB();
+        $sql = "INSERT INTO EMPLOYE (PrenomEmploye, NomEmploye, AdresseEmploye, CPEmploye, MailEmploye, MDPEmploye, TelEmploye,IDZone, Role ) VALUES ( '$this->prenomEmploye', '$this->nomEmploye', '$this->adresse', '$this->CP', '$this->mailEmploye', '$this->mdpEmploye', '$this->tel', '$this->roleEmploye' ,'$this->idzone')";
+        $bdd->exec($sql);
     }
 
     function get_idEmploye(){
@@ -156,10 +161,5 @@ class Employe{
         return $this->idEmploye . " " . $this->nomEmploye . " " . $this->prenomEmploye . " " . $this->mailEmploye . " " . $this->mdpEmploye . " " . $this->roleEmploye . " " . $this->adresse . " " . $this->CP . " " . $this->tel . " " . $this->idzone;
     }
 
-
-
 }
-
-
-
 ?>
