@@ -12,7 +12,7 @@
 <body>
     <div class="row register-form">
         <div class="col-md-8 offset-md-2">
-            <form method="POST" action="ajouteranimal.php"class="custom-form">
+            <form method="POST" action="FonctionajtAnimal.php" class="custom-form">
                 <h1>Formulaire Ajout Animal</h1>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Nom Espèce</label></div>
@@ -37,21 +37,37 @@
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="dropdown-input-field">Sexe</label></div>
                     <div class="col-sm-4 input-column">
-                        <div class="dropdown"><button class="btn btn-light dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">sélectionner</button>
-                            <div class="dropdown-menu"><a class="dropdown-item" href="#">M</a><a class="dropdown-item" href="#">F</a></div>
-                        </div>
-                    </div>
+
+                    <select class="form-select" name="Sexe">
+                        <option value="M">M</option>
+                        <option value="F">F</option>
+                    </select>
+
+
+
                 </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                
                 <div class="row form-group">
-                    <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Description</label></div>
-                    <div class="col-sm-6 input-column"><input class="form-control" type="password" name="Description"></div>
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Description</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="text" name="Description"></div>
                 </div>
+               
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="dropdown-input-field">Parcelle</label></div>
                     <div class="col-sm-4 input-column">
-                        <div class="dropdown"><button class="btn btn-light dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">Sélectionner</button>
-                            <div class="dropdown-menu"><a class="dropdown-item" href="#">1</a><a class="dropdown-item">2</a><a class="dropdown-item" href="#">3</a></div>
-                        </div>
+
+                        <select class="form-select" name="Parcelle">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+
                     </div>
                 </div><button class="btn btn-light submit-button" type="submit">Ajouter</button>
             </form>

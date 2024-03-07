@@ -82,7 +82,7 @@
 </body>
 
 </html>
-
+<!--Le java script-->
 <script>
 window.addEventListener('DOMContentLoaded', (event) => {
     const ouiRadio = document.querySelector('input[name="reservation"][value="oui"]');
