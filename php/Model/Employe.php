@@ -77,6 +77,8 @@ class Employe{
         $bdd->exec($sql);
     }
 
+    
+
     function get_idEmploye(){
         return $this->idEmploye;
     }

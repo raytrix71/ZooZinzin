@@ -40,6 +40,8 @@ class Aliment{
 
     }
 
+
+
     function ajouterAliment($nomAliment,$qStock,$seuil){
         $bdd = connexionDB();
         $sql = "INSERT INTO ALIMENT (NomAliment, QuantiteStock, Seuil) VALUES ('$nomAliment', '$qStock', '$seuil')";
