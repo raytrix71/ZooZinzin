@@ -6,12 +6,16 @@ function afficherAliment(){
     $sql = 'SELECT * FROM ALIMENT';
     $connexion = $bdd->query($sql);
     $resultat = $connexion->fetchAll();
-    var_dump($resultat);
+    
     foreach($resultat as $row){
         echo "<option value=\"" . $row['IDAliment'] . "\" selected>{$row['NomAliment']}</option>\n";
         
     
     }
-}
+    return $resultat;
+};
+$tableau=afficherAliment();
+var_dump($tableau);
+
 
 ?>
