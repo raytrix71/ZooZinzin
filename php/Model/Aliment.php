@@ -84,7 +84,7 @@ class Aliment{
 
 }
 
-var_dump(Aliment::getListeAlim());
+
 
 
 ?>
