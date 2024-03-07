@@ -34,10 +34,27 @@
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Capacité maximale</label></div>
                     <div class="col-sm-6 input-column"><input class="form-control" type="number" name="CapaciteMaxSpectacle"></div>
                 </div><button class="btn btn-primary" type="submit">Enregisrer</button>
-            </form>
+
+                <div id="modal-1" class="modal fade show" role="dialog" tabindex="-1" style="display: block;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Title</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form class="custom-form">
+                    <h1>Date du spectacle</h1>
+                    <div class="row form-group">
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Date</label></div>
+                        <div class="col-sm-6 input-column"><input class="form-control" type="date" name="DateSpectacle" /></div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Heure</label></div>
+                        <div class="col-sm-6 input-column"><input class="form-control" type="time" name="HeureSpectacle" /></div>
+                    </div><button class="btn btn-light submit-button" type="submit">Enregistrer</button>
+                </form>
+            </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+</div>
