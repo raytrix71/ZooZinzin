@@ -12,7 +12,7 @@
 <body>
     <div class="row register-form">
         <div class="col-md-8 offset-md-2">
-            <form class="custom-form">
+            <form method="POST" action="Ajout_spectacle.php" class="custom-form">
                 <h1 style="margin-bottom: 34px;margin-top: 2px;">Formulaire Ajout Spectacle</h1>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Nom du spectacle</label></div>
