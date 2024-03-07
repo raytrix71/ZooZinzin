@@ -14,6 +14,6 @@ function afficherEspece(){
     return $reponse;
 };
 
-$tableau=afficherEspece();
+
 
 ?>

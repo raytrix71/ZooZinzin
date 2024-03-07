@@ -1,6 +1,6 @@
 <?php
-include('../../Fonction_PHP/connexionDB.php');
-include('../Erreur.php');
+include('/var/www/html/Fonction_PHP/connexionDB.php');
+include('/var/www/html/Fonction_PHP/Erreur.php');
 $nom_espece = $_POST['nom_espece'];
 $esperance = $_POST['esperance'];
 $taille = $_POST['taille'];

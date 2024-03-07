@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+    include '/var/www/html/connexionDB.php'
+?>    
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -38,13 +43,13 @@
                                 <hr>
                                 <h3 class="text-center">Régime alimentaire</h3>
                                 <div class="mb-3"><select class="form-select" required="" name="aliement1">
-                                        <option value="undefined">Aliment 1</option>
+                                        <?php afficherAliment() ?>
                                     </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte1" placeholder="Quantité aliment 1 (KG)" required=""></div>
                                 <div class="mb-3"><select class="form-select" required="" name="aliment2">
-                                        <option value="12" selected="">Aliment 2</option>
+                                        <?php afficherAliment() ?>
                                     </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte2" placeholder="Quantité aliment 2 (KG)" required=""></div>
                                 <div class="mb-3"><select class="form-select" required="" name="aliment3" style="margin-bottom: 0px;">
-                                        <option value="12" selected="">Aliment 3</option>
+                                        <?php afficherAliment() ?>
                                     </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte3" placeholder="Quantité aliment 2 (KG)" required=""></div>
                                 <hr>
                                 <h3 class="text-center">Environnement</h3>
