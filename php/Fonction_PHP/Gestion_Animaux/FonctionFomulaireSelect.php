@@ -1,6 +1,4 @@
 <?php
-session_start();
-include('/var/www/html/Fonction_PHP/connexionDB.php');
 function afficherAliment(){
     $bdd = connexionDB();
     $sql = 'SELECT * FROM ALIMENT';
@@ -21,6 +19,18 @@ function afficherEspece(){
     foreach($reponse as $column){
         echo "<option value=\"" . $column['IDEspece'] . "\" selected>{$column['NomEspece']}</option>\n";
     }
+}
+
+function afficherZone(){
+    $bdd = connexionDB();
+    $sql = 'SELECT * FROM ZONE';
+    $connexion = $bdd->query($sql);
+    $reponse = $connexion->fetchAll();
+    
+    foreach($reponse as $column){
+        echo "<option value=\"" . $column['IDZone'] . "\" selected>{$column['NomCategorieEspece']}</option>\n";
+    }
+
 }
 
 
