@@ -1,7 +1,7 @@
 <?php
 
-include ('Animal.php');
-include ('\Brouillon\Dario\AfficherEspece.php')
+include 'Animal.php';
+include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
 
 $nom_espece = $_POST['NomEspece'];
 $nom_animal = $_POST['NomAnimal'];
@@ -16,5 +16,7 @@ $animal = new Animal($nom_espece,$nom_animal,$date_naissance,$poids,$taille,$sex
 
 $animal->ajoutAnimalDB();
 $nom_espece = afficherEspece();
+
+
 
  

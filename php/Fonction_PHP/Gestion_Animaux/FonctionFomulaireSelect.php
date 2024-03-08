@@ -17,7 +17,8 @@ function afficherEspece(){
     $reponse = $connexion->fetchAll();
     
     foreach($reponse as $column){
-        echo "<option value=\"" . $column['IDEspece'] . "\" selected>{$column['NomEspece']}</option>\n";
+        if($column['Individuel'] == 1)
+        echo "<option value=\"" . $column['NomEspece'] . "\" selected>{$column['NomEspece']}</option>\n";
     }
 }
 

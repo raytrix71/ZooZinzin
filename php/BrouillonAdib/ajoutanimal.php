@@ -1,6 +1,9 @@
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
+<?php  include 'Animal.php'; include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+ ?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -17,11 +20,16 @@
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Nom Espèce</label></div>
                     <div class="col-sm-6 input-column">  
-                        <select class="form-control" name="NomEspece" id="espece">
-                     <?php foreach ($especes as $espece): ?>
-                     <option value="<?= htmlspecialchars($espece['NomEspece']) ?>"></option>
-                     <?php endforeach; ?>
-                         </select>
+
+                    <select class="form-control" name="NomEspece" id="espece" style="color:black">
+                 <?php 
+                 $especes = afficherEspece(); // Appel function affch espece
+                foreach ($especes as $espece): ?>
+                <?php
+                if($espece['Individuel'] == 1) // Si l'espece est individuel ?>
+                          <option value="<?= htmlspecialchars($espece['IDEspece']) ?>"><?= htmlspecialchars($espece['NomEspece']) ?></option>
+                <?php endforeach; ?>
+                </select>
 
                     </div>
                 </div>
