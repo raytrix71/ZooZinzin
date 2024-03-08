@@ -13,7 +13,7 @@
     <title>AjoutEspece</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script>
-        <?php echo 'jason_encode('. Espece::$listEspece->getListEspece .')'?>
+       <?php // echo 'jason_encode('. Espece::$listEspece->getListEspece .')'?>
 
     function validateForm() {
     var aliment1 = document.forms["myForm"]["aliment1"].value;
