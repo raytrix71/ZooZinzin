@@ -1,14 +1,14 @@
+
 <?php
-include('../../Fonction_PHP/connexionDB.php');
-include('../Erreur.php');
+include('/var/www/html/Fonction_PHP/Erreur.php');
+include('/var/www/html/Fonction_PHP/connexionDB.php');
 $nom_espece = $_POST['nom_espece'];
 $esperance = $_POST['esperance'];
 $taille = $_POST['taille'];
 $poids = $_POST['poids'];
 $gestation = $_POST['gestation'];
 $description = $_POST['description'];
-$image = $_POST['image'];
-$indivuduel=$_POST['individuel'];
+$individuel=$_POST['individuel'];
 $protege=$_POST['protege'];
 $zone=$_POST['zone'];
 $TempMax=$_POST['TempMax'];
@@ -18,14 +18,14 @@ $PHMin=$_POST['PHMin'];
 $TxHumMax=$_POST['TxHumMax'];
 $TxHumMin=$_POST['TxHumMin'];
 $effectif=0;
-if(!isset($PHMin) || !isset($PHMax) ){
-    $PHMin="NULL";
-    $PHMax="NULL";
+if(!isset($PHMin) || !isset($PHMax) || $PHMax === '' || $PHMin === ''){
+    $PHMin=NULL;
+    $PHMax=NULL;
 }
 
-if(!isset($TxHumMax) || !isset($TxHumMin) ){
-    $TxHumMax="NULL";
-    $TxHumMin="NULL";
+if(!isset($TxHumMax) || !isset($TxHumMin) || $TxHumMax === '' || $TxHumMin === ''){
+    $TxHumMax=NULL;
+    $TxHumMin=NULL;
 }
 
 if($TempMax<=$TempMin || $TempMin>=$TempMax || !isset($TempMax) || !isset($TempMin)){
@@ -34,39 +34,57 @@ if($TempMax<=$TempMin || $TempMin>=$TempMax || !isset($TempMax) || !isset($TempM
 }
 
     else{
-        if(isset($image) && !empty($image)){
-            ///Image
-            // Récupérer l'image
-            $imageData = file_get_contents($image);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['photo'])) {
+            // Vérifiez si le fichier est une image
+            $imageInfo = getimagesize($_FILES['photo']['tmp_name']);
+                if ($imageInfo !== false) {
+                    // Chargez l'image
+                    $image = imagecreatefromstring(file_get_contents($_FILES['photo']['tmp_name']));
             
-            // Créer une image à partir des données
-            $sourceImage = imagecreatefromstring($imageData);
+                    // Obtenez les dimensions originales de l'image
+                    $originalWidth = imagesx($image);
+                    $originalHeight = imagesy($image);
             
-            // Convertir en JPEG
-            $jpegImage = imagecreatetruecolor(imagesx($sourceImage), imagesy($sourceImage));
-            imagecopy($jpegImage, $sourceImage, 0, 0, 0, 0, imagesx($sourceImage), imagesy($sourceImage));
+                    // Définissez les nouvelles dimensions de l'image
+                    $newWidth = 500;
+                    $newHeight = round(($originalHeight / $originalWidth) * $newWidth);
             
-            // Redimensionner l'image
-            $width = 500; // Largeur souhaitée
-            $height = 500; // Hauteur souhaitée
-            $resizedImage = imagecreatetruecolor($width, $height);
-            imagecopyresampled($resizedImage, $jpegImage, 0, 0, 0, 0, $width, $height, imagesx($jpegImage), imagesy($jpegImage));
             
-            // Enregistrer l'image redimensionnée
-            $destination = '/Image/Espece/'.$nom_espece.'.jpg';
-            imagejpeg($resizedImage, $destination);
+                    // Créez une nouvelle image avec les nouvelles dimensions
+                    $newImage = imagecreatetruecolor($newWidth, $newHeight);
             
-            // Libérer la mémoire
-            imagedestroy($sourceImage);
-            imagedestroy($jpegImage);
-            imagedestroy($resizedImage);
-            }
-
-            $connDB = connexionDB();
-            $sql = "INSERT INTO ESPECE () VALUES ('$nom_espece', '$esperance', '$taille',  '$poids','$description', '$gestation','$effectif','$TempMax','$TempMin','$PHMax','$PHMin','$TxHumMax','$TxHumMin','$indivuduel','$protege','$zone')";
-            $connDB->exec($sql);
+                    // Redimensionnez l'image originale et copiez-la dans la nouvelle image
+                    imagecopyresampled($newImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
             
+                    // Enregistrez la nouvelle image sur le disque
+                    $filePath = '/var/www/html/Image/Espece/';
+                    $fileName = $nom_espece . ".jpg";
+            
+            
+                    imagejpeg($newImage, $filePath . $fileName);
+                    
+                    // Libérez la mémoire
+                    imagedestroy($image);
+                    imagedestroy($newImage);
+            
+                    echo "L'image a été redimensionnée et enregistrée avec succès.";
+                } 
+                
+                else {
+                    echo "Le fichier téléchargé n'est pas une image.";
+                }
+        } 
+        
+        else {
+            echo "Aucun fichier n'a été téléchargé.";
         }
+
+    $connDB = connexionDB();
+    $sql = "INSERT INTO ESPECE (NomEspece, Esperance, TailleMoyenne, PoidsMoyen, DescriptionEspece, TempsGestation, Effectif, TempMax, TempMin, PHMax, PHMin, TxHumMax, TxHumMin, protege, individuel, IDZone) VALUES (:nom_espece, :esperance, :taille, :poids, :description, :gestation, :effectif, :TempMax, :TempMin, :PHMax, :PHMin, :TxHumMax, :TxHumMin, :protege, :individuel, :zone)";
+    $req=$connDB->prepare($sql);
+    $req->execute(['nom_espece'=>$nom_espece, 'esperance'=>$esperance, 'taille'=>$taille,  'poids'=>$poids,'description'=>$description, 'gestation'=>$gestation,'effectif'=>$effectif,'TempMax'=>$TempMax,'TempMin'=>$TempMin,'PHMax'=>$PHMax,'PHMin'=>$PHMin,'TxHumMax'=>$TxHumMax,'TxHumMin'=>$TxHumMin,'protege'=>$protege,'individuel'=>$individuel,'zone'=>$zone]);            
+            
+}
     
 
 
