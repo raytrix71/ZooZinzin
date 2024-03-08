@@ -1,0 +1,7 @@
+Instruction pour la page web
+
+Dans <FORM> action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php" 
+
+Pour les checkbox, il faut mettre les hidden avec le meme nom et donc si la case n est pas coche c'est le hidden qui prend le dessus 
+
+script 

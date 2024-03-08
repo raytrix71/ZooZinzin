@@ -1,5 +1,4 @@
 <?php 
-session_start();
 function erreur($msg){
     echo "<h1> Une erreur est survenue </h1>";
     echo "<p>$msg</p>";

@@ -17,7 +17,16 @@ $PHMax=$_POST['PHMax'];
 $PHMin=$_POST['PHMin'];
 $TxHumMax=$_POST['TxHumMax'];
 $TxHumMin=$_POST['TxHumMin'];
+$Aliment1=$_POST['aliment1'];
+$Aliment2=$_POST['aliment2'];
+$Aliment3=$_POST['aliment3'];
+$Qte1=$_POST['qte1'];
+$Qte2=$_POST['qte2'];
+$Qte3=$_POST['qte3'];
 $effectif=0;
+
+
+
 if(!isset($PHMin) || !isset($PHMax) || $PHMax === '' || $PHMin === ''){
     $PHMin=NULL;
     $PHMax=NULL;
@@ -33,13 +42,13 @@ if($TempMax<=$TempMin || $TempMin>=$TempMax || !isset($TempMax) || !isset($TempM
     erreur($msgerreur);
 }
 
-    else{
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['photo'])) {
+else{
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']['tmp_name']) && $_FILES['image']['error'] == 0) {
             // Vérifiez si le fichier est une image
-            $imageInfo = getimagesize($_FILES['photo']['tmp_name']);
+            $imageInfo = getimagesize($_FILES['image']['tmp_name']);
                 if ($imageInfo !== false) {
                     // Chargez l'image
-                    $image = imagecreatefromstring(file_get_contents($_FILES['photo']['tmp_name']));
+                    $image = imagecreatefromstring(file_get_contents($_FILES['image']['tmp_name']));
             
                     // Obtenez les dimensions originales de l'image
                     $originalWidth = imagesx($image);
@@ -80,9 +89,9 @@ if($TempMax<=$TempMin || $TempMin>=$TempMax || !isset($TempMax) || !isset($TempM
         }
 
     $connDB = connexionDB();
-    $sql = "INSERT INTO ESPECE (NomEspece, Esperance, TailleMoyenne, PoidsMoyen, DescriptionEspece, TempsGestation, Effectif, TempMax, TempMin, PHMax, PHMin, TxHumMax, TxHumMin, protege, individuel, IDZone) VALUES (:nom_espece, :esperance, :taille, :poids, :description, :gestation, :effectif, :TempMax, :TempMin, :PHMax, :PHMin, :TxHumMax, :TxHumMin, :protege, :individuel, :zone)";
+    $sql = "INSERT INTO ESPECE (NomEspece, Esperance, TailleMoyenne, PoidsMoyen, DescriptionEspece, TempsGestation, Effectif, TempMax, TempMin, PHMax, PHMin, TxHumMax, TxHumMin, protege, individuel, IDZone,Alim1,Qte1,Alim2,Qte2,Alim3,Qte3) VALUES (:nom_espece, :esperance, :taille, :poids, :description, :gestation, :effectif, :TempMax, :TempMin, :PHMax, :PHMin, :TxHumMax, :TxHumMin, :protege, :individuel, :zone, :Alim1, :Qte1, :Alim2, :Qte2, :Alim3, :Qte3)";
     $req=$connDB->prepare($sql);
-    $req->execute(['nom_espece'=>$nom_espece, 'esperance'=>$esperance, 'taille'=>$taille,  'poids'=>$poids,'description'=>$description, 'gestation'=>$gestation,'effectif'=>$effectif,'TempMax'=>$TempMax,'TempMin'=>$TempMin,'PHMax'=>$PHMax,'PHMin'=>$PHMin,'TxHumMax'=>$TxHumMax,'TxHumMin'=>$TxHumMin,'protege'=>$protege,'individuel'=>$individuel,'zone'=>$zone]);            
+    $req->execute(['nom_espece'=>$nom_espece, 'esperance'=>$esperance, 'taille'=>$taille,  'poids'=>$poids,'description'=>$description, 'gestation'=>$gestation,'effectif'=>$effectif,'TempMax'=>$TempMax,'TempMin'=>$TempMin,'PHMax'=>$PHMax,'PHMin'=>$PHMin,'TxHumMax'=>$TxHumMax,'TxHumMin'=>$TxHumMin,'protege'=>$protege,'individuel'=>$individuel,'zone'=>$zone,'Alim1'=>$Aliment1,'Qte1'=>$Qte1,'Alim2'=>$Aliment2,'Qte2'=>$Qte2,'Alim3'=>$Aliment3, 'Qte3'=>$Qte3]);            
             
 }
     
