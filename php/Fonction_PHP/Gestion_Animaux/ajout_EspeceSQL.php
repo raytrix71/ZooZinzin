@@ -24,6 +24,9 @@ $Qte1=$_POST['qte1'];
 $Qte2=$_POST['qte2'];
 $Qte3=$_POST['qte3'];
 $effectif=0;
+
+
+
 if(!isset($PHMin) || !isset($PHMax) || $PHMax === '' || $PHMin === ''){
     $PHMin=NULL;
     $PHMax=NULL;

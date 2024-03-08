@@ -1,7 +1,8 @@
 <?php
     session_start();
     include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
-    include '/var/www/html/Fonction_PHP/connexionDB.php'
+    include '/var/www/html/Fonction_PHP/connexionDB.php';
+    include '/var/www/html/Model/Espece.php';
 ?>    
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -12,10 +13,13 @@
     <title>AjoutEspece</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script>
+        <?php echo 'jason_encode('. Espece::$listEspece->getListEspece .')'?>
+
     function validateForm() {
     var aliment1 = document.forms["myForm"]["aliment1"].value;
     var aliment2 = document.forms["myForm"]["aliment2"].value;
     var aliment3 = document.forms["myForm"]["aliment3"].value;
+    
 
     if (aliment1 == aliment2 || aliment1 == aliment3 || aliment2 == aliment3) {
         alert("Les aliments doivent être différents.");
@@ -34,7 +38,7 @@
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout espèce</h2>
-                            <form name="myForm" method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php" enctype="multipart/form-data" onsubmit="return validateForm()">
+                            <form name="myForm" method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php"  enctype="multipart/form-data" onsubmit="return validateForm()">
                                 <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="Esperance" name="esperance" placeholder="Espérance de vie" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="taille" name="taille" placeholder="Taille moyenne (m)" required="" style="margin-top: 0px;"></div>
@@ -47,8 +51,8 @@
                                     </select>
                                 </div>
                                 <hr>
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1" name="protege" value="1"><label class="form-check-label" for="formCheck-1">Espèce protégé</label></div><input class="form-control" type="hidden" name="protege" value="0">
-                                <div class="form-check" style="margin-top: 14px;"><input class="form-check-input" type="checkbox" id="formCheck-2" name="individuel" value="1"><label class="form-check-label" for="formCheck-2" style="padding-top: 0px;">Espèce individuelle</label></div><input class="form-control" type="hidden" name="individuel" value="0">
+                                <div class="form-check"><input class="form-control" type="hidden" name="protege" value="0"><input class="form-check-input" type="checkbox" id="formCheck-1" name="protege" value="1"><label class="form-check-label" for="formCheck-1">Espèce protégé</label></div>
+                                <div class="form-check" style="margin-top: 14px;"><input class="form-control" type="hidden" name="individuel" value="0"><input class="form-check-input" type="checkbox" id="formCheck-2" name="individuel" value="1"><label class="form-check-label" for="formCheck-2" style="padding-top: 0px;">Espèce individuelle</label></div>
                                 <hr>
                                 <div class="mb-3">
                                     <p>Image</p><input class="form-control" type="file" id="image" name="image" placeholder="Image" accept="image/*">
