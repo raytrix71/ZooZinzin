@@ -20,6 +20,4 @@
 
     $employe->ajoutEmployeDB();
 
-
-
-?>    
+?>

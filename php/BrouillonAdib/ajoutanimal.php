@@ -16,8 +16,16 @@
                 <h1>Formulaire Ajout Animal</h1>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Nom Espèce</label></div>
-                    <div class="col-sm-6 input-column"><input class="form-control" type="text" name="NomEspece"></div>
+                    <div class="col-sm-6 input-column">  
+                        <select class="form-control" name="NomEspece" id="espece">
+                     <?php foreach ($especes as $espece): ?>
+                     <option value="<?= htmlspecialchars($espece['NomEspece']) ?>"></option>
+                     <?php endforeach; ?>
+                         </select>
+
+                    </div>
                 </div>
+
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Nom Animal</label></div>
                     <div class="col-sm-6 input-column"><input class="form-control" type="text" name="NomAnimal"></div>
@@ -43,12 +51,8 @@
                         <option value="F">F</option>
                     </select>
 
-
-
                 </div>
 
-                <br>
-                <br>
                 <br>
                 <br>
                 <br>

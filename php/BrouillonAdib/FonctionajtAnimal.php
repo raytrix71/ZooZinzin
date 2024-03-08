@@ -1,6 +1,7 @@
 <?php
 
 include ('Animal.php');
+include ('\Brouillon\Dario\AfficherEspece.php')
 
 $nom_espece = $_POST['NomEspece'];
 $nom_animal = $_POST['NomAnimal'];
@@ -14,6 +15,6 @@ $Parcelle = $_POST['Parcelle'];
 $animal = new Animal($nom_espece,$nom_animal,$date_naissance,$poids,$taille,$sexe,$description,$Parcelle);
 
 $animal->ajoutAnimalDB();
+$nom_espece = afficherEspece();
 
  
-?>
