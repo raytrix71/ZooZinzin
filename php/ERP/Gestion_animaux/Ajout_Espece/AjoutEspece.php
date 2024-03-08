@@ -21,7 +21,7 @@
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout espèce</h2>
-                            <form method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php">
+                            <form method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php" enctype="multipart/form-data">
                                 <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="Esperance" name="esperance" placeholder="Espérance de vie" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="taille" name="taille" placeholder="Taille moyenne (m)" required="" style="margin-top: 0px;"></div>

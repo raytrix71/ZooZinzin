@@ -34,12 +34,12 @@ if($TempMax<=$TempMin || $TempMin>=$TempMax || !isset($TempMax) || !isset($TempM
 }
 
     else{
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['photo'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']['tmp_name']) && $_FILES['image']['error'] == 0) {
             // Vérifiez si le fichier est une image
-            $imageInfo = getimagesize($_FILES['photo']['tmp_name']);
+            $imageInfo = getimagesize($_FILES['image']['tmp_name']);
                 if ($imageInfo !== false) {
                     // Chargez l'image
-                    $image = imagecreatefromstring(file_get_contents($_FILES['photo']['tmp_name']));
+                    $image = imagecreatefromstring(file_get_contents($_FILES['image']['tmp_name']));
             
                     // Obtenez les dimensions originales de l'image
                     $originalWidth = imagesx($image);
