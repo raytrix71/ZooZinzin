@@ -11,6 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>AjoutEspece</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script>
+    function validateForm() {
+    var aliment1 = document.forms["myForm"]["aliment1"].value;
+    var aliment2 = document.forms["myForm"]["aliment2"].value;
+    var aliment3 = document.forms["myForm"]["aliment3"].value;
+
+    if (aliment1 == aliment2 || aliment1 == aliment3 || aliment2 == aliment3) {
+        alert("Les aliments doivent être différents.");
+        return false;
+    }
+}
+</script>
+
 </head>
 
 <body>
@@ -21,7 +34,7 @@
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout espèce</h2>
-                            <form method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php" enctype="multipart/form-data">
+                            <form name="myForm" method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php" enctype="multipart/form-data" onsubmit="return validateForm()">
                                 <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="Esperance" name="esperance" placeholder="Espérance de vie" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="taille" name="taille" placeholder="Taille moyenne (m)" required="" style="margin-top: 0px;"></div>
@@ -42,7 +55,7 @@
                                 </div>
                                 <hr>
                                 <h3 class="text-center">Régime alimentaire</h3>
-                                <div class="mb-3"><select class="form-select" required="" name="aliement1">
+                                <div class="mb-3"><select class="form-select" required="" name="aliment1">
                                         <?php afficherAliment() ?>
                                     </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte1" placeholder="Quantité aliment 1 (KG)" required=""></div>
                                 <div class="mb-3"><select class="form-select" required="" name="aliment2">
