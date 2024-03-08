@@ -1,4 +1,5 @@
 <?php
+    
 function afficherAliment(){
     $bdd = connexionDB();
     $sql = 'SELECT * FROM ALIMENT';

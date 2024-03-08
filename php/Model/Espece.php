@@ -1,5 +1,4 @@
 <?php 
-include('/var/www/html/Fonction_PHP/connexionDB.php');
 class Espece{
     static $listEspece;
     private $nom_espece;
