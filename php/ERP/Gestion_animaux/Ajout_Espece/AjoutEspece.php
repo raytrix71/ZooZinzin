@@ -24,6 +24,23 @@
             return false;
         }
     }
+
+    function checkEspece() {
+    var nom_espece = document.forms["myForm"]["NomEspece"].value;
+
+    var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/Fonction_PHP/Gestion_Animaux/RechercheEspeceJS.php?nom_espece=" + nom_espece, true);
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText == "exists") {
+                    alert("L'espèce existe déjà.");
+                }
+            }
+        };
+    xhr.send();
+    } 
+
+    
     </script>
 
 </head>
@@ -37,7 +54,7 @@
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout espèce</h2>
                             <form name="myForm" method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php"  enctype="multipart/form-data" onsubmit="return validateForm()">
-                                <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required="" onchange="checkEspece()" ></div>
+                                <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required=""  ></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="Esperance" name="esperance" placeholder="Espérance de vie" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="taille" name="taille" placeholder="Taille moyenne (m)" required="" style="margin-top: 0px;"></div>
                                 <div class="mb-3" style="margin-bottom: 13px;"><input class="form-control" type="number" id="poids" name="poids" placeholder="Poids moyen (KG)" required=""></div>
