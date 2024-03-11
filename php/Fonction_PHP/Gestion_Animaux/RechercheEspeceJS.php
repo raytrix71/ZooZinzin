@@ -1,19 +1,15 @@
 <?php
 
-    $nom_espece = $_GET['nom_espece'];
+require_once '/var/www/html/Fonction_PHP/connexionDB.php';
 
-    $conn = connexionDB();
-    $sql = "SELECT * FROM especes WHERE nom = :s";
-    $req = $conn->prepare($sql);
-    $req->bindParam(":s", $nom_espece);
-    $req->execute();
+$nomEspece = $_POST['nom_espece'];
 
-    $resultats = $req->fetchAll();
+$conn = connexionDB();
+$sql = "SELECT COUNT(*) FROM ESPECE WHERE nomEspece = :nomEspece";
+$stmt = $conn->prepare($sql);
+$stmt->execute([':nomEspece' => $nomEspece]);
 
-    if (count($resultats) > 0) {
-        echo "exists";
-    } else {
-        echo "not_exists";
-    }
-
-    ?>
+// Envoi de la réponse
+$existe = ($stmt->fetchColumn() > 0);
+echo json_encode(['existe' => $existe]);
+?>

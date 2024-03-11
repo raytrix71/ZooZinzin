@@ -26,19 +26,22 @@
     }
 
     function checkEspece() {
-    var nom_espece = document.forms["myForm"]["NomEspece"].value;
+        var nom_espece = document.forms["myForm"]["nom_espece"].value;
 
-    var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/Fonction_PHP/Gestion_Animaux/RechercheEspeceJS.php?nom_espece=" + nom_espece, true);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../../../Fonction_PHP/Gestion_Animaux/RechercheEspeceJS.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText == "exists") {
+                var response = JSON.parse(this.responseText);
+                if (response.existe) {
                     alert("L'espèce existe déjà.");
+                    return false;
                 }
             }
         };
-    xhr.send();
-    } 
+        xhr.send("nom_espece=" + encodeURIComponent(nom_espece));
+    }
 
     
     </script>
@@ -53,8 +56,8 @@
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout espèce</h2>
-                            <form name="myForm" method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php"  enctype="multipart/form-data" onsubmit="return validateForm()">
-                                <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required=""  ></div>
+                            <form name="myForm" method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php"  enctype="multipart/form-data" onsubmit="return validateForm() && checkEspece()">
+                                <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required="" onchange=" checkEspece()" ></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="Esperance" name="esperance" placeholder="Espérance de vie" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="taille" name="taille" placeholder="Taille moyenne (m)" required="" style="margin-top: 0px;"></div>
                                 <div class="mb-3" style="margin-bottom: 13px;"><input class="form-control" type="number" id="poids" name="poids" placeholder="Poids moyen (KG)" required=""></div>
