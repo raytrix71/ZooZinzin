@@ -2,6 +2,14 @@
 class Espece{
     static $listEspece;
     private $nom_espece;
+    private $eserance_vie;
+    private $taille;
+    private $poids;
+    private $description;
+    private $gestation;
+    private $effectif;
+    
+
 
     public function __construct($nom_espece){
         $this->nom_espece = $nom_espece;

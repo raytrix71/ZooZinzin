@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '/var/www/html/ERP/NavBar/navbar.php';
 include '/var/www/html/Fonction_PHP/connexionDB.php';
 $bdd=connexionDB();
@@ -16,7 +17,7 @@ $liste = $statement->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ListeEspece</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
 </head>
 
 <body style="background: rgb(217,217,217);">
@@ -25,7 +26,7 @@ $liste = $statement->fetchAll(PDO::FETCH_ASSOC);
     <div class="row">
         <div class="col">
             <div class="card" style="background: rgb(217,217,217);">
-                <div class="card-body" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;background: var(--bs-body-bg);padding-right: 0px;">
+                <div class="card-body" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;background: var(--bs-body-bg);padding-right: 0px;margin-bottom: 15px;">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
@@ -40,9 +41,9 @@ $liste = $statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-    <br
+
 <?php endforeach;?>   
 
 </body>
-
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </html>
