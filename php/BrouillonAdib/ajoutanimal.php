@@ -22,6 +22,7 @@
                     <div class="col-sm-6 input-column">  
 
                     <select class="form-control" name="NomEspece" id="espece" style="color:black">
+                    
                  <?php 
                  $especes = afficherEspece(); // Appel function affch espece
                 foreach ($especes as $espece): ?>
@@ -89,3 +90,5 @@
 </body>
 
 </html>
+
+<!-- Contrainte d'integrité référentielle, impérativement la créer au préalable --> 
