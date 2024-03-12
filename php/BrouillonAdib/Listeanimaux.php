@@ -22,7 +22,6 @@ include 'Animal.php'; include '/var/www/html/Fonction_PHP/Gestion_Animaux/Foncti
 ?>
 <?php
 $animaux = afficherAnimaux();
-
 ?>
 
 <div class="row" style="margin-right: 112px;">
