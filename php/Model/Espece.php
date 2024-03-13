@@ -1,5 +1,5 @@
 <?php
-include 'DB.php';
+
 class Espece
 {
     private $NomEspece;
@@ -289,7 +289,7 @@ class Espece
 
     public function saveToDatabase()
     {
-        $db = connexionDB();
+        $db = DB::connexionDB();
         $query = "INSERT INTO ESPECE (NomEspece, Esperance, TailleMoyenne, PoidsMoyen, DescriptionEspece, TempsGestation, Effectif, TempMax, TempMin, PHMAX, PHMin, TxHumMax, TxHumMin, Protege, Individuel, IDZone, Alim1, Qte1, Alim2, Qte2, Alim3, Qte3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $db->prepare($query);
         $stmt->bindParam("sssssssssssssssssssss", $this->NomEspece, $this->Esperance, $this->TailleMoyenne, $this->PoidsMoyen, $this->DescriptionEspece, $this->TempsGestation, $this->Effectif, $this->TempMax, $this->TempMin, $this->PHMAX, $this->PHMin, $this->TxHumMax, $this->TxHumMin, $this->Protege, $this->Individuel, $this->IDZone, $this->Alim1, $this->Qte1, $this->Alim2, $this->Qte2, $this->Alim3, $this->Qte3);
@@ -299,7 +299,7 @@ class Espece
 
     public function deleteFromDatabase()
     {
-        $db = connexionDB();
+        $db = DB::connexionDB();
         $query = "DELETE FROM ESPECE WHERE NomEspece = ?";
         $stmt = $db->prepare($query);
         $stmt->bindParam("s", $this->NomEspece);
@@ -308,7 +308,7 @@ class Espece
 
     public function updateInDatabase()
     {
-        $db = connexionDB();
+        $db = DB::connexionDB();
         $query = "UPDATE ESPECE SET Esperance = ?, TailleMoyenne = ?, PoidsMoyen = ?, DescriptionEspece = ?, TempsGestation = ?, Effectif = ?, TempMax = ?, TempMin = ?, PHMAX = ?, PHMin = ?, TxHumMax = ?, TxHumMin = ?, Protege = ?, Individuel = ?, IDZone = ?, Alim1 = ?, Qte1 = ?, Alim2 = ?, Qte2 = ?, Alim3 = ?, Qte3 = ? WHERE NomEspece = ?";
         $stmt = $db->prepare($query);
         $stmt->bindParam("ssssssssssssssssssssss", $this->Esperance, $this->TailleMoyenne, $this->PoidsMoyen, $this->DescriptionEspece, $this->TempsGestation, $this->Effectif, $this->TempMax, $this->TempMin, $this->PHMAX, $this->PHMin, $this->TxHumMax, $this->TxHumMin, $this->Protege, $this->Individuel, $this->IDZone, $this->Alim1, $this->Qte1, $this->Alim2, $this->Qte2, $this->Alim3, $this->Qte3, $this->NomEspece);

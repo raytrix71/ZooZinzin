@@ -1,6 +1,6 @@
 <?php
-include 'Animal.php';
-include '/..Fonction_PHP/connexionDB.php';
+include '../../../Model/Animal.php';
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -22,8 +22,9 @@ include '/..Fonction_PHP/connexionDB.php';
 
 
 <?php
-$listeanimal = Animal::queryAnimal();
-foreach ($liste as $animal): ?>
+$listeanimal = Animal::fetchListAnimalFromDatabase();?>
+<?php foreach ($liste as $animal): ?>
+    <?php if($animal->getNomEspece() == $_GET['nomespece']):  ?>
     <div class="row" style="margin-right: 112px;">
     <div class="col-6" style="margin-right: -1px;">
         <div class="card d-table" style="padding-right: 0px;margin-right: 571px;margin-left: 11px;">
@@ -40,8 +41,8 @@ foreach ($liste as $animal): ?>
             </div>
         </div>
     </div>
-    <?php 
-endforeach; ?>
+    <?php endif; ?>
+<?php endforeach; ?>
 </div>
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
