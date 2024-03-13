@@ -44,9 +44,10 @@ static function queryAnimal(){
 
     foreach($resultat as $row){
 
-$animal= new Animal($row['IDAnimal'],$row['NomEspece'],$row['NomAnimal'],$row['DateNaissance'],$row['Poids'],$row['Taille'],$row['Sexe'],$row['Description'],$row['IDParcelle']);
+    $animal= new Animal($row['IDAnimal'],$row['NomEspece'],$row['NomAnimal'],$row['DateNaissance'],$row['Poids'],$row['Taille'],$row['Sexe'],$row['Description'],$row['IDParcelle']);
     array_push(self::$listeAnimal, $animal);
     }
+    return self::$listeAnimal;
 }
 
 function ajoutAnimalDB(){
