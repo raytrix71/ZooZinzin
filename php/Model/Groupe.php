@@ -1,5 +1,5 @@
 <?php 
-include ('../Fonction_PHP/connexionDB.php');
+include ('DB.php');
 
 class groupe {
     private $IDGroupe;
