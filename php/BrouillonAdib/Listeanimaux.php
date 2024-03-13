@@ -1,3 +1,7 @@
+<?php
+include 'Animal.php';
+include '/..Fonction_PHP/connexionDB.php';
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -16,27 +20,22 @@
 
 <body>
 
-<?php
-include 'Animal.php'; include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
 
-?>
 <?php
-$animaux = afficherAnimaux();
-?>
-
-<div class="row" style="margin-right: 112px;">
-    <?php foreach ($animaux as $animal): ?>
+$listeanimal = Animal::queryAnimal();
+foreach ($liste as $animal): ?>
+    <div class="row" style="margin-right: 112px;">
     <div class="col-6" style="margin-right: -1px;">
         <div class="card d-table" style="padding-right: 0px;margin-right: 571px;margin-left: 11px;">
             <div class="card-body d-table" style="margin-right: 164px;padding-right: 0px;">
                 <h3 class="d-table card-title"><?= htmlspecialchars($animal->nomAnimal) ?></h3>
-                <p class="card-text">Espèce : <?= htmlspecialchars($animal->nomEspece) ?></p>
-                <p class="card-text">Nom : <?= htmlspecialchars($animal->dateNaissance) ?></p>
-                <p class="card-text">Date de naissance : <?= htmlspecialchars($animal->poids) ?> </p>
-                <p class="card-text">Poids : <?= htmlspecialchars($animal->taille) ?> </p>
-                <p class="card-text">Taille : <?= htmlspecialchars($animal->sexe) ?> </p>
-                <p class="card-text">Sexe : <?= htmlspecialchars($animal->description) ?> </p>
-                <p class="card-text">Description : <?= htmlspecialchars($animal->idParcelle) ?> </p>
+                <p class="card-text">Espèce : <?php $animal->getNomEspece() ?></p>
+                <p class="card-text">Nom : <?php $animal->getNomAnimal() ?></p>
+                <p class="card-text">Date de naissance : <?php echo $animal->getDateNaissance ?> </p>
+                <p class="card-text">Poids : <?php echo $animal->getPoids() ?> </p>
+                <p class="card-text">Taille : <?php echo $animal->getTaille() ?> </p>
+                <p class="card-text">Sexe : <?php echo $animal->getSexe() ?> </p>
+                <p class="card-text">Description : <?php echo $animal->getDescription() ?> </p>
                 <a class="btn btn-primary" role="button" href="FicheAnimal.php? id=<?= $animal->idAnimal ?>">Ouvrir</a>
             </div>
         </div>

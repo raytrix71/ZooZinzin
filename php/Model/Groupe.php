@@ -69,7 +69,7 @@ class groupe {
     }
     
     public static function fetchListGroupeFromDatabase(){
-        $db = connexionDB();
+        $db = DB::connexionDB();
         $query = "SELECT * FROM GROUPE";
         $result = $db->query($query);
         $listGroupe = [];
@@ -81,7 +81,7 @@ class groupe {
     
     }
 function ajoutGroupeDB(){
-    $db = connexionDB();
+    $db = DB::connexionDB();
     $query = "INSERT INTO GROUPE (IDParcelle, NomEspece, EffectifGroupe, PoidsTotalGroupe, CommentaireGroupe) VALUES (:IDParcelle, :NomEspece, :EffectifGroupe, :PoidsTotalGroupe, :CommentaireGroupe)";
     $result = $db->prepare($query);
     $result->execute([

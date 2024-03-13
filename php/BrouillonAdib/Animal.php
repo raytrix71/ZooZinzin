@@ -1,6 +1,6 @@
 <?php
 
-include ('../Fonction_PHP/connexionDB.php');
+include ('DB.php');
 
 class Animal{
 
@@ -28,16 +28,11 @@ class Animal{
         $this->idParcelle = $idParcelle;
     }
 
-static function getListeAnimal(){
-    if(!isset($listeAnimal)){
-        self::queryAnimal();
-    }
-    return self::$listeAnimal;
-}
 
-static function queryAnimal(){
+
+static function fetchListAnimalFromDatabase(){
     // Code goes here
-    $bdd = connexionDB();
+    $bdd = DB::connexionDB();
     $sql = "SELECT * FROM ANIMAL";
     $connexion = $bdd->query($sql);
     $resultat = $connexion->fetchAll();
@@ -51,9 +46,10 @@ static function queryAnimal(){
 }
 
 function ajoutAnimalDB(){
-    $bdd = connexionDB();
-    $sql = "INSERT INTO ANIMAL (IDParcelle, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description) VALUES ('$this->idParcelle', '$this->nomEspece', '$this->nomAnimal', '$this->dateNaissance', '$this->poids','$this->taille', '$this->sexe','$this->description')";
-    $bdd->exec($sql);
+    $bdd = DB::connexionDB();
+    $sql = "INSERT INTO ANIMAL (IDParcelle, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([$this->idParcelle, $this->nomEspece, $this->nomAnimal, $this->dateNaissance, $this->poids, $this->taille, $this->sexe, $this->description]);
 }
 
 /* getters and setters */
@@ -101,13 +97,14 @@ function setSexe($sexe){
     $this->sexe = $sexe;}
 
 function setDescription($description){
-    $this->description = $description;}
+    $this->description = $description;
+}
 
 function setIdParcelle($idParcelle){
     $this->idParcelle = $idParcelle;}
 
-    function __toString(){
-        return $this->idAnimal;
-    }
+function __toString(){
+    return $this->idAnimal;
+}
 
 }
