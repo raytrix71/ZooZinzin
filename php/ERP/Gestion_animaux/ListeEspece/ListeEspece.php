@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '/var/www/html/autoload.php';
-include '/var/www/html/Fonction_PHP/connexionDB.php';
+include '/var/www/html/ERP/NavBar/navbar.php';
 /*$bdd=connexionDB();
 $query = "SELECT NomEspece,NOMZONE FROM ESPECE INNER JOIN ZONE ON ESPECE.IDZONE = ZONE.IDZONE";
 $statement = $bdd->prepare($query);
