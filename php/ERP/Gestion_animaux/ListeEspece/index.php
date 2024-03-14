@@ -1,18 +1,3 @@
-<?php
-session_start();
-include '/var/www/html/autoload.php';
-include '/var/www/html/ERP/NavBar/navbar.php';
-/*$bdd=connexionDB();
-$query = "SELECT NomEspece,NOMZONE FROM ESPECE INNER JOIN ZONE ON ESPECE.IDZONE = ZONE.IDZONE";
-$statement = $bdd->prepare($query);
-$statement->execute();
-$liste = $statement->fetchAll(PDO::FETCH_ASSOC);*/
-
-
-
-$liste=Espece::fetchListEspeceFromDatabase();
-
-?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -21,12 +6,9 @@ $liste=Espece::fetchListEspeceFromDatabase();
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ListeEspece</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    
 </head>
 
 <body style="background: rgb(217,217,217);">
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<?php foreach($liste as $espece): ?>
     <div class="row">
         <div class="col">
             <div class="card" style="background: rgb(217,217,217);">
@@ -54,8 +36,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
             </div>
         </div>
     </div>
-<?php endforeach;?>   
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

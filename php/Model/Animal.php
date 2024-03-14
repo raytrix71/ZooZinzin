@@ -128,8 +128,7 @@ class Animal
         
     }
 
-    public static function fetchListAnimalFromDatabase()
-{
+    public static function fetchListAnimalFromDatabase(){
     $conn = DB::connexionDB();
     $query = "SELECT * FROM ANIMAL";
     $result = $conn->prepare($query);

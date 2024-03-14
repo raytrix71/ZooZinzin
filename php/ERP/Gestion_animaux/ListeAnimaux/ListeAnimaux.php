@@ -34,7 +34,7 @@ $i=0;?>
                         <h5>Poids:<?php echo $animal->getPoids() ?> kg</h5>
                         <h5>Taille:<?php echo $animal->getTaille() ?> m</h5>
                         <h5>Sexe:<?php echo $animal->getSexe() ?></h5>
-                    </div><button class="btn btn-primary" onclick="window.location.href='/Fonction_PHP/Gestion_Animaux/TriEspeceIndividuelle.php?idanimal=<?php echo urlencode($animal->getIDAnimal()); ?>'" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
+                    </div><button class="btn btn-primary" onclick="window.location.href='/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo urlencode($animal->getIDAnimal()); ?>'" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
                 </div>
             </div>
             <?php endif; ?>
