@@ -164,7 +164,15 @@ public function saveToDatabase()
         $conn = DB::connexionDB();
         $query = "UPDATE ANIMAL SET IDParcelle = ?, NomEspece = ?, NomAnimal = ?, DateNaissance = ?, Poids = ?, Taille = ?, Sexe = ?, Description = ? WHERE IDAnimal = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam("oui", $this->IDAnimal, $this->IDParcelle, $this->NomEspece, $this->NomAnimal, $this->DateNaissance, $this->Poids, $this->Taille, $this->Sexe, $this->Description);
+        $stmt->bindParam(1, $this->IDParcelle);
+        $stmt->bindParam(2, $this->NomEspece);
+        $stmt->bindParam(3, $this->NomAnimal);
+        $stmt->bindParam(4, $this->DateNaissance);
+        $stmt->bindParam(5, $this->Poids);
+        $stmt->bindParam(6, $this->Taille);
+        $stmt->bindParam(7, $this->Sexe);
+        $stmt->bindParam(8, $this->Description);
+        $stmt->bindParam(9, $this->IDAnimal);
         $stmt->execute();
     }
 

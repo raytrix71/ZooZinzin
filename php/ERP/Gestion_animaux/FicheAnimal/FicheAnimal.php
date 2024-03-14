@@ -81,9 +81,10 @@ foreach($listeanimal as $animal){
                 <div class="modal-header">
                     <h4 class="modal-title">Modification Animal</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="return validateForm()" name="animalForm">
-                    <div class="modal-body"><input class="form-control" type="hidden" name="idAnimal" value="<?php echo $resultat->getIDAnimal(); ?>"><input class="form-control" type="number" name="poids" placeholder="Poids"><input class="form-control" type="number" name="taille" placeholder="Taille" style="margin-top: 5px;"><input class="form-control" type="text" name="description" placeholder="Description" style="margin-top: 5px;" value="<?php echo $resultat->getDescription(); ?>"></div>
-                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal" data-bs-target="#modal-1" data-bs-toggle="modal">Close</button><button class="btn btn-primary" type="button" style="background: rgb(54,123,34);">Save</button></div>
+                <form onsubmit="return validateForm()" name="animalForm" method="post" action="/Fonction_PHP/Gestion_Animaux/MAJInfosAnimal.php">
+                    <div class="modal-body"><input class="form-control" type="hidden" name="idAnimal" value="<?php echo $resultat->getIDAnimal(); ?>">
+                    <input class="form-control" type="hidden" name="poids" value="null"><input class="form-control" type="hidden" name="taille" value="null"><input class="form-control" type="number" name="poids" placeholder="Poids"><input class="form-control" id="taille" type="number" name="taille" placeholder="Taille" style="margin-top: 5px;"><input class="form-control" type="text" name="description" placeholder="Description" style="margin-top: 5px;" value="<?php echo $resultat->getDescription(); ?>"></div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal" data-bs-target="#modal-1" data-bs-toggle="modal">Close</button><button class="btn btn-primary" type="submit" style="background: rgb(54,123,34);">Enregister</button></div>
                 </form>
             </div>
         </div>
@@ -92,19 +93,21 @@ foreach($listeanimal as $animal){
     <script>
         function validateForm() {
             var poids = document.forms["animalForm"]["poids"].value;
-            var taille = document.forms["animalForm"]["taille"].value;
+            var taille = document.getElementById("taille").value;
             
-            // Check if poids is less than or equal to 100
-            if (poids > 100) {
-                alert("Le poids doit être inférieur ou égal à 100.");
-                return false;
+            // Check if taille is empty
+            if (taille === "") {
+                return true;
+            } else {
+                var existingTaille = <?php echo $resultat->getTaille(); ?>;
+                // Check if taille is greater than existingTaille
+                if (parseFloat(taille) <= parseFloat(existingTaille)) {
+                    alert("La taille doit être supérieure à " + existingTaille);
+                    return false;
+                }
             }
             
-            // Check if taille is less than or equal to 200
-            if (taille < <?php echo $resultat->getTaille(); ?>) {
-                alert("La taille doit être superieur ou egal à <?php echo $resultat->getTaille(); ?>");
-                return false;
-            }
+            return true;
         }
     </script>
 

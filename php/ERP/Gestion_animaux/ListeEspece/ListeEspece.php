@@ -55,7 +55,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
         </div>
     </div>
 <?php endforeach;?>   
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
