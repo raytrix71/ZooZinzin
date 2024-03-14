@@ -142,5 +142,31 @@ class Animal
     return $listeAnimal;
 }
 
+public function saveToDatabase()
+{
+    $conn = DB::connexionDB();
+    $query = "INSERT INTO ANIMAL (IDAnimal, IDParcelle, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam("oui", $this->IDAnimal, $this->IDParcelle, $this->NomEspece, $this->NomAnimal, $this->DateNaissance, $this->Poids, $this->Taille, $this->Sexe, $this->Description);
+    $stmt->execute();}
+
+
+    public function deleteFromDatabase()
+    {
+        $conn = DB::connexionDB();
+        $query = "DELETE FROM ANIMAL WHERE IDAnimal = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam("i", $this->IDAnimal);
+        $stmt->execute();
+    }
+
+    public function updateInDatabase()
+    {
+        $conn = DB::connexionDB();
+        $query = "UPDATE ANIMAL SET IDParcelle = ?, NomEspece = ?, NomAnimal = ?, DateNaissance = ?, Poids = ?, Taille = ?, Sexe = ?, Description = ? WHERE IDAnimal = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam("oui", $this->IDAnimal, $this->IDParcelle, $this->NomEspece, $this->NomAnimal, $this->DateNaissance, $this->Poids, $this->Taille, $this->Sexe, $this->Description);
+        $stmt->execute();
+    }
 
 } //fin classe
