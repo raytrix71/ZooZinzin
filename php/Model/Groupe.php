@@ -9,13 +9,16 @@ class groupe {
     private $PoidsTotalGroupe;
     private $CommentaireGroupe;
 
-    public function __construct($IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
+    public function __construct($IDGroupe, $IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
+        $this->IDGroupe = $IDGroupe;
         $this->IDParcelle = $IDParcelle;
         $this->NomEspece = $NomEspece;
         $this->EffectifGroupe = $EffectifGroupe;
         $this->PoidsTotalGroupe = $PoidsTotalGroupe;
         $this->CommentaireGroupe = $CommentaireGroupe;
     }
+    
+    
 
     public function getIDGroupe(){
         return $this->IDGroupe;

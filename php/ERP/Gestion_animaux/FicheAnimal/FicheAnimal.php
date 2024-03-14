@@ -67,11 +67,11 @@ foreach($listeanimal as $animal){
                         </div>
                     </div>
                 </div>
-                <div>
+                <div style="background: var(--bs-body-bg);border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;margin-top: 5px;">
                     <h1 style="margin-top: 10px;">Description</h1>
                     <p><?php echo $resultat->getDescription() ?></p>
                     <hr>
-                </div><button class="btn btn-primary" type="button" style="margin-left: 25px;background: rgb(54,123,34);" data-bs-target="#modal-1" data-bs-toggle="modal">Modifier</button>
+                </div><button class="btn btn-primary" type="button" style="margin-left: 25px;background: rgb(54,123,34);margin-top:10px;" data-bs-target="#modal-1" data-bs-toggle="modal">Modifier</button>
             </div>
         </div>
     </div>

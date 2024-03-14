@@ -39,10 +39,10 @@ $liste=Espece::fetchListEspeceFromDatabase();
                                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
                                     <?php if($espece->getIndividuel()==1):?>
                                         <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAnimaux/ListeAnimaux.php?nomespece=<?php echo $espece->getNomEspece() ?>">Afficher liste animaux</a>
-                                        <a class="dropdown-item" href="#">Ajouter un animal/groupe</a></div>
+                                        <a class="dropdown-item" href="#">Ajouter un animal</a></div>
                                     <?php else:?>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAnimaux/ListeAnimaux.php?nomespece=<?php echo $espece->getNomEspece() ?>">Afficher liste animaux</a>
-                                        <a class="dropdown-item" href="#">Ajouter un animal/groupe</a></div>
+                                        <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeGroupe/ListeGroupe.php?nomespece=<?php echo $espece->getNomEspece() ?>">Afficher liste groupe</a>
+                                        <a class="dropdown-item" href="#">Ajouter un groupe</a></div>
                                     <?php endif;?>    
                                 </div>
                             </div>
