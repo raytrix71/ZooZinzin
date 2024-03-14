@@ -1,5 +1,5 @@
 <?php
-    
+
 function afficherAliment(){
     $bdd = connexionDB();
     $sql = 'SELECT * FROM ALIMENT';
@@ -13,7 +13,7 @@ function afficherAliment(){
 
 // Afficher TOUTES les especes
 function afficherEspece(){
-    $bdd = connexionDB();
+    $bdd = DB::connexionDB();
     $sql = 'SELECT NomEspece, Individuel, Protege FROM ESPECE';
     $connexion = $bdd->query($sql);
     $reponse = $connexion->fetchAll();
@@ -24,7 +24,7 @@ function afficherEspece(){
 }
 
 function afficherEspeceIndividuelle(){
-    $bdd = connexionDB();
+    $bdd = DB::connexionDB();
     $sql = 'SELECT NomEspece, Individuel, Protege FROM ESPECE';
     $connexion = $bdd->query($sql);
     $reponse = $connexion->fetchAll();
@@ -36,6 +36,15 @@ function afficherEspeceIndividuelle(){
     }
 }
 
+
+function afficherEspece2(){
+    $bdd = DB::connexionDB();
+    $sql = 'SELECT NomEspece, Individuel, Protege FROM ESPECE';
+    $connexion = $bdd->query($sql);
+    $reponse = $connexion->fetchAll();
+    
+    return $reponse;
+}
 /*Afficher animaux d'une même espèce */ 
 
 function afficherAnimaux(){
@@ -58,7 +67,7 @@ function afficherAnimaux(){
  
 
 function afficherParcelle(){
-    $bdd = connexionDB();
+    $bdd = DB::connexionDB();
     $sql = 'SELECT * FROM PARCELLE';
     $connexion = $bdd->query($sql);
     $reponse = $connexion->fetchAll();

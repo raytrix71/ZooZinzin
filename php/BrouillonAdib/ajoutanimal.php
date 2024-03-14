@@ -1,10 +1,11 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html data-bs-theme="light" lang="en">
 
-<?php  include 'Animal.php'; include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+<?php  include 'php\Model\Animal.php'; include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
  ?>
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ajout animal</title>
