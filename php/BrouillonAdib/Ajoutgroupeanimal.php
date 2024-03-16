@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
-<?php  include 'Animal.php'; include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+<?php  include '/var/www/html/autoload.php';
+include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
  ?>
 <head>
     <meta charset="utf-8">

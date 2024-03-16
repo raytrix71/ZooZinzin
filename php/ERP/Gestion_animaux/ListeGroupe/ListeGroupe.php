@@ -26,7 +26,7 @@ $i=0;?>
                         <div>
                             <h5>Emplacement:<?php echo "".$groupe->getIDParcelle() ?></h5>
                             <h5>Effectif:<?php echo "".$groupe->getEffectifGroupe()?></h5>
-                        </div><button class="btn btn-primary" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
+                        </div><button onclick="window.location.href = '/ERP/Gestion_animaux/FicheGroupe/FicheGroupe.php?idGroupe=<?php echo urlencode($groupe->getIDGroupe())?>'" class="btn btn-primary" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
                     </div>
                 </div>
         <?php endif; ?>
