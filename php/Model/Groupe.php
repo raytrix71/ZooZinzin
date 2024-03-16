@@ -1,5 +1,5 @@
 <?php 
-include ('../Fonction_PHP/connexionDB.php');
+include ('DB.php');
 
 class groupe {
     private $IDGroupe;
@@ -9,13 +9,16 @@ class groupe {
     private $PoidsTotalGroupe;
     private $CommentaireGroupe;
 
-    public function __construct($IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
+    public function __construct($IDGroupe, $IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
+        $this->IDGroupe = $IDGroupe;
         $this->IDParcelle = $IDParcelle;
         $this->NomEspece = $NomEspece;
         $this->EffectifGroupe = $EffectifGroupe;
         $this->PoidsTotalGroupe = $PoidsTotalGroupe;
         $this->CommentaireGroupe = $CommentaireGroupe;
     }
+    
+    
 
     public function getIDGroupe(){
         return $this->IDGroupe;
@@ -69,7 +72,7 @@ class groupe {
     }
     
     public static function fetchListGroupeFromDatabase(){
-        $db = connexionDB();
+        $db = DB::connexionDB();
         $query = "SELECT * FROM GROUPE";
         $result = $db->query($query);
         $listGroupe = [];
@@ -81,7 +84,7 @@ class groupe {
     
     }
 function ajoutGroupeDB(){
-    $db = connexionDB();
+    $db = DB::connexionDB();
     $query = "INSERT INTO GROUPE (IDParcelle, NomEspece, EffectifGroupe, PoidsTotalGroupe, CommentaireGroupe) VALUES (:IDParcelle, :NomEspece, :EffectifGroupe, :PoidsTotalGroupe, :CommentaireGroupe)";
     $result = $db->prepare($query);
     $result->execute([
@@ -93,10 +96,22 @@ function ajoutGroupeDB(){
     ]);
 }
 
+function updateInDatabase(){
+    $db = DB::connexionDB();
+    $query = "UPDATE GROUPE SET IDParcelle = :IDParcelle, NomEspece = :NomEspece, EffectifGroupe = :EffectifGroupe, PoidsTotalGroupe = :PoidsTotalGroupe, CommentaireGroupe = :CommentaireGroupe WHERE IDGroupe = :IDGroupe";
+    $result = $db->prepare($query);
+    $result->execute([
+        'IDGroupe' => $this->IDGroupe,
+        'IDParcelle' => $this->IDParcelle,
+        'NomEspece' => $this->NomEspece,
+        'EffectifGroupe' => $this->EffectifGroupe,
+        'PoidsTotalGroupe' => $this->PoidsTotalGroupe,
+        'CommentaireGroupe' => $this->CommentaireGroupe,
+    ]);
 
 
 }
 
-
+}
     
    

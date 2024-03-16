@@ -36,6 +36,27 @@ function afficherEspeceIndividuelle(){
     }
 }
 
+/*Afficher animaux d'une même espèce */ 
+
+function afficherAnimaux(){
+    $animaux=array();
+    $bdd = connexionDB();
+    $sql = "SELECT IDAnimal, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description FROM ANIMAL";
+    $connexion = $bdd->query($sql);
+    $reponse = $connexion->fetchAll();
+
+    if($reponse){
+        foreach($reponse as $row){
+            $animal = new Animal($row['IDAnimal'],$row['NomEspece'],$row['NomAnimal'],$row['DateNaissance'],$row['Poids'],$row['Taille'],$row['Sexe'],$row['Description']);
+            $animaux[] = $animal;
+        }
+    }
+
+    return $animaux;
+}
+
+ 
+
 function afficherParcelle(){
     $bdd = connexionDB();
     $sql = 'SELECT * FROM PARCELLE';
@@ -59,5 +80,3 @@ function afficherZone(){
 
 }
 
-
-?>
