@@ -60,6 +60,57 @@
         </div>
     </section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <section>
+            <!-- ... -->
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <form>
+                                <?php
+                                foreach ($especes as $espece) {
+                                    echo '<div class="form-check">';
+                                    echo '<input class="form-check-input" type="checkbox" id="formCheck-' . $espece['NomEspece'] . '">';
+                                    echo '<label class="form-check-label" for="formCheck-' . $espece['NomEspece'] . '" style="margin-left: 10px;">' . $espece['NomEspece'] . '</label>';
+                                    echo '</div>';
+                                }
+                                ?>
+                                <hr>
+                                <div><button class="btn btn-primary d-block w-100" type="submit" style="--bs-primary: RGB(54,123,34);--bs-primary-rgb: 54,123,34;background: rgb(54,123,34);margin-top: 14px;">Ajouter l'espèce</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script> 
+        // Fonction JS pour cacher les checkbox
+        
+            window.onload = function() {
+                var checkboxes = document.querySelectorAll('.form-check-input');
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            var currentId = this.id;
+                            checkboxes.forEach(function(c) {
+                                if (c.id === currentId && c !== checkbox) {
+                                    c.parentElement.style.display = 'none';
+                                }
+                            });
+                        } else {
+                            var currentId = this.id;
+                            checkboxes.forEach(function(c) {
+                                if (c.id === currentId && c !== checkbox) {
+                                    c.parentElement.style.display = '';
+                                }
+                            });
+                        }
+                    });
+                });
+            };
+        </script>
+    </body>
 </body>
 
 </html>

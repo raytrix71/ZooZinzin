@@ -43,7 +43,7 @@ function afficherEspece2(){
     $connexion = $bdd->query($sql);
     $reponse = $connexion->fetchAll();
     
-    return $reponse;
+    return $reponse; 
 }
 /*Afficher animaux d'une même espèce */ 
 
