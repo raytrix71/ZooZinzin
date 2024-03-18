@@ -1,3 +1,3 @@
 <?php 
 session_start(); 
-include('../NavBar/navbar.php'); ?>
+include '/var/www/html/ERP/NavBar/navbar.php'; ?>

@@ -25,7 +25,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
 </head>
 
 <body style="background: rgb(217,217,217);">
-
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <?php foreach($liste as $espece): ?>
     <div class="row">
         <div class="col">
@@ -35,10 +35,18 @@ $liste=Espece::fetchListEspeceFromDatabase();
                         <div class="row">
                             <div class="col-md-6">
                                 <h4><?php echo $espece->getNomEspece(); ?></h4>
-                                <h6 class="text-muted mb-2">Zone:<?php echo $espece->getIDZONE(); ?>&nbsp;</h6>
-                                <button class="btn btn-primary" type="button" style="--bs-primary: RGB(54,123,34);--bs-primary-rgb: 54,123,34;background: RGB(54,123,34);" onclick="window.location.href='/Fonction_PHP/Gestion_Animaux/TriEspeceIndividuelle.php?nomespece=<?php echo urlencode($espece->getNomEspece()); ?>'">Afficher liste animaux</button>
+                                <h6 class="text-muted mb-2">Zone:<?php echo " ".$espece->getIDZONE(); ?>&nbsp;</h6>
+                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
+                                    <?php if($espece->getIndividuel()==1):?>
+                                        <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAnimaux/ListeAnimaux.php?nomespece=<?php echo $espece->getNomEspece() ?>">Afficher liste animaux</a>
+                                        <a class="dropdown-item" href="#">Ajouter un animal</a></div>
+                                    <?php else:?>
+                                        <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeGroupe/ListeGroupe.php?nomespece=<?php echo $espece->getNomEspece() ?>">Afficher liste groupe</a>
+                                        <a class="dropdown-item" href="#">Ajouter un groupe</a></div>
+                                    <?php endif;?>    
+                                </div>
                             </div>
-                            <div class="col-md-6"><img alt="a painting of pink and white flowers on a gray background" src="/Image/Espece/<?php echo$espece->getNomEspece()?>.jpg" width="200" height="100" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;margin-top: 13px;margin-left: 0px;"></div>
+                            <div class="col-md-6"><img  src="/Image/Espece/<?php echo$espece->getNomEspece()?>.jpg" width="200" height="100" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;margin-top: 13px;margin-left: 0px;"></div>
                         </div>
                     </div>
                     <h1 style="margin-right: 0px;"></h1>
@@ -49,5 +57,5 @@ $liste=Espece::fetchListEspeceFromDatabase();
 <?php endforeach;?>   
 
 </body>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </html>

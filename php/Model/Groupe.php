@@ -9,13 +9,16 @@ class groupe {
     private $PoidsTotalGroupe;
     private $CommentaireGroupe;
 
-    public function __construct($IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
+    public function __construct($IDGroupe, $IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
+        $this->IDGroupe = $IDGroupe;
         $this->IDParcelle = $IDParcelle;
         $this->NomEspece = $NomEspece;
         $this->EffectifGroupe = $EffectifGroupe;
         $this->PoidsTotalGroupe = $PoidsTotalGroupe;
         $this->CommentaireGroupe = $CommentaireGroupe;
     }
+    
+    
 
     public function getIDGroupe(){
         return $this->IDGroupe;
@@ -93,10 +96,22 @@ function ajoutGroupeDB(){
     ]);
 }
 
+function updateInDatabase(){
+    $db = DB::connexionDB();
+    $query = "UPDATE GROUPE SET IDParcelle = :IDParcelle, NomEspece = :NomEspece, EffectifGroupe = :EffectifGroupe, PoidsTotalGroupe = :PoidsTotalGroupe, CommentaireGroupe = :CommentaireGroupe WHERE IDGroupe = :IDGroupe";
+    $result = $db->prepare($query);
+    $result->execute([
+        'IDGroupe' => $this->IDGroupe,
+        'IDParcelle' => $this->IDParcelle,
+        'NomEspece' => $this->NomEspece,
+        'EffectifGroupe' => $this->EffectifGroupe,
+        'PoidsTotalGroupe' => $this->PoidsTotalGroupe,
+        'CommentaireGroupe' => $this->CommentaireGroupe,
+    ]);
 
 
 }
 
-
+}
     
    
