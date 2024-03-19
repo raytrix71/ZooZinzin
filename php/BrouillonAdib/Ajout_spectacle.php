@@ -1,9 +1,8 @@
 <?php
 
-include ('../Fonction_PHP/connexionDB.php');
-$connDB = connexionDB();
+include '../Model/DB.php';
 
-
+$connDB = DB::connexionDB();
 
 $nom_spectacle = $_POST['NomSpectacle'];
 $lieu_spectacle = $_POST['LieuSpectacle'];

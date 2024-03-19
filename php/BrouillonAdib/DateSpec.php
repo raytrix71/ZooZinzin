@@ -28,7 +28,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Tarification</label></div>
-                    <div class="col-sm-6 input-column"><input class="form-control" type="number" name="TarifSpectacle"></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" min="0" max="100" name="TarifSpectacle"></div>
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Capacité maximale</label></div>
@@ -38,7 +38,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Modal Title</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                <h4 class="modal-title">DATE</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                             </div><div class="modal-body">
     <p>Voulez-vous réserver une plage horaire ?</p>
     <div class="form-check">
