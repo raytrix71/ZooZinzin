@@ -36,7 +36,6 @@ function afficherEspeceIndividuelle(){
     }
 }
 
-
 function afficherEspece2(){
     $bdd = DB::connexionDB();
     $sql = 'SELECT NomEspece, Individuel, Protege FROM ESPECE';
@@ -88,4 +87,7 @@ function afficherZone(){
     }
 
 }
+
+
+
 

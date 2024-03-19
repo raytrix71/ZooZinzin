@@ -34,16 +34,16 @@
         public function setNomEspeceProie($nomEspeceProie) {
             $this->nomEspeceProie = $nomEspeceProie;
         }
-
-        public function ajoutDB(){
+        public function ajoutDB() {
             $bdd = DB::connexionDB();
             $sql = "INSERT INTO ANTAGONISTE (NomEspecePredateur, NomEspeceProie) VALUES (:NomEspecePredateur, :NomEspeceProie)";
             $stmt = $bdd->prepare($sql);
-            $stmt->bindParam(':NomEspecePredateur', $this->nomEspecePredateur);
-            $stmt->bindParam(':NomEspeceProie', $this->nomEspeceProie);
+            $stmt->bindParam(':NomEspecePredateur', $this->nomEspecePredateur ? $this->nomEspecePredateur : null);
+            $stmt->bindParam(':NomEspeceProie', $this->nomEspeceProie ? $this->nomEspeceProie : null);
             $stmt->execute();
-
         }
+    }
+?>
 
         
-    }
+    

@@ -46,6 +46,7 @@ include '../../Model/Aliment.php';
                                         <option value="12" selected="">Aliment 3</option>
                                     </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte3" placeholder="Quantité aliment 2 (KG)" required=""></div>
                                 <hr>
+                                <div><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter Antagoniste</button></div>
                                 <div><button class="btn btn-primary d-block w-100" type="submit">Ajouter l'espèce</button></div>
                             </form>
                         </div>
@@ -57,4 +58,6 @@ include '../../Model/Aliment.php';
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
+
 </html>
+
