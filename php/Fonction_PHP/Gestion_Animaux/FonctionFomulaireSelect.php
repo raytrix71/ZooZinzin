@@ -55,7 +55,7 @@ function afficherAnimaux(){
 
     if($reponse){
         foreach($reponse as $row){
-            $animal = new Animal($row['IDAnimal'],$row['NomEspece'],$row['NomAnimal'],$row['DateNaissance'],$row['Poids'],$row['Taille'],$row['Sexe'],$row['Description']);
+            $animal = new Animal($row['IDAnimal'],$row['IDParcelle'],$row['NomEspece'],$row['NomAnimal'],$row['DateNaissance'],$row['Poids'],$row['Taille'],$row['Sexe'],$row['Description']);
             $animaux[] = $animal;
         }
     }
@@ -88,6 +88,30 @@ function afficherZone(){
 
 }
 
+function afficherEspeceAntagonisteSelect($nomespece){
+    $listeEspece = Espece::fetchListEspeceFromDatabase();
+    $listeAntagoniste = ResultatAntagoniste::antagonisteEspeceDB($nomespece);
+    $especesAffichees = array();
 
+    foreach($listeEspece as $espece){
+        $afficherEspece = true;
 
+        // Vérifier si l'espèce est antagoniste ou égale à $nomespece
+        if($espece->getNomEspece() == $nomespece){
+            $afficherEspece = false;
+        } else {
+            foreach($listeAntagoniste as $antagoniste){
+                if($espece->getNomEspece() == $antagoniste->getNomEspeceAntagoniste()){
+                    $afficherEspece = false;
+                    break;
+                }
+            }
+        }
 
+        // Afficher l'espèce si elle n'est pas déjà affichée
+        if($afficherEspece && !in_array($espece->getNomEspece(), $especesAffichees)){
+            echo "<option value=\"" . $espece->getNomEspece() . "\" selected>{$espece->getNomEspece()}</option>\n";
+            $especesAffichees[] = $espece->getNomEspece();
+        }
+    }
+}

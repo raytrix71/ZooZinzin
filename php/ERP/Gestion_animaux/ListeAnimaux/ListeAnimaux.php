@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include '/var/www/html/autoload.php';
-include '/var/www/html/ERP/NavBar/navbar.php';
+include '//var/www/html/autoload.php';
+include '//var/www/html/ERP/NavBar/navbar.php';
 $i=0;?>
 
 <!DOCTYPE html>
@@ -46,7 +46,7 @@ $i=0;?>
         window.location.href = '/ERP/Gestion_animaux/ListeEspece/ListeEspece.php';
     </script>    
     <?php endif;?>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="//assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
