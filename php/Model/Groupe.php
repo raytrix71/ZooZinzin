@@ -1,7 +1,7 @@
 <?php 
-include ('DB.php');
+include_once 'DB.php';
 
-class groupe {
+class Groupe {
     private $IDGroupe;
     private $IDParcelle;
     private $NomEspece;
@@ -24,9 +24,11 @@ class groupe {
         return $this->IDGroupe;
     }
 
-    public function getIDParcelle(){
-        return $this->IDParcelle;
-    }
+   
+public function getIDParcelle(){
+    return $this->IDParcelle;
+}
+
 
     public function getNomEspece(){
         return $this->NomEspece;
