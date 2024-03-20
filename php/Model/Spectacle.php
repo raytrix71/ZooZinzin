@@ -15,6 +15,7 @@ class Spectacle {
         $this->HeureSpectacle = $HeureSpectacle;
     }
 
+
     // Méthodes getters et setters...
 
     public function getTypeSpectacle() {
@@ -99,6 +100,16 @@ class Spectacle {
         $stmt->bindParam(1, $this->DateSpectacle);
         $stmt->bindParam(2, $this->HeureSpectacle);
         $stmt->bindParam(3, $this->IDSpectacle);
+        $stmt->execute();
+    }
+
+    public function saveToDatabase() {
+        $conn = DB::connexionDB();
+        $query = "INSERT INTO SPECTACLE (IDTypeSpectacle, DateSpectacle, HeureSpectacle) VALUES (:IDTypeSpectacle, :DateSpectacle, :HeureSpectacle)";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':IDTypeSpectacle', $this->IDTypeSpectacle, PDO::PARAM_INT);
+        $stmt->bindParam(':DateSpectacle', $this->DateSpectacle, PDO::PARAM_STR);
+        $stmt->bindParam(':HeureSpectacle', $this->HeureSpectacle, PDO::PARAM_STR);
         $stmt->execute();
     }
 }

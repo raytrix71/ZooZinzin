@@ -34,6 +34,7 @@
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Capacité maximale</label></div>
                     <div class="col-sm-6 input-column"><input class="form-control" type="number" name="CapaciteMaxSpectacle"></div>
                 </div><button class="btn btn-primary" type="button" data-bs-target="#modal-2" data-bs-toggle="modal">Enregisrer</button>
+                
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-2">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
