@@ -1,5 +1,6 @@
-<?php 
 
+<?php 
+include_once 'DB.php';
 class Spectacle {
     private $IDSpectacle;
     private $IDTypeSpectacle;
@@ -43,5 +44,20 @@ class Spectacle {
 
     public function setHeureSpectacle($HeureSpectacle) {
         $this->HeureSpectacle = $HeureSpectacle;
+    }
+
+    public static function fetchListSpectacleFromDatabase() {
+        $connexion = DB::connexionDB();
+        $SQL = "SELECT * FROM SPECTACLE";
+        $requete = $connexion->prepare($SQL);
+        $requete->execute();
+        $resultat = $requete->fetchAll();
+        $listeObjetSpectacle = array();
+        foreach ($resultat as $row) {
+            $spectacle = new Spectacle($row['IDSpectacle'], $row['IDTypeSpectacle'], $row['DateSpectacle'], $row['HeureSpectacle']);
+            array_push($listeObjetSpectacle, $spectacle);
+        }
+
+        return $listeObjetSpectacle;
     }
 }
