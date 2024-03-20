@@ -77,4 +77,30 @@ class TypeSpectacle {
         }
         return $listeSpectacle;
 }
+
+public static function fetchByID($IDTypeSpectacle) {
+    try {
+        $conn = DB::connexionDB();
+        $query = "SELECT * FROM TYPESPECTACLE WHERE IDTypeSpectacle = :IDTypeSpectacle";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':IDTypeSpectacle', $IDTypeSpectacle, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            return new TypeSpectacle($row['IDTypeSpectacle'], $row['NomSpectacle'], $row['LieuSpectacle'], $row['DescriptionSpectacle'], $row['TarifSpectacle'], $row['CapaciteMaxSpectacle']);
+        } else {
+            // Retourner null ou gérer d'une autre manière si aucun type de spectacle n'est trouvé
+            return null;
+        }
+    } catch (Exception $e) {
+        // Gérer ou logger l'erreur
+        error_log("Une erreur est survenue lors de la récupération du type de spectacle : " . $e->getMessage());
+        return null;
+    }
 }
+
+    }
+
+

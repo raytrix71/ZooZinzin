@@ -2,7 +2,11 @@
 session_start();
 include '//var/www/html/autoload.php';
 include '//var/www/html/ERP/NavBar/navbar.php';
-$i=0;?>
+$i=0;
+$listeSpectacles = TypeSpectacle::fetchListSpectacleFromDatabase();
+?>
+
+
 
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -29,15 +33,15 @@ $i=0;?>
                     <h5>Description:<?php echo $typespectacle->getDescriptionSpectacle() ?> kg</h5>
                     <h5>Tarif:<?php echo $typespectacle->getTarifSpectacle() ?> m</h5>
                     <h5>Capacité:<?php echo $typespectacle->getCapaciteMaxSpectacle() ?></h5>
-                </div><button class="btn btn-primary" onclick="window.location.href='/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo urlencode($animal->getIDAnimal()); ?>'" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
+                </div><button class="btn btn-primary" onclick="window.location.href='/ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle=<?php echo urlencode($typespectacle->getIDTypeSpectacle()); ?>'" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
             </div>
         </div>
     <?php endforeach; ?>   
     </div>
     <?php if($i==0):?>
-    <script>/*
-        alert("Il n'y a pas d'animaux dans cette espece");
-        window.location.href = '/ERP/Gestion_animaux/ListeEspece/ListeEspece.php';
+    <script>
+        alert("Il n'y a pas de spectacle prévu");
+        window.location.href = '/ERP/GestionBillets/Spectacle/ListeSpectacle.php';
     </script>    
     <?php endif;?>
     <script src="//assets/bootstrap/js/bootstrap.min.js"></script>
