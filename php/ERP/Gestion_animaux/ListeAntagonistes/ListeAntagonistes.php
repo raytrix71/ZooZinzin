@@ -36,7 +36,7 @@ $liste=ResultatAntagoniste::antagonisteEspeceDB($espece);
                                     <div class="dropdown-menu"><a class="dropdown-item" href="/Fonction_PHP/Gestion_Animaux/supressionAntagoniste.php?nomespece=<?php echo $espece ?>&antagoniste=<?php echo $antagoniste->getNomEspeceAntagoniste()  ?>">Supprimer</a></div>
                                 </div>
                             </div>
-                            <div class="col-md-6"><img alt="a painting of pink and white flowers on a gray background" src="assets/img/photo-1710068145537-84bcdc08ebb8.jpg" width="200" height="100" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;margin-top: 13px;margin-left: 0px;"></div>
+                            <div class="col-md-6"><img alt="image espece" src="/Image/Espece/<?php echo $antagoniste->getNomEspeceAntagoniste() ?>.jpg" width="200" height="100" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;margin-top: 13px;margin-left: 0px;"></div>
                         </div>
                     </div>
                     <h1 style="margin-right: 0px;"></h1>
