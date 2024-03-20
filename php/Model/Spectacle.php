@@ -1,5 +1,6 @@
-<?php 
 
+<?php 
+include_once 'DB.php';
 class Spectacle {
     private $IDSpectacle;
     private $IDTypeSpectacle; 

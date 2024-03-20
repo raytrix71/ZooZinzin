@@ -35,8 +35,9 @@ $idparcelle=2;
                         <h5>Poids:<?php echo $animal->getPoids() ?> kg</h5>
                         <h5>Taille:<?php echo $animal->getTaille() ?> m</h5>
                         <h5>Sexe:<?php echo $animal->getSexe() ?></h5>
-                    </div><button class="btn btn-primary" onclick="window.location.href='/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo urlencode($animal->getIDAnimal()); ?>'" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
-                </div>
+                    </div>
+                    <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="#">Fiche animal/groupe</a></div>                </div>
             </div>
             <?php endif; ?>
         <?php endforeach; ?>  
@@ -53,13 +54,13 @@ $idparcelle=2;
                             <h5>&nbsp</h5>
                             <h5>&nbsp</h5>
                         </div>
-                        <button onclick="window.location.href = '/ERP/Gestion_animaux/FicheGroupe/FicheGroupe.php?idGroupe=<?php echo urlencode($groupe->getIDGroupe())?>'" class="btn btn-primary" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
-                    </div>
+                        <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="#">Fiche animal/groupe</a></div>                    </div>
                 </div>
         <?php endif; ?>
     <?php endforeach; ?>   
     </div>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
