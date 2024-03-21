@@ -98,15 +98,13 @@ class Reservation
         $db = DB::connexionDB();
 
         // Prepare the query to insert a new reservation
-        $query = "INSERT INTO RESERVATION (IDClient, IDEmploye, DateReservation) VALUES (:IDClient, :IDEmploye, :DateReservation)";
+        $query = "INSERT INTO RESERVATION (IDClient, IDEmploye) VALUES (:IDClient, :IDEmploye)";
         $result = $db->prepare($query);
         $result->bindParam(':IDClient', $this->IDClient);
         $result->bindParam(':IDEmploye', $this->IDEmploye);
-        $result->bindParam(':DateReservation', $this->DateReservation);
         $result->execute(); // Execute the prepared statement
 
-        // Set the IDReservation property to the last inserted ID
-        $this->IDReservation = $db->lastInsertId();
+       
     }
 }    
     
