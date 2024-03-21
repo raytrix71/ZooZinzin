@@ -19,11 +19,12 @@ $listeparcelle=Parcelle::fetchParcelleFromDB();
 <body style="background: rgb(217,217,217);">
     <div class="row d-md-flex justify-content-md-end" style="background: var(--bs-secondary-border-subtle);">
         <div class="col-md-8">
-            <h1 style="color: var(--bs-body-bg);margin-left: 15px;">Parcelle zone:<?echo $_SESSION['IDZone'] ?>&nbsp;</h1>
+            <h1 style="color: var(--bs-body-bg);margin-left: 15px;">Parcelle zone:<?echo $_SESSION['IDzone'] ?>&nbsp;</h1>
         </div>
         <div class="col-sm-12 col-md-2 d-flex d-md-flex justify-content-end justify-content-md-end"><button class="btn btn-primary" type="button" style="margin-right: 5px;margin-bottom: 4px;background: RGB(54,123,34);" data-bs-target="#modal-1" data-bs-toggle="modal">Ajouter</button></div>
     </div>
     <?php foreach($listeparcelle as $parcelle): ?>
+        <?php if($parcelle->getIDZone()==$_SESSION['IDzone']): ?>
     <div class="row">
         <div class="col">
             <div class="card" style="background: rgb(217,217,217);">
@@ -36,7 +37,7 @@ $listeparcelle=Parcelle::fetchParcelleFromDB();
                             </div>
                             <div class="col-md-6 text-end">
                                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
-                                    <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/">Afficher animaux</a></div>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAnimaux_GroupeParcelle/ListeAnimauxGroupeParcelle.php?idparcelle=<?php echo $parcelle->getIDParcelle() ?>">Afficher animaux</a></div>
                                 </div>
                             </div>
                         </div>
@@ -46,6 +47,7 @@ $listeparcelle=Parcelle::fetchParcelleFromDB();
             </div>
         </div>
     </div>
+    <?php endif; ?>
     <?php endforeach;?>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
         <div class="modal-dialog" role="document">

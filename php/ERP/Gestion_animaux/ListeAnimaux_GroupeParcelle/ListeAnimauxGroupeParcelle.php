@@ -2,8 +2,7 @@
 session_start();
 include '/var/www/html/autoload.php';
 include '/var/www/html/ERP/NavBar/navbar.php';
-//$idparcelle=$_GET['idparcelle'];
-$idparcelle=2;
+$idparcelle=$_GET['idparcelle'];
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -38,7 +37,7 @@ $idparcelle=2;
                         <h5>Sexe:<?php echo $animal->getSexe() ?></h5>
                 </div>
                 <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="#">Fiche animal/groupe</a></div>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo $animal->getIDAnimal() ?>">Fiche animal</a></div>
                 </div>
             </div>
         </div>
@@ -59,7 +58,7 @@ $idparcelle=2;
                             <h5>&nbsp</h5>
                 </div>
                 <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="#">Fiche animal/groupe</a></div>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="/ERP/Gestion_animaux/FicheGroupe/FicheGroupe.php?idGroupe=<?php echo $groupe->getIDGroupe() ?>">Fiche groupe</a></div>
                 </div>
             </div>
         </div>
