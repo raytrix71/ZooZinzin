@@ -15,6 +15,7 @@ include '../Model/Employe.php';
                     $_SESSION['id'] = $employe->get_idEmploye();
                     $_SESSION['prenom'] = $employe->get_prenomEmploye();
                     $_SESSION['nom'] = $employe->get_nomEmploye();
+                    $_SESSION['zone'] = $employe->get_idzone();
                     header("Location: ../ERP/Dashboard/dashboard.php");
                 };
             

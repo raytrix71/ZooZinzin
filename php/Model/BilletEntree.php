@@ -1,5 +1,5 @@
 <?php
-include 'DB.php';
+
 class BilletEntree
 {
     private $IDBilletEntree;
@@ -90,14 +90,14 @@ class BilletEntree
     public function addToDB()
     {
         $db = DB::connexionDB();
-        $stmt = $db->prepare('INSERT INTO BilletEntree (IDReservation, DateValidatiteEntree, ValidationEntree, IDTypeEntree) VALUES (?, ?, ?, ?)');
+        $stmt = $db->prepare('INSERT INTO BILLETENTREE (IDReservation, DateValidatiteEntree, ValidationEntree, IDTypeEntree) VALUES (?, ?, ?, ?)');
         $stmt->execute([$this->IDReservation, $this->DateValidatiteEntree, $this->ValidationEntree, $this->IDTypeEntree]);
     }
 
     public function updateInDB()
     {
         $db = DB::connexionDB();
-        $stmt = $db->prepare('UPDATE BilletEntree SET IDReservation = ?, DateValidatiteEntree = ?, ValidationEntree = ?, IDTypeEntree = ? WHERE IDBilletEntree = ?');
+        $stmt = $db->prepare('UPDATE BILLETENTREE SET IDReservation = ?, DateValidatiteEntree = ?, ValidationEntree = ?, IDTypeEntree = ? WHERE IDBilletEntree = ?');
         $stmt->execute([$this->IDReservation, $this->DateValidatiteEntree, $this->ValidationEntree, $this->IDTypeEntree, $this->IDBilletEntree]);
     }
 

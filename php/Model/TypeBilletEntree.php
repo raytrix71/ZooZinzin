@@ -1,5 +1,5 @@
 <?php
-include '/var/www/html/autoload.php';
+
 class TypeBilletEntree
 {
     private $IDTypeEntree;

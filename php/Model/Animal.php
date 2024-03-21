@@ -1,5 +1,5 @@
 <?php
-include 'DB.php';
+
 class Animal
 {
     static $listeAnimal = array();

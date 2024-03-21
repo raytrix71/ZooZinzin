@@ -1,16 +1,15 @@
 
 <?php 
-include_once 'DB.php';
+
 class Spectacle {
     private $IDSpectacle;
     private $IDTypeSpectacle; 
-    private $typeSpectacle; // Objet TypeSpectacle
     private $DateSpectacle;
     private $HeureSpectacle;
 
-    public function __construct($IDSpectacle, TypeSpectacle $typeSpectacle, $DateSpectacle, $HeureSpectacle) {
+    public function __construct($IDSpectacle,$IDTypeSpectacle, $DateSpectacle, $HeureSpectacle) {
         $this->IDSpectacle = $IDSpectacle;
-        $this->typeSpectacle = $typeSpectacle; //objet TypeSpectacle
+        $this->IDTypeSpectacle = $IDTypeSpectacle; //objet TypeSpectacle
         $this->DateSpectacle = $DateSpectacle;
         $this->HeureSpectacle = $HeureSpectacle;
     }
@@ -18,8 +17,7 @@ class Spectacle {
 
     // Méthodes getters et setters...
 
-    public function getTypeSpectacle() {
-        return $this->typeSpectacle;}
+   
 
     public function getIDSpectacle() {
         return $this->IDSpectacle;
@@ -61,7 +59,7 @@ class Spectacle {
         $result->execute();
         $listeSpectacle = [];
         foreach ($result as $row) {
-            // Supposons que vous ayez une méthode pour récupérer l'objet TypeSpectacle associé
+            
             $typeSpectacle = TypeSpectacle::fetchByID($row['IDTypeSpectacle']);
             $spectacle = new Spectacle($row['IDSpectacle'], $typeSpectacle, $row['DateSpectacle'], $row['HeureSpectacle']);
             array_push($listeSpectacle, $spectacle); 
@@ -69,6 +67,9 @@ class Spectacle {
         return $listeSpectacle;
     }
     
+
+
+
     public static function fetchBySpectacleID($IDSpectacle) {
         $conn = DB::connexionDB();
         $query = "SELECT * FROM SPECTACLE WHERE IDSpectacle = :IDSpectacle";
@@ -79,9 +80,9 @@ class Spectacle {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            // Supposons que vous avez une méthode pour récupérer l'objet TypeSpectacle associé
+            
             $typeSpectacle = TypeSpectacle::fetchByID($row['IDTypeSpectacle']);
-            // Créer et retourner un objet Spectacle basé sur les données récupérées
+           
             return new Spectacle(
                 $row['IDSpectacle'], 
                 $typeSpectacle, 
@@ -89,7 +90,7 @@ class Spectacle {
                 $row['HeureSpectacle']
             );
         } else {
-            return null; // Aucun spectacle trouvé avec cet IDSpectacle
+            return null; 
         }
     }
 
@@ -112,4 +113,21 @@ class Spectacle {
         $stmt->bindParam(':HeureSpectacle', $this->HeureSpectacle, PDO::PARAM_STR);
         $stmt->execute();
     }
+
+
+    public static function fetchListSpectacleFromDatabase() {
+        $connexion = DB::connexionDB();
+        $SQL = "SELECT * FROM SPECTACLE";
+        $requete = $connexion->prepare($SQL);
+        $requete->execute();
+        $resultat = $requete->fetchAll();
+        $listeObjetSpectacle = array();
+        foreach ($resultat as $row) {
+            $spectacle = new Spectacle($row['IDSpectacle'], $row['IDTypeSpectacle'], $row['DateSpectacle'], $row['HeureSpectacle']);
+            array_push($listeObjetSpectacle, $spectacle);
+        }
+
+        return $listeObjetSpectacle;
+}
+
 }
