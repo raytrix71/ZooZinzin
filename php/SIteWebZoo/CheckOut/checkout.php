@@ -3,7 +3,7 @@ $typebilletEntree=TypeBilletEntree::fetchListTypeBilletEntreeFromDatabase();
 $i=0;
 $j=0;
 $k=0;
-$date=$_GET['date'];
+$date=$_POST['date'];
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
