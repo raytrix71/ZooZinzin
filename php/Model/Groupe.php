@@ -9,7 +9,7 @@ class Groupe {
     private $PoidsTotalGroupe;
     private $CommentaireGroupe;
 
-    public function __construct($IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe, $IDGroupe = null){
+    public function __construct($IDGroupe,$IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
         $this->IDGroupe = $IDGroupe;
         $this->IDParcelle = $IDParcelle;
         $this->NomEspece = $NomEspece;
@@ -76,7 +76,9 @@ public function getIDParcelle(){
     public static function fetchListGroupeFromDatabase(){
         $db = DB::connexionDB();
         $query = "SELECT * FROM GROUPE";
-        $result = $db->query($query);
+        $result = $db->prepare($query);
+        $result->execute();
+        $result = $result->fetchAll();
         $listGroupe = [];
         foreach($result as $row){
             $groupe = new groupe($row['IDGroupe'], $row['IDParcelle'], $row['NomEspece'], $row['EffectifGroupe'], $row['PoidsTotalGroupe'], $row['CommentaireGroupe']);
