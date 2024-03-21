@@ -1,10 +1,16 @@
 <?php
-include ('connexionDB.php');
 class Parcelle
 {
     private $IDParcelle;
     private $IDZone;
     private $Dimension;
+
+    public function __construct($IDParcelle,$IDZone,$Dimension)
+    {
+        $this->IDParcelle=$IDParcelle;
+        $this->IDZone=$IDZone;
+        $this->Dimension=$Dimension;
+    }
 
     public function getIDParcelle()
     {
@@ -38,10 +44,11 @@ class Parcelle
 
     public static function fetchParcelleFromDB(){
         $bdd=DB::connexionDB();
-        $sql='SELECT * FROM Parcelle';
+        $sql='SELECT * FROM PARCELLE';
         $query=$bdd->prepare($sql);
         $query->execute();
         $result=$query->fetchAll();
+        $listefinale = []; 
         foreach($result as $row){
             $p=new Parcelle($row['IDParcelle'],$row['IDZone'],$row['Dimension']);
             array_push($listefinale,$p);
@@ -52,7 +59,7 @@ class Parcelle
 
     public function ajoutParcelle(){
         $bdd=DB::connexionDB();
-        $sql='INSERT INTO Parcelle(IDParcelle,IDZone,Dimension) VALUES(:IDParcelle,:IDZone,:Dimension)';
+        $sql='INSERT INTO PARCELLE(IDParcelle,IDZone,Dimension) VALUES(:IDParcelle,:IDZone,:Dimension)';
         $query=$bdd->prepare($sql);
         $query->execute(array(
             'IDParcelle'=>$this->IDParcelle,
