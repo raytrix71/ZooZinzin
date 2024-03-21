@@ -1,0 +1,10 @@
+DELIMITER //
+CREATE PROCEDURE listeParcelleComptaible(IN nomEspece VARCHAR(50))
+BEGIN
+DECLARE
+    TempTable := (SELECT NomEspece FROM ANIMAL WHERE NomEspece = nomEspece);
+SELECT IDParcelle FROM PARCELLE WHERE IDParcelle NOT IN (SELECT IDParcelle FROM ANIMAL WHERE NomEspece IN (SELECT NomEspece FROM TempTable))
+UNION
+SELECT IDParcelle FROM PARCELLE WHERE IDParcelle NOT IN (SELECT IDParcelle FROM GROUPE WHERE NomEspece IN (SELECT NomEspece FROM TempTable));
+END //
+DELIMITER ;
