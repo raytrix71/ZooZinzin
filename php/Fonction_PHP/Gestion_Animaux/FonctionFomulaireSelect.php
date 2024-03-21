@@ -36,6 +36,19 @@ function afficherEspeceIndividuelle(){
     }
 }
 
+function afficherEspeceGroupe(){
+    $bdd = DB::connexionDB();
+    $sql = 'SELECT NomEspece, Individuel, Protege FROM ESPECE';
+    $connexion = $bdd->query($sql);
+    $reponse = $connexion->fetchAll();
+    
+    foreach($reponse as $column){
+        if($column['Individuel'] == 0){
+            echo "<option value=\"" . $column['NomEspece'] . "\" selected>{$column['NomEspece']}</option>\n";
+        }
+    }
+}
+
 function afficherEspece2(){
     $bdd = DB::connexionDB();
     $sql = 'SELECT NomEspece, Individuel, Protege FROM ESPECE';

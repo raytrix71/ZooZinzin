@@ -19,7 +19,7 @@ include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php'
                      <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                          <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                              <h2 class="text-center mb-4">Ajout groupe Animal</h2>
-                             <form method="POST" action="FonctionajtGroupe.php">
+                             <form method="POST" action=".php">
                                  <div class="mb-3">
                                      <label for="parcelle" class="form-label">Numéro Parcelle</label>
                                      <select class="form-select" name="IDParcelle" id="IDparcelle" placeholder="Numéro Parcelle">
@@ -33,7 +33,7 @@ include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php'
                                  <div class="mb-3">
                                      <label for="espece" class="form-label">Nom Espèce</label>
                                      <select class="form-select" name="NomEspece" id="espece">
-                                         <?php $especes = afficherEspeceIndividuelle();
+                                         <?php $especes = afficherEspeceGroupe();
                                          foreach ($especes as $espece):
                                              if($espece['Individuel'] == 0): ?>
                                                  <option value="<?= htmlspecialchars($espece['NomEspece']) ?>"><?= htmlspecialchars($espece['NomEspece']) ?></option>

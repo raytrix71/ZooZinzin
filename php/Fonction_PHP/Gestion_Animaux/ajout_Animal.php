@@ -1,7 +1,9 @@
 <?php
 
-include '../Model/Animal.php';
-include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+include '../../Model/Animal.php';
+include '../../Model/DB.php';
+include 'FonctionFomulaireSelect.php';
+
 
 $nom_espece = $_POST['NomEspece'];
 $nom_animal = $_POST['NomAnimal'];
@@ -15,8 +17,6 @@ $parcelle = $_POST['IDParcelle'];
 $animal = new Animal(null, $parcelle, $nom_espece, $nom_animal, $date_naissance, $poids, $taille, $sexe, $description);
 
 $animal->ajoutDatabase();
-$nom_espece = afficherEspece();
 
 
 
- 
