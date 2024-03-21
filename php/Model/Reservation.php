@@ -74,6 +74,39 @@ class Reservation
 
         return $listeobjetresa; // Return the array of Reservation objects
     }
+
+    public static function getLastReservationForClient($IDClient){
+        $db = DB::connexionDB();
+
+        // Perform the query to retrieve the last reservation for the given IDClient
+        $query = "SELECT * FROM RESERVATION WHERE IDClient = :IDClient ORDER BY DateReservation DESC LIMIT 1";
+        $result = $db->prepare($query);
+        $result->bindParam(':IDClient', $IDClient);
+        $result->execute(); // Execute the prepared statement
+        $row = $result->fetch(); // Fetch the first row from the result set
+
+        if ($row) {
+            $reservation = new Reservation($row['IDReservation'], $row['IDClient'], $row['IDEmploye'], $row['DateReservation']);
+            return $reservation; // Return the Reservation object
+        } else {
+            return null; // Return null if no reservation found
+        }
+    }
     
+    public function saveReservation()
+    {
+        $db = DB::connexionDB();
+
+        // Prepare the query to insert a new reservation
+        $query = "INSERT INTO RESERVATION (IDClient, IDEmploye, DateReservation) VALUES (:IDClient, :IDEmploye, :DateReservation)";
+        $result = $db->prepare($query);
+        $result->bindParam(':IDClient', $this->IDClient);
+        $result->bindParam(':IDEmploye', $this->IDEmploye);
+        $result->bindParam(':DateReservation', $this->DateReservation);
+        $result->execute(); // Execute the prepared statement
+
+        // Set the IDReservation property to the last inserted ID
+        $this->IDReservation = $db->lastInsertId();
+    }
 }    
     
