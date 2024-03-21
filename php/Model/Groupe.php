@@ -1,5 +1,5 @@
 <?php 
-include_once 'DB.php';
+
 
 class Groupe {
     private $IDGroupe;

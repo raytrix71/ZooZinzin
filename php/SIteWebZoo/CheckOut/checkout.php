@@ -1,4 +1,4 @@
-<?php include '/var/www/html/autoload.php';
+<?php include_once '/var/www/html/autoload.php';
 $typebilletEntree=TypeBilletEntree::fetchListTypeBilletEntreeFromDatabase();
 $i=0;
 $j=0;
@@ -38,7 +38,7 @@ $date=$_GET['date'];
         <h1 style="color: var(--bs-body-bg);">Entrées</h1>
         <hr>
     </div>
-<form>
+<form action="/Fonction_PHP/SiteWeb/ValiderPanier.php" method="post">
         <?php foreach ($typebilletEntree as $billet): ?>
             <?php $i++; ?>
         <div class="container" style="margin-top: 30px;">
@@ -51,8 +51,9 @@ $date=$_GET['date'];
                 <div class="col-md-4" style="margin-left: 8px;">
                     <div class="row d-md-flex">
                         <div class="col d-sm-flex justify-content-sm-end" style="padding-right: 0px;margin-right: 1px;"><button class="btn btn-success" type="button" onclick="ajout(-1,<?php echo $i?>)">-</button></div>
-                        <div class="col d-sm-flex justify-content-sm-center" style="margin: 0px;padding: 0px;width: 40px;max-width: 40px;"><input id="<?php echo $i?>" type="number" max="10" step="1" style="text-align: right;margin: 0px;padding: 0px;width: 40px;" readonly="" value="0" min="1"></div>
+                        <div class="col d-sm-flex justify-content-sm-center" style="margin: 0px;padding: 0px;width: 40px;max-width: 40px;"><input name="qteEntree<?php echo $i ?>" id="<?php echo $i?>" type="number" max="10" step="1" style="text-align: right;margin: 0px;padding: 0px;width: 40px;" readonly="" value="0" min="1"></div>
                         <div class="col d-sm-flex justify-content-sm-start" style="padding-left: 0px;"><button class="btn btn-success" type="button" onclick="ajout(1,<?php echo $i?>)">+</button></div>
+                        <input type="hidden" value="<?php echo $billet->getIDTypeEntree() ?>" name="IDTypeBilletEntree<?php echo $i ?>">
                     </div>
                 </div>
                 <div class="col">
@@ -106,8 +107,9 @@ $date=$_GET['date'];
                 <div class="col-md-4" style="margin-left: 8px;">
                     <div class="row d-md-flex">
                         <div class="col d-sm-flex justify-content-sm-end" style="padding-right: 0px;margin-right: 1px;"><button class="btn btn-success" type="button" onclick="ajoutspectacle(-1,<?php echo $j?>)" >-</button></div>
-                        <div class="col d-sm-flex justify-content-sm-center" style="margin: 0px;padding: 0px;width: 40px;max-width: 40px;"><input id="spec<?php echo $j?>" type="number" max="10" step="1" style="text-align: right;margin: 0px;padding: 0px;width: 40px;" readonly="" value="0" min="1"></div>
+                        <div class="col d-sm-flex justify-content-sm-center" style="margin: 0px;padding: 0px;width: 40px;max-width: 40px;"><input name="qteSpec<?php echo $j ?>" id="spec<?php echo $j?>" type="number" max="10" step="1" style="text-align: right;margin: 0px;padding: 0px;width: 40px;" readonly="" value="0" min="1"></div>
                         <div class="col d-sm-flex justify-content-sm-start" style="padding-left: 0px;"><button class="btn btn-success" type="button" onclick="ajoutspectacle(1,<?php echo $j?>)">+</button></div>
+                        <input type="hidden" name="IDSpectacle<?php echo $j ?>" value="<?php echo $spectacle->getIDSpectacle() ?>">
                     </div>
                 </div>
                 <div class="col">
@@ -156,8 +158,9 @@ $date=$_GET['date'];
                 <div class="col-md-4" style="margin-left: 8px;">
                     <div class="row d-md-flex">
                         <div class="col d-sm-flex justify-content-sm-end" style="padding-right: 0px;margin-right: 1px;"><button class="btn btn-success" type="button" onclick="ajoutactivite(-1,<?php echo $k?>)" >-</button></div>
-                        <div class="col d-sm-flex justify-content-sm-center" style="margin: 0px;padding: 0px;width: 40px;max-width: 40px;"><input id="act<?php echo $k?>" type="number" max="10" step="1" style="text-align: right;margin: 0px;padding: 0px;width: 40px;" readonly="" value="0" min="1"></div>
+                        <div class="col d-sm-flex justify-content-sm-center" style="margin: 0px;padding: 0px;width: 40px;max-width: 40px;"><input name="qteAct<?php echo $k ?>" id="act<?php echo $k?>" type="number" max="10" step="1" style="text-align: right;margin: 0px;padding: 0px;width: 40px;" readonly="" value="0" min="1"></div>
                         <div class="col d-sm-flex justify-content-sm-start" style="padding-left: 0px;"><button class="btn btn-success" type="button" onclick="ajoutactivite(1,<?php echo $k?>)">+</button></div>
+                        <input type="hidden" name="IDActivite<?php echo $k ?>" value="<?php echo $activite->getIDActivite() ?>">
                     </div>
                 </div>
                 <div class="col">
@@ -207,15 +210,15 @@ $date=$_GET['date'];
         <input type="hidden" name="j" value="<?php echo $j?>">
         <input type="hidden" name="k" value="<?php echo $k?>">
         <input type="hidden" name="date" value="<?php echo $date?>">
-</form>
-    <hr>
-    <div class="col text-end"><label class="col-form-label text-start" style="font-weight: bold;font-size: 25px;margin-left: 0px;margin-right: 135px;"><input id="totalfinal" type="text" style="max-width: 100px;margin-right: -284px;" readonly="">Total à payer:</label></div>
-    <div class="col text-end" style="margin-right: 20px;margin-top: 10px;"><input type="checkbox"><label class="form-label">J'ai lu et j'accepte la politique de confidentialité</label></div>
-    <div class="col"><label class="col-form-label d-flex d-lg-flex justify-content-end justify-content-lg-end" style="margin-top: 34px;font-weight: bold;margin-right: 10px;font-size: 30px;">Moyen de paiement</label></div>
-    <div class="btn-group-vertical border rounded-pill d-flex float-end d-lg-flex justify-content-lg-center" role="group" style="max-width: 397px;text-align: right;"><button class="btn btn-success" type="button">PayPal</button><button class="btn btn-success" type="button" style="margin-top: 7px;">Carte Bancaire</button><button class="btn btn-success" type="button" style="margin-top: 7px;">Transfert Bancaire&nbsp;</button><button class="btn btn-success" type="button" style="margin-top: 7px;">ApplePay/GooglePay</button></div>
-    <div class="btn-group" role="group"></div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    
+
+        <hr>
+        <div class="col text-end"><label class="col-form-label text-start" style="font-weight: bold;font-size: 25px;margin-left: 0px;margin-right: 135px;"><input id="totalfinal" type="text" style="max-width: 100px;margin-right: -284px;" readonly="">Total à payer:</label></div>
+        <div class="col text-end" style="margin-right: 20px;margin-top: 10px;"><input type="checkbox"><label class="form-label">J'ai lu et j'accepte la politique de confidentialité</label></div>
+        <div class="col"><label class="col-form-label d-flex d-lg-flex justify-content-end justify-content-lg-end" style="margin-top: 34px;font-weight: bold;margin-right: 10px;font-size: 30px;">Moyen de paiement</label></div>
+        <div class="btn-group-vertical border rounded-pill d-flex float-end d-lg-flex justify-content-lg-center" role="group" style="max-width: 397px;text-align: right;"><button class="btn btn-success" type="submit">PayPal</button><button class="btn btn-success" type="button" style="margin-top: 7px;">Carte Bancaire</button><button class="btn btn-success" type="button" style="margin-top: 7px;">Transfert Bancaire&nbsp;</button><button class="btn btn-success" type="button" style="margin-top: 7px;">ApplePay/GooglePay</button></div>
+        <div class="btn-group" role="group"></div>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </form>
 </body>
 
 </html>
