@@ -1,8 +1,7 @@
 <?php
-
-
-include '../Model/Groupe.php';
-include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+include '../../Model/DB.php';
+include 'FonctionFomulaireSelect.php';
+include '../../Model/Groupe.php';
 
 $ID_parcelle = $_POST['IDParcelle'];
 $nom_espece = $_POST['NomEspece'];

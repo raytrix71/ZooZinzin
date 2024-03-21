@@ -18,8 +18,8 @@ include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php'
                  <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                      <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                          <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
-                             <h2 class="text-center mb-4">Ajout groupe Animal</h2>
-                             <form method="POST" action=".php">
+                             <h2 class="text-center mb-4">Ajout Groupe Animal</h2>
+                             <form method="POST" action="../../../../Fonction_PHP/Gestion_Animaux/FonctionajtGroupe.php">
                                  <div class="mb-3">
                                      <label for="parcelle" class="form-label">Numéro Parcelle</label>
                                      <select class="form-select" name="IDParcelle" id="IDparcelle" placeholder="Numéro Parcelle">
