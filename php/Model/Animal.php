@@ -117,16 +117,24 @@ class Animal
     }
 
     public function ajoutDatabase()
-    {
-        $conn = DB::connexionDB(); 
+{
+    $conn = DB::connexionDB(); 
 
-        $query = "INSERT INTO ANIMAL (IDAnimal, IDParcelle, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($query);
+    $query = "INSERT INTO ANIMAL (IDAnimal, IDParcelle, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($query);
 
-        $stmt->bindParam("iisssdsss", $this->IDAnimal, $this->IDParcelle, $this->NomEspece, $this->NomAnimal, $this->DateNaissance, $this->Poids, $this->Taille, $this->Sexe, $this->Description);
+    $stmt->bindParam(1, $this->IDParcelle);
+    $stmt->bindParam(2, $this->NomEspece);
+    $stmt->bindParam(3, $this->NomAnimal);
+    $stmt->bindParam(4, $this->DateNaissance);
+    $stmt->bindParam(5, $this->Poids);
+    $stmt->bindParam(6, $this->Taille);
+    $stmt->bindParam(7, $this->Sexe);
+    $stmt->bindParam(8, $this->Description);
 
-        
-    }
+    $stmt->execute();
+}
+
 
     public static function fetchListAnimalFromDatabase(){
     $conn = DB::connexionDB();

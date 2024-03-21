@@ -9,7 +9,7 @@ class Groupe {
     private $PoidsTotalGroupe;
     private $CommentaireGroupe;
 
-    public function __construct($IDGroupe, $IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe){
+    public function __construct($IDParcelle, $NomEspece, $EffectifGroupe, $PoidsTotalGroupe, $CommentaireGroupe, $IDGroupe = null){
         $this->IDGroupe = $IDGroupe;
         $this->IDParcelle = $IDParcelle;
         $this->NomEspece = $NomEspece;

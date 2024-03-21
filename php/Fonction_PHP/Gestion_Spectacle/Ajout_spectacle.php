@@ -1,6 +1,6 @@
 <?php
 
-include '../Model/DB.php';
+include_once '/var/www/html/Model/DB.php';
 
 $connDB = DB::connexionDB();
 

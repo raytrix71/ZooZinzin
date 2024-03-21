@@ -18,10 +18,10 @@
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout Animal</h2>
-                            <form method="post" action="FonctionajtAnimal">
+                            <form method="post" action="FonctionajtAnimal.php">
                                 <div class="mb-3">
 
-                                    <select class="form-control" id="Espece" name="nomEspece" required="">Nom Espèce
+                                    <select class="form-control" id="Espece" name="NomEspece" required="">Nom Espèce
                                         <?php $especes=afficherEspeceIndividuelle(); ?>
                                         <?php echo $especes; ?>
 
@@ -30,21 +30,17 @@
 
                                 <div class="mb-3"><input class="form-control" type="text" id="Esperance" name="NomAnimal" placeholder="Nom animal" required=""></div>
                                 <div class="mb-3"><input class="form-control" id="taille" name="DateNaissance" placeholder="Date de naissance" required="" style="margin-top: 0px;" type="date"></div>
-                                <div class="mb-3" style="margin-bottom: 13px;"><input class="form-control" type="number" id="poids" name="poids" placeholder="Poids (KG)" required="" min="0" max="10 000" step="0,1"></div>
+                                <div class="mb-3" style="margin-bottom: 13px;"><input class="form-control" type="number" id="Poids" name="Poids" placeholder="Poids (KG)" required="" min="0" max="10 000" step="0,1"></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="gestation" name="Taille" placeholder="Taille (cm)" required="" min="0" max="10000" step="0,1"></div>
                                 <div class="mb-3"><select class="form-select" name="Sexe">
                                         <option value="">M</option>
                                         <option value="">F</option>
-                                    </select><input class="form-control" type="text" id="descriptiom-2" name="description" placeholder="Description" required="" style="margin-top: 15px;">
-
-                            
-
-
+                                    </select><input class="form-control" type="text" id="Description" name="Description" placeholder="Description" required="" style="margin-top: 15px;">                            
+                                </div>
                                 
-                                </div><input class="form-control" type="hidden" name="protege" value="0"><input class="form-control" type="hidden" name="individuel" value="0">
-                                <div class="mb-3">
+                                <div class="mb-3"><label class="form-label" for="Espece">Parcelle</label>
 
-                                        <select class="form-control" id="Espece" name="nomEspece" required="">Nom Espèce
+                                        <select class="form-control" id="IDParcelle" name="IDParcelle" required="">
                                                 <?php $parcelle=afficherParcelle(); ?>
                                                 <?php echo $parcelle; ?>
 
