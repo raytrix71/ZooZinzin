@@ -1,12 +1,13 @@
 <?php
-include ('../Fonction_PHP/connexionDB.php');
-$connDB = connexionDB();
-$nom_employe = $_POST['Nom'];
-$prenom_employe = $_POST['Prenom'];
-$num_tel = $_POST['Ntelephone'];
-$adresse_email = $_POST['AdresseEmail'];
-$adresse_postale = $_POST['AdressePostale'];
-$code_postal = $_POST['CodePostal'];
+include_once '/var/www/html/Model/DB.php';
+
+$connDB = DB::connexionDB();
+$nom_employe = $_POST['NomEmploye'];
+$prenom_employe = $_POST['PrenomEmploye'];
+$num_tel = $_POST['TelEmploye'];
+$adresse_email = $_POST['MailEmploye'];
+$adresse_postale = $_POST['AdresseEmploye'];
+$code_postal = $_POST['CPEmploye'];
 $motdepasse = $_POST['MDPEmploye'];
 $role = $_POST['role'];
 

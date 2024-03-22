@@ -43,7 +43,7 @@
                                 </div>
                                 <hr>
 
-                                <button class="btn btn-primary d-block w-100" type="button" data-bs-toggle="modal" data-bs-target="#modal-2">Enregistrer</button>
+                                <button class="btn btn btn-success d-block w-100" type="button" data-bs-toggle="modal" data-bs-target="#modal-2">Enregistrer</button>
                             </form>
                         </div>
                     </div>

@@ -17,7 +17,7 @@
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Déclarer un problème</h2>
                             <hr>
-                            <form method="post" action="chemin_vers_le_script_de_traitement">
+                            <form method="post" action="../../../../Fonction_PHP/Gestion_Animaux/DeclarerPbm.php">
                                 <div class="mb-3">
                                     <label for="IDAnimal" class="form-label">ID Animal (optionnel si groupe)</label>
                                     <input class="form-control" type="text" id="IDAnimal" name="IDAnimal" placeholder="ID ANIMAL (si applicable)">
