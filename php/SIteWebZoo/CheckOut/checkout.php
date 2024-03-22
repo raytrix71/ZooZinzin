@@ -15,7 +15,7 @@ $date=$_POST['date'];
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 </head>
        
-<body class="text-start" style="padding-right: 0px;background: var(--bs-success-border-subtle);">
+<body onload="total()" class="text-start" style="padding-right: 0px;background: var(--bs-success-border-subtle);">
 
     <div class="container text-center" style="background: var(--bs-green);border-radius: 15px;margin-top: 10px;margin-bottom: 26px;">
         <div class="row" style="border-radius: 25px;">
@@ -203,19 +203,26 @@ $date=$_POST['date'];
                 total+=parseInt(document.getElementsByName("totalAct"+k)[0].innerHTML)
             }
             document.getElementById("totalfinal").value=total+"$";
-            
+
+           
         }
         </script>  
+
+
         <input type="hidden" name="i" value="<?php echo $i?>">
         <input type="hidden" name="j" value="<?php echo $j?>">
         <input type="hidden" name="k" value="<?php echo $k?>">
         <input type="hidden" name="date" value="<?php echo $date?>">
 
         <hr>
-        <div class="col text-end"><label class="col-form-label text-start" style="font-weight: bold;font-size: 25px;margin-left: 0px;margin-right: 135px;"><input id="totalfinal" type="text" style="max-width: 100px;margin-right: -284px;" readonly="">Total à payer:</label></div>
+        <div class="col text-end"><label class="col-form-label text-start" style="font-weight: bold;font-size: 25px;margin-left: 0px;margin-right: 135px;"><input id="totalfinal" type="text" value="0$" style="max-width: 100px;margin-right: -284px;" readonly="">Total à payer:</label></div>
         <div class="col text-end" style="margin-right: 20px;margin-top: 10px;"><input type="checkbox"><label class="form-label">J'ai lu et j'accepte la politique de confidentialité</label></div>
         <div class="col"><label class="col-form-label d-flex d-lg-flex justify-content-end justify-content-lg-end" style="margin-top: 34px;font-weight: bold;margin-right: 10px;font-size: 30px;">Moyen de paiement</label></div>
-        <div class="btn-group-vertical border rounded-pill d-flex float-end d-lg-flex justify-content-lg-center" role="group" style="max-width: 397px;text-align: right;"><button class="btn btn-success" type="submit">PayPal</button><button class="btn btn-success" type="button" style="margin-top: 7px;">Carte Bancaire</button><button class="btn btn-success" type="button" style="margin-top: 7px;">Transfert Bancaire&nbsp;</button><button class="btn btn-success" type="button" style="margin-top: 7px;">ApplePay/GooglePay</button></div>
+        <div class="btn-group-vertical border rounded-pill d-flex float-end d-lg-flex justify-content-lg-center" role="group" style="max-width: 397px;text-align: right;">
+        <button class="btn btn-success" type="submit">PayPal</button>
+        <button class="btn btn-success" type="submit" style="margin-top: 7px;">Carte Bancaire</button>
+        <button class="btn btn-success" type="submit" style="margin-top: 7px;">Transfert Bancaire&nbsp;</button>
+        <button class="btn btn-success" type="submit" style="margin-top: 7px;">ApplePay/GooglePay</button></div>
         <div class="btn-group" role="group"></div>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     </form>
