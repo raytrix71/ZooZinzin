@@ -3,6 +3,7 @@
     include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
     require '/var/www/html/Fonction_PHP/connexionDB.php';
     include '/var/www/html/Model/Espece.php';
+    include '/var/www/html/ERP/NavBar/navbar.php';
 ?>    
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
