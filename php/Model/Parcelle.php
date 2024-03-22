@@ -68,7 +68,50 @@ class Parcelle
         ));
     }
     
-    
+    public static function getEnclosComptatible($nomespece){
+        $conn=DB::connexionDB();
+        $sql='SELECT *
+        FROM PARCELLE
+        WHERE IDZone=(SELECT IDZone FROM ESPECE WHERE NomEspece=:nomespece)
+        AND
+         IDParcelle NOT IN (
+            SELECT IDParcelle
+            FROM ANIMAL
+            WHERE NomEspece IN (
+                SELECT NomEspecePredateur AS NomEspeceAntagoniste
+                FROM ANTAGONISTE
+                WHERE NomEspeceProie = :nomespece
+                UNION
+                SELECT NomEspeceProie AS NomEspeceAntagoniste
+                FROM ANTAGONISTE
+                WHERE NomEspecePredateur = :nomespece
+            )
+            UNION
+            SELECT IDParcelle
+            FROM GROUPE
+            WHERE NomEspece IN (
+                SELECT NomEspecePredateur AS NomEspeceAntagoniste
+                FROM ANTAGONISTE
+                WHERE NomEspeceProie = :nomespece
+                UNION
+                SELECT NomEspeceProie AS NomEspeceAntagoniste
+                FROM ANTAGONISTE
+                WHERE NomEspecePredateur = :nomespece
+            )
+        )';
+        $resultat=$conn->prepare($sql);
+        $resultat->execute(['nomespece'=>$nomespece]);
+        $resultat=$resultat->fetchALL();
+        $listefinale = [];
+        foreach($resultat as $row){
+            $p=new Parcelle($row['IDParcelle'],$row['IDZone'],$row['Dimension']);
+            array_push($listefinale,$p);
+        }
+
+        return $listefinale;
+        
+
+    }
 
 }
 ?>

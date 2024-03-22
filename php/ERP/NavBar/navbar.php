@@ -41,7 +41,7 @@
                     <li class="nav-item"><a class="nav-link link-body-emphasis" href="/ERP/Gestion_animaux/Ajout_Espece/AjoutEspece.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus me-2">
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
                             </svg>Ajout Espece</a></li>
-                    <li class="nav-item"><a class="nav-link link-body-emphasis" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bookshelf me-2">
+                    <li class="nav-item"><a class="nav-link link-body-emphasis" href="/ERP/Gestion_animaux/ListeParcelle/ListeParcelle.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bookshelf me-2">
                                 <path d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5M3 14h10v-3H3zm0-4h10V7H3zm0-4h10V3H3z"></path>
                             </svg> Gestion enclos</a></li>
                     <li class="nav-item"><a class="nav-link link-body-emphasis" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-grid me-2">

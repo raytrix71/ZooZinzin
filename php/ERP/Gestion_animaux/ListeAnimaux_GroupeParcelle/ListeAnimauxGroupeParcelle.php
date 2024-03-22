@@ -37,7 +37,7 @@ $idparcelle=$_GET['idparcelle'];
                         <h5>Sexe:<?php echo $animal->getSexe() ?></h5>
                 </div>
                 <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo $animal->getIDAnimal() ?>">Fiche animal</a></div>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ChangementParcelle/affectationEnclos.php?nomEspece=<?php echo $animal->getNomEspece() ?>&IDAnimal=<?php echo $animal->getIDAnimal() ?>&IDGroupe=null">Changer de parcelle</a><a class="dropdown-item" href="/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo $animal->getIDAnimal() ?>">Fiche animal</a></div>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@ $idparcelle=$_GET['idparcelle'];
                             <h5>&nbsp</h5>
                 </div>
                 <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Changer de parcelle</a><a class="dropdown-item" href="/ERP/Gestion_animaux/FicheGroupe/FicheGroupe.php?idGroupe=<?php echo $groupe->getIDGroupe() ?>">Fiche groupe</a></div>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ChangementParcelle/affectationEnclos.php?nomEspece=<?php echo $groupe->getNomEspece() ?>&IDGroupe=<?php echo $groupe->getIDGroupe() ?>&IDAnimal=null">Changer de parcelle</a><a class="dropdown-item" href="/ERP/Gestion_animaux/FicheGroupe/FicheGroupe.php?idGroupe=<?php echo $groupe->getIDGroupe() ?>">Fiche groupe</a></div>
                 </div>
             </div>
         </div>

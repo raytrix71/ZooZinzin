@@ -1,5 +1,7 @@
 <?php  include '/var/www/html/autoload.php';
 include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+include '/var/www/html/ERP/NavBar/navbar.php';
+$nomespece=$_GET['nomEspece'];
  ?>
  
  <!DOCTYPE html>
@@ -19,22 +21,19 @@ include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php'
                      <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                          <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                              <h2 class="text-center mb-4">Ajout Animal</h2>
-                             <form method="POST" action="../../../../Fonction_PHP/Gestion_Animaux/ajout_Animal.php">
+                             <form enctype="multipart/form-data" method="POST" action="../../../../Fonction_PHP/Gestion_Animaux/ajout_Animal.php">
                              
  
                                  <div class="mb-3">
                                      <label for="espece" class="form-label">Nom Espèce</label>
-                                     <select class="form-select" name="NomEspece" id="espece">
-                                         <?php $especes = afficherEspeceIndividuelle();?>
-                                         <?php echo $especes; ?>
-                                     </select>
+                                     <input class="form-control" name="NomEspece" id="espece" type="text" readonly="" value="<?php echo $nomespece ?>">
                                  </div>
                                  <br>
                                  <div class="mb-3"><input class="form-control" type="text" id="Esperance" name="NomAnimal" placeholder="Nom animal" required=""></div>
 
  
                                  <div class="mb-3">
-                                     <label for="EffectifGroupe" class="form-label"></label>
+                                     <label for="DateNaissance" class="form-label">Date de Naissance</label>
                                      <input class="form-control" type="date" id="DateNaissance" name="DateNaissance">
                                  </div>
  
@@ -62,9 +61,9 @@ include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php'
                                  <div class="mb-3">
                                      <label for="parcelle" class="form-label">Numéro Parcelle</label>
                                      <select class="form-select" name="IDParcelle" id="IDparcelle" placeholder="Numéro Parcelle">
-                                         <?php $Parcelles = afficherParcelle(); 
-                                         foreach ($Parcelles as $parcelle): ?>
-                                             <option value="<?= htmlspecialchars($parcelle['IDParcelle']) ?>"><?= htmlspecialchars($parcelle['IDParcelle']) ?></option>
+                                         <?php $listeparcelles=Parcelle::getEnclosComptatible($nomespece);
+                                         foreach ($listeparcelles as $parcelle): ?>
+                                             <option value="<?php echo $parcelle->getIDParcelle() ?>"><?php echo $parcelle->getIDParcelle() ?></option>
                                          <?php endforeach; ?>
                                      </select>
                                          </div>
@@ -86,4 +85,5 @@ include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php'
      <script src="assets/bootstrap/js/bootstrap.min.js"></script>
  </body>
  </html>
+
  
