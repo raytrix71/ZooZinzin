@@ -30,7 +30,7 @@ foreach($listeanimal as $animal){
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6" style="margin-top: 4px;"><img style="border-radius: 25px;border: 2px solid var(--bs-emphasis-color);margin-bottom: 20px;margin-top: 20px;" width="250" height="150" src="assets/img/girafe.jpg">
+            <div class="col-md-6" style="margin-top: 4px;"><img style="border-radius: 25px;border: 2px solid var(--bs-emphasis-color);margin-bottom: 20px;margin-top: 20px;" width="250" height="150" src="/Image/Animal/<?php echo $animal->getNomEspece().$animal->getNomAnimal()?>.jpg">
                 <div style="background: var(--bs-body-bg);border: 2px solid var(--bs-emphasis-color);border-radius: 25px;">
                     <h1 style="text-align: center;"><?php echo $resultat->getNomAnimal(); ?>&nbsp;</h1>
                     <h1 style="text-align: left;">ID: <?php echo" ".$resultat->getIDAnimal(); ?></h1>

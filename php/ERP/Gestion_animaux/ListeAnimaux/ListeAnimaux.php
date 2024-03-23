@@ -20,7 +20,7 @@ $i=0;?>
         <?php foreach ($listeanimal as $animal): ?>
             <?php if($animal->getNomEspece() == $_GET['nomespece']):  ?>
                 <?php $i++;?>
-            <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img class="card-img-top w-100 d-block" width="298" height="80">
+            <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img src="/Image/Animal/<?php echo $animal->getNomEspece().$animal->getNomAnimal()?>.jpg" class="card-img-top w-100 d-block" width="298" height="80">
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $animal->getNomAnimal() ?></h4>
                     <hr>

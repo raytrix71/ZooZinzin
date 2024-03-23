@@ -14,12 +14,12 @@ $i=0;?>
 </head>
 
 <body style="background: rgb(217,217,217);">
-    <div style="margin-left: 10px;display: flex;">
+    <div  style="margin-left: 10px;display: flex;flex-wrap:wrap;">
     <?php $listegroupe = Groupe::fetchListGroupeFromDatabase();?>
     <?php foreach ($listegroupe as $groupe): ?>
         <?php if($groupe->getNomEspece() == $_GET['nomespece']):  ?>
             <?php $i++;?>
-                <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img class="card-img-top w-100 d-block" width="298" height="80">
+                <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img src="/Image/Espece/<?php echo $groupe->getNomespece() ?>.jpg" class="card-img-top w-100 d-block" width="298" height="80">
                     <div class="card-body">
                         <h4 class="card-title">ID:<?php echo "".$groupe->getIDGroupe() ?>&nbsp;</h4>
                         <hr>
