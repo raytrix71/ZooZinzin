@@ -130,4 +130,32 @@ class Spectacle {
         return $listeObjetSpectacle;
 }
 
+  
+public static function fetchSpectaclesByTypeID($IDTypeSpectacle) {
+    $conn = DB::connexionDB();
+    $query = "SELECT * FROM SPECTACLE WHERE IDTypeSpectacle = :IDTypeSpectacle";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':IDTypeSpectacle', $IDTypeSpectacle, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    $spectacles = [];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // Récupération de l'objet TypeSpectacle correspondant à IDTypeSpectacle
+        $typeSpectacle = TypeSpectacle::fetchByID($row['IDTypeSpectacle']);
+        
+        // Création d'un nouvel objet Spectacle avec les informations récupérées
+        $spectacle = new Spectacle(
+            $row['IDSpectacle'], 
+            $typeSpectacle, // Notez que nous passons l'objet TypeSpectacle ici
+            $row['DateSpectacle'], 
+            $row['HeureSpectacle']
+        );
+        $spectacles[] = $spectacle;
+    }
+    return $spectacles;
 }
+
+}
+
+
+
