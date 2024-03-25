@@ -9,6 +9,7 @@ $effectif_groupe = $_POST['EffectifGroupe'];
 $poidsTotalGroupe = $_POST['PoidsTotalGroupe'];
 $CommentaireGroupe = $_POST['CommentaireGroupe'];
 
-$groupe = new Groupe($ID_parcelle, $nom_espece, $effectif_groupe, $poidsTotalGroupe, $CommentaireGroupe);
+$groupe = new Groupe(null,$ID_parcelle, $nom_espece, $effectif_groupe, $poidsTotalGroupe, $CommentaireGroupe);
 
 $groupe->ajoutGroupeDB();
+header('Location: /ERP/Gestion_animaux/ListeGroupe/ListeGroupe.php?nomespece='.$nom_espece);

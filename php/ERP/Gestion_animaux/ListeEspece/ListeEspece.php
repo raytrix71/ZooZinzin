@@ -37,7 +37,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
                                         <a class="dropdown-item" href="/ERP/Gestion_animaux/Ajout_Animal/AjoutAnimal.php?nomEspece=<?php echo $espece->getNomEspece() ?>">Ajouter un animal</a><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAntagonistes/ListeAntagonistes.php?nomespece=<?php echo $espece->getNomEspece()  ?>">Gestion Antagonistes</a></div>
                                     <?php else:?>
                                         <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeGroupe/ListeGroupe.php?nomespece=<?php echo $espece->getNomEspece() ?>">Afficher liste groupe</a>
-                                        <a class="dropdown-item" href="/ERP/Gestion_animaux/Ajout_Groupe/AjoutGroupe.php">Ajouter un groupe</a><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAntagonistes/ListeAntagonistes.php?nomespece=<?php echo $espece->getNomEspece()  ?>">Gestion Antagonistes</a></div>
+                                        <a class="dropdown-item" href="/ERP/Gestion_animaux/Ajout_Groupe/AjoutGroupe.php?nomEspece=<?php echo $espece->getNomEspece() ?>">Ajouter un groupe</a><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAntagonistes/ListeAntagonistes.php?nomespece=<?php echo $espece->getNomEspece()  ?>">Gestion Antagonistes</a></div>
                                     <?php endif;?>    
                                 </div>
                             </div>

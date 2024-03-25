@@ -20,30 +20,6 @@ create table CLIENT
     MDPClient     varchar(255) null
 );
 
-create table ESPECE
-(
-    NomEspece         varchar(255)      not null
-        primary key,
-    Esperance         smallint unsigned null,
-    TailleMoyenne     decimal(10, 2)    null,
-    PoidsMoyen        decimal(10, 2)    null,
-    DescriptionEspece varchar(255)      null,
-    TempsGestation    smallint unsigned null,
-    Effectif          smallint unsigned null
-);
-
-create table ANTAGONISTE
-(
-    IDAntagoniste      smallint unsigned auto_increment
-        primary key,
-    NomEspecePredateur varchar(255) null,
-    NomEspeceProie     varchar(255) null,
-    constraint ANTAGONISTE_ESPECE_NomEspece_fk
-        foreign key (NomEspecePredateur) references ESPECE (NomEspece),
-    constraint ANTAGONISTE_ESPECE_NomEspece_fk_2
-        foreign key (NomEspeceProie) references ESPECE (NomEspece)
-);
-
 create table FOURNISSEUR
 (
     IDFournisseur      smallint unsigned auto_increment
@@ -81,17 +57,9 @@ create table PRIXFOURNISSEUR
         foreign key (IDFournisseur) references FOURNISSEUR (IDFournisseur)
 );
 
-create table REGIMEALIMENTAIRE
+create table ResultatRecherche
 (
-    IDRegimeAlimentaire smallint unsigned auto_increment
-        primary key,
-    IDAliment           smallint unsigned null,
-    NomEspece           varchar(255)      null,
-    QteParKgAnimal      decimal(5, 2)     null,
-    constraint REGIMEALIMENTAIRE_ALIMENT_IDAliment_fk
-        foreign key (IDAliment) references ALIMENT (IDAliment),
-    constraint REGIMEALIMENTAIRE_ESPECE_NomEspece_fk
-        foreign key (NomEspece) references ESPECE (NomEspece)
+    NomEspece int null
 );
 
 create table TYPEACTIVITE
@@ -121,7 +89,7 @@ create table TYPEBILLETENTREE
     IDTypeEntree         smallint unsigned auto_increment
         primary key,
     CategorieTarifEntree varchar(30)   null,
-    TarifEntree          decimal(3, 2) null
+    TarifEntree          decimal(4, 2) null
 );
 
 create table TYPESPECTACLE
@@ -131,7 +99,7 @@ create table TYPESPECTACLE
     NomSpectacle         varchar(50)       null,
     LieuSpectacle        varchar(50)       null,
     DescriptionSpectacle varchar(255)      null,
-    TarifSpectacle       decimal(3, 2)     null,
+    TarifSpectacle       decimal(5, 2)     null,
     CapaciteMaxSpectacle smallint unsigned null
 );
 
@@ -140,8 +108,8 @@ create table SPECTACLE
     IDSpectacle     smallint unsigned auto_increment
         primary key,
     IDTypeSpectacle smallint unsigned null,
-    DateActivite    date              null,
-    HeureActivite   time              null,
+    DateSpectacle   date              null,
+    HeureSpectacle  time              null,
     constraint SPECTACLE_TYPESPECTACLE_IDTypeSpectacle_fk
         foreign key (IDTypeSpectacle) references TYPESPECTACLE (IDTypeSpectacle)
 );
@@ -161,13 +129,67 @@ create table EMPLOYE
     PrenomEmploye  varchar(50)       null,
     NomEmploye     varchar(50)       null,
     AdresseEmploye varchar(255)      null,
-    CPEmploye      smallint          null comment 'Limiter a 5',
+    CPEmploye      int               null comment 'Limiter a 5',
     MailEmploye    varchar(255)      null,
     MDPEmploye     varchar(255)      null,
     TelEmploye     varchar(13)       null,
     IDZone         smallint unsigned null,
+    Role           tinytext          null,
     constraint EMPLOYE_ZONE_IDZone_fk
         foreign key (IDZone) references ZONE (IDZone)
+);
+
+create table ESPECE
+(
+    NomEspece         varchar(255)                  not null
+        primary key,
+    Esperance         smallint unsigned             not null,
+    TailleMoyenne     decimal(10, 2)                not null,
+    PoidsMoyen        decimal(10, 2)                not null,
+    DescriptionEspece varchar(255)                  not null,
+    TempsGestation    smallint unsigned             not null,
+    Effectif          smallint unsigned default '0' not null,
+    TempMax           decimal(3, 1)                 not null,
+    TempMin           decimal(3, 1)                 not null,
+    PHMAX             int                           null,
+    PHMin             decimal(3, 1)                 null,
+    TxHumMax          decimal(3, 1)                 null,
+    TxHumMin          decimal(3, 1)                 null,
+    Protege           tinyint(1)        default 0   not null,
+    Individuel        tinyint(1)        default 0   not null,
+    IDZone            smallint unsigned             not null,
+    Alim1             smallint unsigned             not null,
+    Qte1              decimal(4, 1)                 not null,
+    Alim2             smallint unsigned             not null,
+    Qte2              decimal(4, 1)                 not null,
+    Alim3             smallint unsigned             not null,
+    Qte3              decimal(4, 1)                 not null,
+    constraint ESPECE_ALIMENT_IDAliment_fk
+        foreign key (Alim1) references ALIMENT (IDAliment),
+    constraint ESPECE_ALIMENT_IDAliment_fk_2
+        foreign key (Alim2) references ALIMENT (IDAliment),
+    constraint ESPECE_ALIMENT_IDAliment_fk_3
+        foreign key (Alim3) references ALIMENT (IDAliment),
+    constraint ESPECE_ZONE_IDZone_fk
+        foreign key (IDZone) references ZONE (IDZone),
+    constraint Hum
+        check ((`TxHumMax` <= 100) and (`TxHumMin` >= 0)),
+    constraint PH
+        check ((`PHMin` >= 0) and (`PHMAX` <= 14)),
+    constraint Temp
+        check ((`TempMax` <= 55) and (`TempMin` >= -(10)))
+);
+
+create table ANTAGONISTE
+(
+    IDAntagoniste      smallint unsigned auto_increment
+        primary key,
+    NomEspecePredateur varchar(255) null,
+    NomEspeceProie     varchar(255) null,
+    constraint ANTAGONISTE_ESPECE_NomEspece_fk
+        foreign key (NomEspecePredateur) references ESPECE (NomEspece),
+    constraint ANTAGONISTE_ESPECE_NomEspece_fk_2
+        foreign key (NomEspeceProie) references ESPECE (NomEspece)
 );
 
 create table LIENEMPLOYEACTIVITE
@@ -196,16 +218,10 @@ create table LIENEMPLOYESPECTACLE
 
 create table PARCELLE
 (
-    IDPercelle     smallint unsigned auto_increment
+    IDParcelle smallint unsigned auto_increment
         primary key,
-    IDZone         smallint unsigned null,
-    TemperatureMAx decimal(2, 1)     null,
-    TemperatureMin decimal(2, 1)     null,
-    Dimension      decimal(10, 2)    null,
-    PHMax          smallint          null,
-    PHMin          smallint          null,
-    TxHumiditeMax  smallint          null,
-    TxHumiditeMin  decimal(2)        null,
+    IDZone     smallint unsigned null,
+    Dimension  decimal(10, 2)    null,
     constraint PARCELLE_ZONE_IDZone_fk
         foreign key (IDZone) references ZONE (IDZone)
 );
@@ -225,8 +241,40 @@ create table ANIMAL
     constraint ANIMAL_ESPECE_NomEspece_fk
         foreign key (NomEspece) references ESPECE (NomEspece),
     constraint ANIMAL_PARCELLE_IDPercelle_fk
-        foreign key (IDParcelle) references PARCELLE (IDPercelle)
+        foreign key (IDParcelle) references PARCELLE (IDParcelle)
 );
+
+create definer = root@`%` trigger alimentationAnimal
+    after insert
+    on ANIMAL
+    for each row
+BEGIN
+    DECLARE aliment1 INT;
+    DECLARE aliment2 INT;
+    DECLARE aliment3 INT;
+    DECLARE quantite1 DECIMAL(10,2);
+    DECLARE quantite2 DECIMAL(10,2);
+    DECLARE quantite3 DECIMAL(10,2);
+    DECLARE masse DECIMAL(10,2);
+
+    SELECT Alim1 INTO aliment1 FROM ESPECE WHERE NEW.NomEspece=ESPECE.NomEspece;
+    SELECT Alim2 INTO aliment2 FROM ESPECE WHERE NEW.NomEspece=ESPECE.NomEspece;
+    SELECT Alim3 INTO aliment3 FROM ESPECE WHERE NEW.NomEspece=ESPECE.NomEspece;
+    SELECT Qte1 INTO quantite1 FROM ESPECE WHERE NEW.NomEspece=ESPECE.NomEspece;
+    SELECT Qte2 INTO quantite2 FROM ESPECE WHERE NEW.NomEspece=ESPECE.NomEspece;
+    SELECT Qte3 INTO quantite3 FROM ESPECE WHERE NEW.NomEspece=ESPECE.NomEspece;
+    SELECT Poids INTO masse FROM ANIMAL WHERE NEW.IDAnimal=ANIMAL.IDAnimal;
+    SET @jourrestant=DATEDIFF(LAST_DAY(NOW()),NOW());
+    SET @jour=0;
+    REPEAT
+    INSERT INTO TOURNEEREPAS (IDAnimal,ValidationRepas,DateRepas,QteDonnee,IDAliment) VALUES (NEW.IDAnimal,0,DATE_ADD(NOW(),INTERVAL @jour DAY),quantite1*masse,aliment1);
+    INSERT INTO TOURNEEREPAS (IDAnimal,ValidationRepas,DateRepas,QteDonnee,IDAliment) VALUES (NEW.IDAnimal,0,DATE_ADD(NOW(),INTERVAL @jour DAY),quantite2*masse,aliment2);
+    INSERT INTO TOURNEEREPAS (IDAnimal,ValidationRepas,DateRepas,QteDonnee,IDAliment) VALUES (NEW.IDAnimal,0,DATE_ADD(NOW(),INTERVAL @jour DAY),quantite3*masse,aliment3);
+    SET @jour=@jour+1;
+    UNTIL @jour=@jourrestant
+
+        END REPEAT;
+END;
 
 create table DONEESANTE
 (
@@ -253,7 +301,7 @@ create table GROUPE
     constraint GROUPE_ESPECE_NomEspece_fk
         foreign key (NomEspece) references ESPECE (NomEspece),
     constraint GROUPE_PARCELLE_IDPercelle_fk
-        foreign key (IDParcelle) references PARCELLE (IDPercelle)
+        foreign key (IDParcelle) references PARCELLE (IDParcelle)
 );
 
 create table LIENANIMALACTIVITE
@@ -316,13 +364,38 @@ create table CONSULTATION
         foreign key (IDProbleme) references PROBLEME (IDProbleme)
 );
 
+create table REGIMEALIMENTAIRE
+(
+    IDRegimeAlimentaire smallint unsigned auto_increment
+        primary key,
+    IDAliment           smallint unsigned null,
+    NomEspece           varchar(255)      null,
+    QteParKgAnimal      decimal(5, 2)     null,
+    constraint REGIMEALIMENTAIRE_ALIMENT_IDAliment_fk
+        foreign key (IDAliment) references ALIMENT (IDAliment),
+    constraint REGIMEALIMENTAIRE_ESPECE_NomEspece_fk
+        foreign key (NomEspece) references ESPECE (NomEspece)
+);
+
+create table RELEVEPARCELLE
+(
+    IdReleveParcelle int auto_increment
+        primary key,
+    PH               int               null,
+    IDParcelle       smallint unsigned not null,
+    TxHum            decimal(3, 1)     null,
+    Temp             decimal(3, 1)     not null,
+    constraint RELEVEPARCELLE_PARCELLE_IDParcelle_fk
+        foreign key (IDParcelle) references PARCELLE (IDParcelle)
+);
+
 create table RESERVATION
 (
     IDReservation   smallint unsigned auto_increment
         primary key,
-    IDClient        smallint unsigned null,
-    IDEmploye       smallint unsigned null,
-    DateReservation date              null,
+    IDClient        smallint unsigned                  null,
+    IDEmploye       smallint unsigned                  null,
+    DateReservation datetime default CURRENT_TIMESTAMP not null,
     constraint RESERVATION_CLIENT_IDClient_fk
         foreign key (IDClient) references CLIENT (IDClient),
     constraint RESERVATION_EMPLOYE_IDEmploye_fk
@@ -377,8 +450,10 @@ create table TOURNEEREPAS
     IDGroupe        smallint unsigned    null,
     ValidationRepas tinyint(1) default 0 not null,
     DateRepas       date                 null,
-    HeureRepas      varchar(5)           null comment 'On mettra matin ou soir',
     QteDonnee       decimal(10, 2)       null,
+    IDAliment       smallint unsigned    not null,
+    constraint TOURNEEREPAS_ALIMENT_IDAliment_fk
+        foreign key (IDAliment) references ALIMENT (IDAliment),
     constraint TOURNEEREPAS_ANIMAL_IDAnimal_fk
         foreign key (IDAnimal) references ANIMAL (IDAnimal),
     constraint TOURNEEREPAS_GROUPE_IDGroupe_fk
