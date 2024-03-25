@@ -1,5 +1,4 @@
 <?php
-include ('../Fonction_PHP/connexionDB.php');
 class Aliment{
     
     static $listeAlim=array();
@@ -26,10 +25,10 @@ class Aliment{
     }
 
 
-    static function queryAliment(){
+    public static function queryAliment(){
         // Code goes here
     
-        $bdd = connexionDB();
+        $bdd = DB::connexionDB();
         $sql = 'SELECT * FROM ALIMENT';
         $connexion = $bdd->query($sql);
         $resultat = $connexion->fetchAll();
@@ -37,13 +36,14 @@ class Aliment{
             $alim = new Aliment($row['IDAliment'],$row['NomAliment'],$row['QteReelle'],$row['QteMoyenneNecessaire']);
             array_push(self::$listeAlim,$alim);
         }
+        return self::$listeAlim;
 
     }
 
 
 
     function ajouterAliment($nomAliment,$qStock,$seuil){
-        $bdd = connexionDB();
+        $bdd = DB::connexionDB();
         $sql = "INSERT INTO ALIMENT (NomAliment, QuantiteStock, Seuil) VALUES ('$nomAliment', '$qStock', '$seuil')";
         $bdd->exec($sql);
     }
