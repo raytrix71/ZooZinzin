@@ -1,3 +1,5 @@
+<?php include_once '/var/www/html/autoload.php';?>
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -10,18 +12,26 @@
 </head>
 
 <body style="background: var(--bs-success-border-subtle);">
+   
+        
     <h1 style="margin-top: 11px;">Mes réservations</h1>
     <hr style="margin-top: 5px;">
+    <?php $listereservation = Reservation::getAllReservations();?>
+    <?php foreach ($listereservation as $reservation): ?>
+    <?php if($reservation->getIDClient() == 1 /*$_GET['idclient']):*/ ):?>
     <div class="container" style="margin-top: 30px;">
         <div class="row">
             <div class="col-md-4 col-lg-4">
-                <h1>Réservation nr.</h1>
-                <h1>Date</h1>
+                <h1>Réservation nr <?php echo $reservation->getIDReservation() ?></h1>
+                <h1>Reservation du <?php echo strftime("%d %B %Y", strtotime($reservation->getDateReservation())) ?></h1>
             </div>
-            <div class="col text-center"><input type="text" style="margin-top: 10px;max-width: 400px;"><input type="text" style="margin-top: 18px;max-width: 400px;"></div>
+            <div class="col text-center">
+            </div>
             <div class="col-md-4"><button class="btn btn-success text-center" type="button" style="margin-right: 0px;margin-left: 100px;margin-top: 24px;">Afficher les détails</button></div>
         </div>
     </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
