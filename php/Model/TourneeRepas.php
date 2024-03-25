@@ -99,6 +99,9 @@ class TourneeRepas
         foreach($result as $row){
             $listRepasNow[]=new TourneeRepas($row['IDRepas'],$row['IDAnimal'],$row['IDGroupe'],$row['ValidationRepas'],$row['DateRepas'],$row['QteDonnee'],$row['IDAliment']);
         }
+        if (empty($listRepasNow)) {
+            return null;
+        }
         return $listRepasNow;
     }
 

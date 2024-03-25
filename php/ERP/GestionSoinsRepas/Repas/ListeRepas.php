@@ -6,6 +6,7 @@ $listeAnimal=Animal::fetchListAnimalFromDatabase();
 $listeAliment=Aliment::queryAliment();
 $listeRepas=TourneeRepas::fetchlistRepasNow();
 $listeGroupe=Groupe::fetchListGroupeFromDatabase();
+if(!isset($listeRepas)){$listeRepas=null;};
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -18,7 +19,7 @@ $listeGroupe=Groupe::fetchListGroupeFromDatabase();
 </head>
 
 <body style="background: rgb(217,217,217);">
-
+<?php if($listeRepas!=null): ?>
     <?php foreach($listeParcelle as $Parcelle): ?>
         <?php if($Parcelle->getIDZone()==$_SESSION['IDzone']):?>
             <div class="row" style="background: rgb(54,123,34);">
@@ -30,41 +31,47 @@ $listeGroupe=Groupe::fetchListGroupeFromDatabase();
             </div>
             <?php //boucle pour chaque enclos ?>
             <?php foreach($listeAnimal as $animal):?>
-                <div class="row">
-                            <div class="col">
-                                <h1><?php echo $animal->getNomAnimal()." - ".$animal->getNomEspece() ?></h1>
-                            </div>
-                        </div>
-                <?php foreach($listeRepas as $repas): ?>
-                    <?php if($animal->getIDAnimal()==$repas->getIDAnimal()): ?>
-                        
-                        <div class="row">
-                            <div class="col">
-                                <div class="card" style="background: rgb(217,217,217);">
-                                    <div class="card-body" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;background: var(--bs-body-bg);padding-right: 0px;margin-bottom: 0px;margin-top: 15px;">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <?php foreach($listeAliment as $aliment):?>
-                                                        <?php if($aliment->getIDAliment()==$repas->getIDAliment()): ?>
-                                                            <h4><?php echo $aliment->getNomAliment() ?></h4>
-                                                        <?php endif; ?>
-                                                    <? endforeach; ?>
-                                                    <h6 class="text-muted mb-2">Qte: <?php echo " ".$repas->getQteDonnee()." " ?> KG</h6>
+               
+                <?php if($animal->getIDParcelle()==$Parcelle->getIDParcelle()): ?>   
+                    <?php foreach($listeRepas as $repas): ?>
+                        <?php if($animal->getIDAnimal()==$repas->getIDAnimal()): ?>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card" style="background: rgb(217,217,217);">
+                                        <div class="card-body" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;background: var(--bs-body-bg);padding-right: 0px;margin-bottom: 0px;margin-top: 15px;">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4><?php echo $animal->getNomAnimal() ?></h4>
+                                                        <?php foreach($listeAliment as $aliment):?>
+                                                            <?php if($aliment->getIDAliment()==$repas->getIDAliment()): ?>
+                                                                <h5><?php echo $aliment->getNomAliment() ?></h5>
+                                                            <?php endif; ?>
+                                                        <? endforeach; ?>
+                                                        <h6><?php echo $animal->getNomEspece() ?></h6>
+                                                        <h6 class="text-muted mb-2">Qte: <?php echo " ".$repas->getQteDonnee()." " ?> KG</h6>
+                                                  </div>
+                                                    <div class="col-md-6 d-md-flex d-lg-flex justify-content-md-end align-items-md-center justify-content-lg-end align-items-lg-center"><button onclick="window.location.href='/Fonction_PHP/SoinsRepas/ValidationRepas.php?idRepas=<?php echo $repas->getIDRepas() ?>'" class="btn btn-primary" type="button" style="background: rgb(54,123,34);">Valider</button></div>
                                                 </div>
-                                                <div class="col-md-6 d-md-flex d-lg-flex justify-content-md-end align-items-md-center justify-content-lg-end align-items-lg-center"><button onclick="window.location.href='/Fonction_PHP/SoinsRepas/ValidationRepas.php?idRepas=<?php echo $repas->getIDRepas() ?>'" class="btn btn-primary" type="button" style="background: rgb(54,123,34);">Valider</button></div>
                                             </div>
+                                            <h1 style="margin-right: 0px;"></h1>
                                         </div>
-                                        <h1 style="margin-right: 0px;"></h1>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endif; ?>
-                <?php endforeach;?>    
+                            
+                        <?php endif; ?>
+                    <?php endforeach;?>    
+                <?php endif; ?>
             <?php endforeach;?>
         <?php endif; ?>
     <?php endforeach; ?>
+   
+<?php else: ?>
+        <h1 style="text-align:center">Aucun repas à distribuer</h1>
+        <?php endif; ?>         
+
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 

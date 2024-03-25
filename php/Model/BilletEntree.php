@@ -101,6 +101,19 @@ class BilletEntree
         $stmt->execute([$this->IDReservation, $this->DateValidatiteEntree, $this->ValidationEntree, $this->IDTypeEntree, $this->IDBilletEntree]);
     }
 
+    public static function getBilletID($id){
+        $db = DB::connexionDB();
+        $req = $db->prepare('SELECT * FROM BILLETENTREE WHERE IDReservation = ?');
+        $req->execute([$id]);
+        $listebillet = $req->fetchAll();
+        foreach($listebillet as $row){
+            $billetEntree = new BilletEntree($row['IDBilletEntree'], $row['IDReservation'], $row['DateValidatiteEntree'], $row['ValidationEntree'], $row['IDTypeEntree']);
+            array_push($result, $billetEntree);
+        }
+        return $result;
+        
+    }
+
 
 }
 
