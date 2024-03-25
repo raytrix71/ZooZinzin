@@ -9,16 +9,10 @@ if (!isset($_GET['IDTypeSpectacle'])) {
 
 $idTypeSpectacle = $_GET['IDTypeSpectacle'];
 
-$spectacles = Spectacle::fetchListFicheSpectacleFromDatabase();
+$spectacles = Spectacle::fetchSpectaclesByTypeID($idTypeSpectacle);
 
 if (empty($spectacles)) {
     die("Aucun spectacle trouvé pour ce type.");
-}
-
-$resultat = $spectacles[1];
-
-if (!$resultat) {
-    die("Erreur lors de la récupération des informations du spectacle.");
 }
 
 $typeSpectacle = TypeSpectacle::fetchByID($idTypeSpectacle);
@@ -28,67 +22,92 @@ if (!$typeSpectacle) {
 }
 ?>
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fiche Spectacle</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+   
 </head>
+<body class="bg-light">
 
-<body class="text-center" style="background: rgb(217,217,217);">
-    <div class="row" style="border-color: var(--bs-body-bg);background: var(--bs-body-bg);">
-        <div class="col justify-content-center" style="border: 2px solid var(--bs-emphasis-color) ;">
-            <h1>Fiche Spectacle</h1>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6" style="margin-top: 4px;"><img style="border-radius: 25px;border: 2px solid var(--bs-emphasis-color);margin-bottom: 20px;margin-top: 20px;" width="250" height="150" src="assets/img/girafe.jpg">
-                <div style="background: var(--bs-body-bg);border: 2px solid var(--bs-emphasis-color);border-radius: 25px;">
+<div class="container py-4">
+    <h1 class="mb-4">Créneau horaire du spectacle</h1>
+    <h2><?php echo htmlspecialchars($typeSpectacle->getNomSpectacle()); ?></h2>
+    <br>
+    <p><strong>Description :</strong> <?php echo htmlspecialchars($typeSpectacle->getDescriptionSpectacle()); ?></p>
 
-                <h2><?php echo htmlspecialchars($typeSpectacle->getNomSpectacle()); ?></h2>
-        <p>Date : <?php echo htmlspecialchars($resultat->getDateSpectacle()); ?></p>
-        <p>Heure : <?php echo htmlspecialchars($resultat->getHeureSpectacle()); ?></p>
+    <div class="row justify-content-center">
+        <?php foreach ($spectacles as $spectacle) { ?>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card-custom mb-4">
+                    <h3>N°Spectacle : <?php echo htmlspecialchars($spectacle->getIDSpectacle()); ?></h3>
+                    <p class="fw-bold">Date : <?php echo htmlspecialchars($spectacle->getDateSpectacle()); ?></p>
+                    <p class="fw-light">Heure : <?php echo htmlspecialchars($spectacle->getHeureSpectacle()); ?></p>
+                    <hr>
+                    <button class="btn btn-custom-color" data-bs-toggle="modal" data-bs-target="#modalModification<?php echo $spectacle->getIDSpectacle(); ?>">Modifier</button>
                 </div>
             </div>
-            <div class="col-md-6" style="margin-top: 4px;">
-                <div style="background: var(--bs-body-bg);border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;margin-top: 5px;">
-                    <h1 style="margin-top: 10px;">Description</h1>
-                    <p>Description: <?php echo htmlspecialchars($typeSpectacle->getDescriptionSpectacle()); ?></p>
-                    <hr>
-                </div><button class="btn btn-primary" type="button" style="margin-left: 25px;background: rgb(54,123,34);margin-top:10px;" data-bs-target="#modal-1" data-bs-toggle="modal">Modifier</button>
-            </div>
-        </div>
-    </div>
-<div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Modification Spectacle</h4>
-                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form action="/Fonction_PHP/Gestion_Spectacle/MAJinfosSpectacle.php" method="post">
-                    <input type="hidden" name="IDSpectacle" value="<?php echo $resultat->getIDSpectacle(); ?>">
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="DateSpectacle" name="DateSpectacle" value="<?php echo $resultat->getDateSpectacle(); ?>">
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalModification<?php echo $spectacle->getIDSpectacle(); ?>" tabindex="-1" aria-labelledby="modalLabel<?php echo $spectacle->getIDSpectacle(); ?>" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<?php echo $spectacle->getIDSpectacle(); ?>">Modification du créneau</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/Fonction_PHP/Gestion_Spectacle/MAJinfosSpectacle.php" method="post">
+                            <div class="modal-body">
+                                                                <input type="hidden" name="IDSpectacle" value="<?php echo $spectacle->getIDSpectacle(); ?>">
+                                <div class="mb-3">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input type="date" class="form-control" name="DateSpectacle" value="<?php echo $spectacle->getDateSpectacle(); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="heure" class="form-label">Heure</label>
+                                    <input type="time" class="form-control" name="HeureSpectacle" value="<?php echo $spectacle->getHeureSpectacle(); ?>" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="heure" class="form-label">Heure</label>
-                        <input type="time" class="form-control" id="HeureSpectacle" name="HeureSpectacle" value="<?php echo $resultat->getHeureSpectacle(); ?>">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                </form>
+                </div>
             </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
-    
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
+
+                               
+<style>
+        .card-custom {
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            margin: 20px;
+            border-radius: 20px;
+            background: linear-gradient(136deg, var(--bs-pink) 0%, rgb(255,255,255) 0%, #ffffff 100%, rgb(182,41,164) 100%, var(--bs-emphasis-color) 100%), var(--bs-gray-800);
+            width: 280px;
+            backdrop-filter: opacity(0.96);
+            --bs-primary: #0a6c25;
+            --bs-primary-rgb: 10,108,37;
+            color: rgb(0,0,0);
+        }
+        .btn-custom-color {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        .btn-custom-color:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    </style>
