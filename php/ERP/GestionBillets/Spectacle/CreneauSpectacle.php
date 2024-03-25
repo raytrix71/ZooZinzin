@@ -9,8 +9,6 @@ $idTypeSpectacle = $_GET['IDTypeSpectacle'];
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -30,8 +28,9 @@ $idTypeSpectacle = $_GET['IDTypeSpectacle'];
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Réservation du spectacle</h2>
                             <form method="post" action="../../../Fonction_PHP/Gestion_Spectacle/AjoutCreneauSpectacle.php">
-                            <input type="hidden" name="IDTypeSpectacle" value="<?php echo htmlspecialchars($IDTypeSpectacle); ?>">
                                 <div class="mb-3">
+                                <input type="hidden" name="IDTypeSpectacle" value="<?php echo htmlspecialchars($idTypeSpectacle); ?>">
+
                                     <label for="dateSpectacle" class="form-label">Date du spectacle</label>
                                     <input type="date" class="form-control" id="DateSpectacle" name="DateSpectacle" required>
                                 </div>
