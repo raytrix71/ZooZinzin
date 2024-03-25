@@ -8,7 +8,7 @@
     <h1>Welcome to My Website</h1>
     <div id="qrcode"></div>
 <script type="text/javascript">
-new QRCode(document.getElementById("qrcode"), "1");
+new QRCode(document.getElementById("qrcode"), "30");
 var qrcode = new QRCode("test", {
     text: "http://jindo.dev.naver.com/collie",
     width: 128,
