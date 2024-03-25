@@ -1,0 +1,72 @@
+:root, [data-bs-theme=light] {
+  --bs-primary: #07893b;
+  --bs-primary-rgb: 7,137,59;
+  --bs-primary-text-emphasis: #033718;
+  --bs-primary-bg-subtle: #CDE7D8;
+  --bs-primary-border-subtle: #9CD0B1;
+  --bs-border-color: #ffffff;
+}
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #07893b;
+  --bs-btn-border-color: #07893b;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #067432;
+  --bs-btn-hover-border-color: #066E2F;
+  --bs-btn-focus-shadow-rgb: 218,237,226;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #066E2F;
+  --bs-btn-active-border-color: #05672C;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #07893b;
+  --bs-btn-disabled-border-color: #07893b;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #07893b;
+  --bs-btn-border-color: #07893b;
+  --bs-btn-focus-shadow-rgb: 7,137,59;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #07893b;
+  --bs-btn-hover-border-color: #07893b;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #07893b;
+  --bs-btn-active-border-color: #07893b;
+  --bs-btn-disabled-color: #07893b;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #07893b;
+}
+
+.btn-custom-color {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important; 
+  color: white !important; 
+}
+
+.btn-custom-color:hover {
+  background-color: #218838 !important; 
+  border-color: #1e7e34 !important; 
+}
+
+.card-custom {
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  margin: 20px;
+  border-radius: 20px;
+  background: linear-gradient(136deg, var(--bs-pink) 0%, rgb(255,255,255) 0%, #ffffff 100%, rgb(182,41,164) 100%, var(--bs-emphasis-color) 100%), var(--bs-gray-800);
+  width: 280px;
+  backdrop-filter: opacity(0.96);
+  --bs-primary: #0a6c25;
+  --bs-primary-rgb: 10,108,37;
+  color: rgb(0,0,0);
+}
+.btn-custom-color {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+.btn-custom-color:hover {
+  background-color: #218838;
+  border-color: #1e7e34;}
