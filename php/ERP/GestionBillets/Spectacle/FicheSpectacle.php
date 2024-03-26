@@ -28,6 +28,9 @@ if (!$typeSpectacle) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fiche Spectacle</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
    
 </head>
 <body class="bg-light">
@@ -64,6 +67,8 @@ if (!$typeSpectacle) {
                                 <div class="mb-3">
                                     <label for="date" class="form-label">Date</label>
                                     <input type="date" class="form-control" name="DateSpectacle" value="<?php echo $spectacle->getDateSpectacle(); ?>" required>
+                                   
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="heure" class="form-label">Heure</label>
