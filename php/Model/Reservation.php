@@ -92,6 +92,25 @@ class Reservation
             return null; // Return null if no reservation found
         }
     }
+
+
+    public static function getLastReservationForEmploye($IDEmploye){
+        $db = DB::connexionDB();
+
+        // Perform the query to retrieve the last reservation for the given IDClient
+        $query = "SELECT * FROM RESERVATION WHERE IDEmploye = :IDEmploye ORDER BY DateReservation DESC LIMIT 1";
+        $result = $db->prepare($query);
+        $result->bindParam(':IDClient', $IDEmploye);
+        $result->execute(); // Execute the prepared statement
+        $row = $result->fetch(); // Fetch the first row from the result set
+
+        if ($row) {
+            $reservation = new Reservation($row['IDReservation'], $row['IDClient'], $row['IDEmploye'], $row['DateReservation']);
+            return $reservation; // Return the Reservation object
+        } else {
+            return null; // Return null if no reservation found
+        }
+    }
     
     public function saveReservation()
     {

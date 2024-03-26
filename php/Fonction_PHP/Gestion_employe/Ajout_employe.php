@@ -8,8 +8,9 @@ $num_tel = $_POST['TelEmploye'];
 $adresse_email = $_POST['MailEmploye'];
 $adresse_postale = $_POST['AdresseEmploye'];
 $code_postal = $_POST['CPEmploye'];
-$motdepasse = $_POST['MDPEmploye'];
+$motdepasse = password_hash($_POST['MDPEmploye'],PASSWORD_DEFAULT);
 $role = $_POST['role'];
+
 
 if ($role == "Soignant" || $role == "Veterinaire") {
     $zone = $_POST['zone'];

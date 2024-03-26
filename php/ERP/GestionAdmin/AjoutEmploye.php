@@ -1,7 +1,11 @@
-
+<?php
+    session_start();
+if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout" || $_SESSION['role']!="admin"){
+    header("Location: /ERP/Login/Login.php");
+};?>
                             
                             
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
 <head>
@@ -30,8 +34,8 @@
                                 <input class="form-control" type="text" id="TelEmploye" name="TelEmploye" placeholder="N°Téléphone" required="" style="margin-top: 15px;"></div>
                                 <select onchange="AttribuerZone()" class="form-select" id="role" name="role">
                                     <optgroup label="Sélectionner le rôle">
-                                    <option value="Crewmember" selected>Crew member</option>
-                                    <option value="Soignant">Soignant</option>
+                                    <option value="Crewmember" >Crew member</option>
+                                    <option value="Soignant" selected>Soignant</option>
                                     <option value="Admin">Administrateur</option>
                                     <option value="Veterinaire">Vétérinaire</option>
                                     </optgroup>

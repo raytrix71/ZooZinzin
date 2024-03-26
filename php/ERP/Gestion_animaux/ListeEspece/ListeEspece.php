@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
+    header("Location: /ERP/Login/Login.php");
+};
 include '/var/www/html/autoload.php';
 include '/var/www/html/ERP/NavBar/navbar.php';
 
@@ -22,6 +25,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
 <body style="background: rgb(217,217,217);">
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <?php foreach($liste as $espece): ?>
+    <?php if($espece->getIDZone()==$_SESSION['IDzone']):?>
     <div class="row">
         <div class="col">
             <div class="card" style="background: rgb(217,217,217);">
@@ -49,6 +53,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
             </div>
         </div>
     </div>
+    <?php endif; ?>
 <?php endforeach;?>   
 
 </body>
