@@ -24,7 +24,7 @@ $idparcelle=$_GET['idparcelle'];
             <?php if($animal->getIDParcelle() == $idparcelle):  ?>
 
 
-        <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img class="card-img-top w-100 d-block" width="298" height="80">
+        <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img src="/Image/Animal/<?php echo $animal->getNomEspece().$animal->getNomAnimal() ?>.jpg" class="card-img-top w-100 d-block" width="298" height="80">
             <div class="card-body">
             <h4 class="card-title"><?php echo $animal->getNomAnimal() ?></h4>
                 <hr>
@@ -41,7 +41,9 @@ $idparcelle=$_GET['idparcelle'];
                 </div>
                 <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
                     <div class="dropdown-menu">
+                        <?php if($_SESSION['role']!="soignant"): ?>
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/ChangementParcelle/affectationEnclos.php?nomEspece=<?php echo $animal->getNomEspece() ?>&IDAnimal=<?php echo $animal->getIDAnimal() ?>&IDGroupe=null">Changer de parcelle</a>
+                        <?php endif; ?>
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo $animal->getIDAnimal() ?>">Fiche animal</a>
                         <a class="dropdown-item" href="/ERP/GestionSoinsRepas/Declarer_pbm/DeclarerPbm.php?idAnimal=<?php echo $animal->getIDAnimal() ?>&idGroupe=no">Déclarer un problème</a>
                     </div>
@@ -54,7 +56,7 @@ $idparcelle=$_GET['idparcelle'];
     <?php foreach ($listegroupe as $groupe): ?>
         <?php if($groupe->getIDParcelle() == $idparcelle):  ?>
     
-        <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img class="card-img-top w-100 d-block" width="298" height="80">
+        <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img src="/Image/Espece/<?php echo $groupe->getNomEspece() ?>.jpg" class="card-img-top w-100 d-block" width="298" height="80">
             <div class="card-body">
             <h4 class="card-title">ID Groupe:<?php echo " ".$groupe->getIDGroupe() ?>&nbsp;</h4>
                 <hr>
@@ -66,7 +68,9 @@ $idparcelle=$_GET['idparcelle'];
                 </div>
                 <div class="dropdown" style="margin-top: 50px;"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
                     <div class="dropdown-menu">
+                        <?php if($_SESSION['role']!="soignant"): ?>
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/ChangementParcelle/affectationEnclos.php?nomEspece=<?php echo $groupe->getNomEspece() ?>&IDGroupe=<?php echo $groupe->getIDGroupe() ?>&IDAnimal=null">Changer de parcelle</a>
+                        <?php endif; ?>
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/FicheGroupe/FicheGroupe.php?idGroupe=<?php echo $groupe->getIDGroupe() ?>">Fiche groupe</a>
                         <a class="dropdown-item" href="/ERP/GestionSoinsRepas/Declarer_pbm/DeclarerPbm.php?idGroupe=<?php echo $groupe->getIDGroupe() ?>&idAnimal=no">Déclarer un problème</a>
                     </div>

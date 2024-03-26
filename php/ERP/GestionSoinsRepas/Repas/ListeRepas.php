@@ -1,9 +1,9 @@
 <?php
 session_start();
-    session_start();
 if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
     header("Location: /ERP/Login/Login.php");
 };
+include '/var/www/html/ERP/NavBar/navbar.php';
 include '/var/www/html/autoload.php';
 $listeParcelle=Parcelle::fetchParcelleFromDB();
 $listeAnimal=Animal::fetchListAnimalFromDatabase();
@@ -27,6 +27,7 @@ if(!isset($listeRepas)){$listeRepas=null;};
     <?php foreach($listeParcelle as $Parcelle): ?>
         <?php if($Parcelle->getIDZone()==$_SESSION['IDzone']):?>
             <div class="row" style="background: rgb(54,123,34);">
+                <hr>
                 <div class="col d-flex d-md-flex justify-content-center align-items-center justify-content-md-center">
                     <div style="background: var(--bs-body-bg);border-radius: 25px;padding-left: 0px;border-style: solid;border-color: var(--bs-emphasis-color);margin-bottom: 5px;margin-top: 5px;">
                         <h2 style="margin-top: 5px;margin-right: 10px;margin-left: 10px;">Enclos:<?php echo $Parcelle-> getIDParcelle() ?> &nbsp;</h2>
