@@ -1,4 +1,5 @@
 <?php
+include '/var/www/html/autoload.php';
 $idresa=$_GET['idresa'];
 $listebillet=BilletEntree::getBilletID($idresa);
 ?>

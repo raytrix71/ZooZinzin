@@ -38,7 +38,7 @@
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
                 // Rediriger vers une autre page
-                window.location.href = "/ERP/GestionBillets/ResultatsScan.php/resultatsscanEntree.php?idresa=" + decodedText;
+                window.location.href = "/ERP/GestionBillets/ResultatsScan/ResultatScanner.php?idresa=" + decodedText;
             }
         }
     
