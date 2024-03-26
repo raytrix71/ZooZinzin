@@ -1,5 +1,8 @@
 <?php
     session_start();
+if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
+    header("Location: /ERP/Login/Login.php");
+};
     include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
     require '/var/www/html/Fonction_PHP/connexionDB.php';
     include '/var/www/html/Model/Espece.php';

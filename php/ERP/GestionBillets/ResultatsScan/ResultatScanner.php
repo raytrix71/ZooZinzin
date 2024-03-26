@@ -1,8 +1,12 @@
 <?php 
 session_start();
+if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
+    header("Location: /ERP/Login/Login.php");
+};
 include '/var/www/html/autoload.php';
 include '/var/www/html/ERP/NavBar/navbar.php';
-$idresa=31; //$_GET['idresa'];
+error_reporting(E_ERROR | E_PARSE);
+$idresa=$_GET['idresa'];
 $listebillet=BilletResaEntree::getBilletEntreeResa($idresa);
 ?>
 <!DOCTYPE html>
@@ -23,26 +27,26 @@ $listebillet=BilletResaEntree::getBilletEntreeResa($idresa);
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Scanner Entrées</h2>
-                            <div style="background: rgb(217,217,217);border-style: solid;border-color: var(--bs-emphasis-color);border-top-color: rgb(33,;border-right-color: 37,;border-bottom-color: 41);border-left-color: 37,;border-radius: 20px;">
-                                <div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <h6 style="text-align: center;">Date: <?php echo date("d F Y", strtotime(BilletResaEntree::getDateResaBillet($idresa))) ?>&nbsp;</h6>
+                                <div style="background: rgb(217,217,217);border-style: solid;border-color: var(--bs-emphasis-color);border-top-color: rgb(33);border-right-color: rgb(37);border-bottom-color: rgb(41);border-left-color: rgb(37);border-radius: 20px;">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 style="text-align: center;">Date: <?php echo date("d F Y", strtotime(BilletResaEntree::getDateResaBillet($idresa))) ?>&nbsp;</h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <h6 style="text-align: center;">Qte</h6>
-                                        </div>
-                                        <div class="col">
-                                            <h6 style="text-align: center;">Categorie</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 style="text-align: center;">Qte</h6>
+                                            </div>
+                                            <div class="col">
+                                                <h6 style="text-align: center;">Categorie</h6>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
-                        <?php foreach($listebillet as $billet): ?>
-                            <div style="background: rgb(217,217,217);border-style: solid;border-color: var(--bs-emphasis-color);border-top-color: rgb(33,;border-right-color: 37,;border-bottom-color: 41);border-left-color: 37,;border-radius: 20px;margin-top: 10px;">
+                                <hr>
+                            <?php foreach($listebillet as $billet): ?>
+                                <div style="background: rgb(217,217,217);border-style: solid;border-color: var(--bs-emphasis-color);border-top-color: rgb(33);border-right-color: rgb(37);border-bottom-color: rgb(41);border-left-color: rgb(37);border-radius: 20px;margin-top: 10px;">
                                 <div class="row">
                                     <div class="col">
                                         <h6 style="text-align: center;"><?php echo $billet->getCompte() ?></h6>

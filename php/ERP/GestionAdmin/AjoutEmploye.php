@@ -1,4 +1,8 @@
-
+<?php
+    session_start();
+if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout" || $_SESSION['role']!="admin"){
+    header("Location: /ERP/Login/Login.php");
+};?>
                             
                             
 <!DOCTYPE html>
