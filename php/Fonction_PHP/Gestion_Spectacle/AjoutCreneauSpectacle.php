@@ -1,24 +1,26 @@
-<?php 
+<?php
+include '/var/www/html/autoload.php';
 
-include_once '/var/www/html/Model/DB.php';
-include_once '/var/www/html/Model/Spectacle.php';
-include '/var/www/html/Model/TypeSpectacle.php';
+$idSpectacle=$_POST['IDSpectacle'];
+$DateSpectacle=$_POST['DateSpectacle'];
+$heure_spectacle=$_POST['HeureSpectacle'];
+$result;
+$listeSpectacles=Spectacle::fetchListFicheSpectacleFromDatabase();
 
-$idTypeSpectacle = $_POST['IDTypeSpectacle'] ?? null; 
-$dateSpectacle = $_POST['DateSpectacle'] ?? null;
-$heureSpectacle = $_POST['HeureSpectacle'] ?? null;
-
-if ($idTypeSpectacle !== null) {
-    $typeSpectacle = TypeSpectacle::fetchByID($idTypeSpectacle);
-
-    if ($typeSpectacle !== null) {
-        $creneau = new Spectacle(null, $idTypeSpectacle, $dateSpectacle, $heureSpectacle);
-        $creneau->saveToDatabase();
-
-    } else {
-        echo "Type de spectacle introuvable.";
+foreach($listeSpectacles as $spectacles){
+    if($spectacles->getIDSpectacle()==$idSpectacle){
+        $result=$spectacles;
     }
-} else {
-    echo "Aucun ID de type spectacle fourni.";
 }
-?>
+
+if($DateSpectacle!=null){
+    $result->setDateSpectacle($DateSpectacle);
+}
+
+if($heure_spectacle!=null){
+    $result->setHeureSpectacle($heure_spectacle);
+}
+
+$result->updatespectacle();
+
+//header('Location: /ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle='.$idSpectacle);

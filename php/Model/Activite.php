@@ -2,18 +2,18 @@
 
 class Activite {
     private $IDActivite;
-    private $IDTypeActivite;
+    private $IDTypeActivite; 
     private $DateActivite;
     private $HeureActivite;
 
     public function __construct($IDActivite, $IDTypeActivite, $DateActivite, $HeureActivite) {
         $this->IDActivite = $IDActivite;
-        $this->IDTypeActivite = $IDTypeActivite;
+        $this->IDTypeActivite = $IDTypeActivite; 
         $this->DateActivite = $DateActivite;
         $this->HeureActivite = $HeureActivite;
     }
 
-    // Getters
+    // Méthodes getters et setters...
     public function getIDActivite() {
         return $this->IDActivite;
     }
@@ -30,7 +30,6 @@ class Activite {
         return $this->HeureActivite;
     }
 
-    // Setters
     public function setIDActivite($IDActivite) {
         $this->IDActivite = $IDActivite;
     }
@@ -48,18 +47,18 @@ class Activite {
     }
 
     // Fetch all activities from the database
-    public static function fetchListActiviteFromDatabase() {
-        $connexion = DB::connexionDB();
-        $SQL = "SELECT * FROM ACTIVITE";
-        $requete = $connexion->prepare($SQL);
-        $requete->execute();
-        $resultat = $requete->fetchAll(PDO::FETCH_ASSOC);
-        $listeObjetActivite = [];
-        foreach ($resultat as $row) {
-            $activite = new Activite($row['IDActivite'], $row['IDTypeActivite'], $row['DateActivite'], $row['HeureActivite']);
-            array_push($listeObjetActivite, $activite);
+    public static function fetchListFicheActiviteFromDatabase() {
+        $conn = DB::connexionDB();
+        $query = "SELECT * FROM ACTIVITE";
+        $result = $conn->prepare($query);
+        $result->execute();
+        $listeActivite = [];
+        foreach ($result as $row) {
+            $typeActivite = TypeActivite::fetchByID($row['IDTypeActivite']);
+            $activite = new Activite($row['IDActivite'], $typeActivite, $row['DateActivite'], $row['HeureActivite']);
+            array_push($listeActivite, $activite); 
         }
-        return $listeObjetActivite;
+        return $listeActivite;
     }
 
     // Fetch a single activity by its ID
@@ -71,52 +70,55 @@ class Activite {
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            return new Activite($row['IDActivite'], $row['IDTypeActivite'], $row['DateActivite'], $row['HeureActivite']);
+            $typeActivite = TypeActivite::fetchByID($row['IDTypeActivite']);
+            return new Activite($row['IDActivite'], $typeActivite, $row['DateActivite'], $row['HeureActivite']);
         } else {
-            return null;
+            return null; 
         }
     }
 
-    // Update an activity in the database
-    public function updateActivite() {
+    // Update an activity
+    public function updateActivite(){
         $conn = DB::connexionDB();
-        $query = "UPDATE ACTIVITE SET IDTypeActivite = :IDTypeActivite, DateActivite = :DateActivite, HeureActivite = :HeureActivite WHERE IDActivite = :IDActivite";
+        $query = "UPDATE ACTIVITE SET DateActivite = ?, HeureActivite = ? WHERE IDActivite = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(':IDActivite', $this->IDActivite, PDO::PARAM_INT);
-        $stmt->bindParam(':IDTypeActivite', $this->IDTypeActivite, PDO::PARAM_INT);
-        $stmt->bindParam(':DateActivite', $this->DateActivite);
-        $stmt->bindParam(':HeureActivite', $this->HeureActivite);
+        $stmt->bindParam(1, $this->DateActivite);
+        $stmt->bindParam(2, $this->HeureActivite);
+        $stmt->bindParam(3, $this->IDActivite);
         $stmt->execute();
     }
 
-    // Save a new activity to the database
+    // Save an activity to the database
     public function saveToDatabase() {
         $conn = DB::connexionDB();
         $query = "INSERT INTO ACTIVITE (IDTypeActivite, DateActivite, HeureActivite) VALUES (:IDTypeActivite, :DateActivite, :HeureActivite)";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':IDTypeActivite', $this->IDTypeActivite, PDO::PARAM_INT);
-        $stmt->bindParam(':DateActivite', $this->DateActivite);
-        $stmt->bindParam(':HeureActivite', $this->HeureActivite);
+        $stmt->bindParam(':DateActivite', $this->DateActivite, PDO::PARAM_STR);
+        $stmt->bindParam(':HeureActivite', $this->HeureActivite, PDO::PARAM_STR);
         $stmt->execute();
-        $this->IDActivite = $conn->lastInsertId(); // Assigne l'ID de l'activité insérée à l'objet
     }
 
-    // Fetch activities by type ID
+    // Fetch all activities by type ID
     public static function fetchActivitesByTypeID($IDTypeActivite) {
         $conn = DB::connexionDB();
         $query = "SELECT * FROM ACTIVITE WHERE IDTypeActivite = :IDTypeActivite";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':IDTypeActivite', $IDTypeActivite, PDO::PARAM_INT);
         $stmt->execute();
-        $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $listeObjetActivite = [];
-        foreach ($resultat as $row) {
-            $activite = new Activite($row['IDActivite'], $row['IDTypeActivite'], $row['DateActivite'], $row['HeureActivite']);
-            array_push($listeObjetActivite, $activite);
+        
+        $activites = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $typeActivite = TypeActivite::fetchByID($row['IDTypeActivite']);
+            $activite = new Activite(
+                $row['IDActivite'], 
+                $typeActivite, 
+                $row['DateActivite'], 
+                $row['HeureActivite']
+            );
+            $activites[] = $activite;
         }
-        return $listeObjetActivite;
+        return $activites;
     }
 }
-
-
 
