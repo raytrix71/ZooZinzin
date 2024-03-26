@@ -17,4 +17,7 @@ if ($id === null) {
 }
 
 echo "Bonjour voici la reservation n°".$id;
+$test[]=BilletResaEntree::getBilletEntreeResa(31);
+var_dump($test);
+
 ?>
