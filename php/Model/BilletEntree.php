@@ -76,7 +76,7 @@ class BilletEntree
     public static function getAllBilletsEntree()
     {
         $db = DB::connexionDB();
-        $billetsEntree = $db->query('SELECT * FROM BilletEntree');
+        $billetsEntree = $db->query('SELECT * FROM BILLETENTREE');
         while ($row = $billetsEntree->fetchAll(PDO::FETCH_ASSOC)) {
             $billetEntree = new BilletEntree($row['IDBilletEntree'], $row['IDReservation'], $row['DateValidatiteEntree'], $row['ValidationEntree'], $row['IDTypeEntree']);
             array_push($result, $billetEntree);
@@ -97,8 +97,14 @@ class BilletEntree
     public function updateInDB()
     {
         $db = DB::connexionDB();
-        $stmt = $db->prepare('UPDATE BILLETENTREE SET IDReservation = ?, DateValidatiteEntree = ?, ValidationEntree = ?, IDTypeEntree = ? WHERE IDBilletEntree = ?');
-        $stmt->execute([$this->IDReservation, $this->DateValidatiteEntree, $this->ValidationEntree, $this->IDTypeEntree, $this->IDBilletEntree]);
+        $stmt = $db->prepare('UPDATE BILLETENTREE SET DateValidatiteEntree = ?, ValidationEntree = ?, IDTypeEntree = ? WHERE IDBilletEntree = ? ');
+        $stmt->execute([$this->DateValidatiteEntree, $this->ValidationEntree, $this->IDTypeEntree, $this->IDBilletEntree]);
+    }
+
+    public function validerBillet(){
+        $db = DB::connexionDB();
+        $stmt = $db->prepare('UPDATE BILLETENTREE SET ValidationEntree = 1 WHERE IDBilletEntree = ?');
+        $stmt->execute([$this->IDBilletEntree]);
     }
 
     public static function getBilletID($id){
@@ -106,6 +112,7 @@ class BilletEntree
         $req = $db->prepare('SELECT * FROM BILLETENTREE WHERE IDReservation = ?');
         $req->execute([$id]);
         $listebillet = $req->fetchAll();
+        $result = array();
         foreach($listebillet as $row){
             $billetEntree = new BilletEntree($row['IDBilletEntree'], $row['IDReservation'], $row['DateValidatiteEntree'], $row['ValidationEntree'], $row['IDTypeEntree']);
             array_push($result, $billetEntree);

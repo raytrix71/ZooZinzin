@@ -1,3 +1,7 @@
+<?php 
+$idAnimal = $_GET['idAnimal'];
+$idGroupe = $_GET['idGroupe'];
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -17,15 +21,16 @@
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Déclarer un problème</h2>
                             <hr>
-                            <form method="post" action="../../../../Fonction_PHP/Gestion_Animaux/DeclarerPbm.php">
-                                <div class="mb-3">
-                                    <label for="IDAnimal" class="form-label">ID Animal (optionnel si groupe)</label>
-                                    <input class="form-control" type="text" id="IDAnimal" name="IDAnimal" placeholder="ID ANIMAL (si applicable)">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="IDGroupe" class="form-label">ID Groupe (optionnel si animal)</label>
+                            <form method="post" action="/Fonction_PHP/Gestion_Animaux/DeclarerPbm.php">
+                                <?php if(isset($idAnimal)): ?>
+                                    
+                                    <input class="form-control" value="<?php echo $idAnimal ?>" type="hidden" id="IDAnimal" name="IDAnimal" placeholder="ID ANIMAL (si applicable)">
+                                
+                                <?php else: ?>
+                                    
                                     <input class="form-control" type="text" id="IDGroupe" name="IDGroupe" placeholder="ID GROUPE (si applicable)">
-                                </div>
+                                <?php endif; ?>
+
                                 <div class="mb-3">
                                     <label for="DatePB" class="form-label">Date du problème</label>
                                     <input class="form-control" id="DatePB" name="DatePB" type="date" required>

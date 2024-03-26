@@ -66,11 +66,11 @@ class BilletResaEntree{
 
     public static function getDateResaBillet($numResa){
         $bdd=DB::connexionDB();
-        $sql = "SELECT DISTINCT DateReservation FROM RESERVATION WHERE IDReservation=?";
+        $sql = "SELECT DISTINCT DateValidatiteEntree FROM BILLETENTREE WHERE IDReservation=?";
         $connexion = $bdd->prepare($sql);
         $connexion->execute(array($numResa));
         $resultat = $connexion->fetch();
-        return $resultat['DateReservation'];
+        return $resultat['DateValidatiteEntree'];
     }
 
 
