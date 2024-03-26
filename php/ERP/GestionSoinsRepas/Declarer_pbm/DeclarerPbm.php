@@ -12,7 +12,7 @@ $idGroupe = $_GET['idGroupe'];
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 </head>
 
-<body>
+<body style="background: RGB(217,217,217);">
     <section class="position-relative py-4 py-xl-5" style="background: RGB(217,217,217);">
         <div class="container position-relative">
             <div class="row d-flex justify-content-center">
@@ -22,36 +22,30 @@ $idGroupe = $_GET['idGroupe'];
                             <h2 class="text-center mb-4">Déclarer un problème</h2>
                             <hr>
                             <form method="post" action="/Fonction_PHP/Gestion_Animaux/DeclarerPbm.php">
-                                <?php if(isset($idAnimal)): ?>
+                                <?php if($idGroupe=='no'): ?>
                                     
                                     <input class="form-control" value="<?php echo $idAnimal ?>" type="hidden" id="IDAnimal" name="IDAnimal" placeholder="ID ANIMAL (si applicable)">
-                                
+                                    <input type="hidden" name="IDGroupe" value="no">
                                 <?php else: ?>
                                     
-                                    <input class="form-control" type="text" id="IDGroupe" name="IDGroupe" placeholder="ID GROUPE (si applicable)">
+                                    <input class="form-control" value="<?php echo $idGroupe ?>" type="hidden" id="IDGroupe" name="IDGroupe" placeholder="ID GROUPE ">
+                                    <input type="hidden" name="IDAnimal" value="no">
                                 <?php endif; ?>
 
-                                <div class="mb-3">
-                                    <label for="DatePB" class="form-label">Date du problème</label>
-                                    <input class="form-control" id="DatePB" name="DatePB" type="date" required>
-                                </div>
+                                
+                                   
+                                
                                 <div class="mb-3">
                                     <label for="DescriptionPB" class="form-label">Description du problème</label>
                                     <input class="form-control" type="text" id="DescriptionPB" name="DescriptionPB" placeholder="Description du problème" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="SoinsRealiseAvantIntervention" class="form-label">Soins réalisés avant intervention (optionnel)</label>
-                                    <input class="form-control" type="text" id="SoinsRealiseAvantIntervention" name="SoinsRealiseAvantIntervention" placeholder="Soins réalisés avant intervention">
+                                    <label for="SoinsRealiseAvantIntervention" class="form-label">Soins réalisés avant intervention </label>
+                                    <input class="form-control" type="text" id="SoinsRealiseAvantIntervention" name="SoinsRealiseAvantIntervention" placeholder="Soins réalisés avant intervention" required>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="StatutProblene" class="form-label">Statut du problème</label>
-                                    <input class="form-control" type="text" id="StatutProblene" name="StatutProblene" placeholder="Statut du problème" required>
-                                </div>
-                                <hr>
-                                <div class="mb-3">
-                                    <label for="image" class="form-label">Image (optionnel)</label>
-                                    <input class="form-control" type="file" id="image" name="image" accept="image/*">
-                                </div>
+                                    
+                                    <input class="form-control" type="hidden" id="StatutProbleme" name="StatutProbleme" placeholder="Statut du problème" value="en cours" required>
+                                
                                 <hr>
                                 <button class="btn btn-primary d-block w-100" type="submit" style="--bs-primary: RGB(54,123,34);--bs-primary-rgb: 54,123,34;background: rgb(54,123,34);margin-top: 14px;">Déclarer</button>
                             </form>

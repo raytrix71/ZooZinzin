@@ -40,7 +40,7 @@ $idparcelle=$_GET['idparcelle'];
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/ChangementParcelle/affectationEnclos.php?nomEspece=<?php echo $animal->getNomEspece() ?>&IDAnimal=<?php echo $animal->getIDAnimal() ?>&IDGroupe=null">Changer de parcelle</a>
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/FicheAnimal/FicheAnimal.php?idAnimal=<?php echo $animal->getIDAnimal() ?>">Fiche animal</a>
-                        <a class="dropdown-item" href="/ERP/GestionSoinsRepas/Declarer_pbm/DeclarerPbm.php?idAnimal=<?php echo $animal->getIDAnimal() ?>&idGroupe=null">Déclarer un problème</a>
+                        <a class="dropdown-item" href="/ERP/GestionSoinsRepas/Declarer_pbm/DeclarerPbm.php?idAnimal=<?php echo $animal->getIDAnimal() ?>&idGroupe=no">Déclarer un problème</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@ $idparcelle=$_GET['idparcelle'];
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/ChangementParcelle/affectationEnclos.php?nomEspece=<?php echo $groupe->getNomEspece() ?>&IDGroupe=<?php echo $groupe->getIDGroupe() ?>&IDAnimal=null">Changer de parcelle</a>
                         <a class="dropdown-item" href="/ERP/Gestion_animaux/FicheGroupe/FicheGroupe.php?idGroupe=<?php echo $groupe->getIDGroupe() ?>">Fiche groupe</a>
-                        <a class="dropdown-item" href="/ERP/GestionSoinsRepas/Declarer_pbm/DeclarerPbm.php?idAnimal=null&idGroupe=<?php echo $groupe->getIDGroupe() ?>">Déclarer un problème</a>
+                        <a class="dropdown-item" href="/ERP/GestionSoinsRepas/Declarer_pbm/DeclarerPbm.php?idGroupe=<?php echo $groupe->getIDGroupe() ?>&idAnimal=no">Déclarer un problème</a>
                     </div>
                 </div>
             </div>
