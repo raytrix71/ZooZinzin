@@ -29,10 +29,10 @@ $listeSpectacles = TypeSpectacle::fetchListSpectacleFromDatabase();
                 <hr>
                 <div>
                     
-                    <h5>Lieu:<?php echo $typespectacle->getLieuSpectacle(); ?></h5>
-                    <h5>Description:<?php echo $typespectacle->getDescriptionSpectacle() ?> kg</h5>
-                    <h5>Tarif:<?php echo $typespectacle->getTarifSpectacle() ?> m</h5>
-                    <h5>Capacité:<?php echo $typespectacle->getCapaciteMaxSpectacle() ?></h5>
+                    <h5>Lieu :<?php echo $typespectacle->getLieuSpectacle(); ?></h5>
+                    <h5>Description :<?php echo $typespectacle->getDescriptionSpectacle() ?> kg</h5>
+                    <h5>Tarif :<?php echo $typespectacle->getTarifSpectacle() ?>€</h5>
+                    <h5>Capacité :<?php echo $typespectacle->getCapaciteMaxSpectacle() ?></h5>
                 </div><button class="btn btn-primary" onclick="window.location.href='/ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle=<?php echo urlencode($typespectacle->getIDTypeSpectacle()); ?>'" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>
                 <button class="btn btn-success" onclick="window.location.href='/ERP/GestionBillets/Spectacle/CreneauSpectacle.php?IDTypeSpectacle=<?php echo urlencode($typespectacle->getIDTypeSpectacle()); ?>' " type="button" style="margin-top: 30px;margin-left: 10px;">Ajouter</button>
             </div>

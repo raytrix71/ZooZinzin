@@ -86,7 +86,8 @@ if (!$typeSpectacle) {
 </body>
 </html>
 
-                               
+
+<!-- CSS -->                      
 <style>
         .card-custom {
             padding: 16px;

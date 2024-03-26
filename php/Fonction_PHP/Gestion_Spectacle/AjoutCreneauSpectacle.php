@@ -4,8 +4,7 @@ include_once '/var/www/html/Model/DB.php';
 include_once '/var/www/html/Model/Spectacle.php';
 include '/var/www/html/Model/TypeSpectacle.php';
 
-// Assurez-vous d'utiliser $_POST ici car vous envoyez le formulaire en méthode POST
-$idTypeSpectacle = $_POST['IDTypeSpectacle'] ?? null; // Utilisez l'opérateur null coalescent pour gérer l'absence de donnée
+$idTypeSpectacle = $_POST['IDTypeSpectacle'] ?? null; 
 $dateSpectacle = $_POST['DateSpectacle'] ?? null;
 $heureSpectacle = $_POST['HeureSpectacle'] ?? null;
 

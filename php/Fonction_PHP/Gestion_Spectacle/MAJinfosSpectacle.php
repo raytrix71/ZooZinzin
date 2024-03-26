@@ -22,7 +22,8 @@ if($heure_spectacle!=null){
 }
 
 $result->updatespectacle();
-//header('Location: /ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle='.$idSpectacle);
+
+header('Location: /ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle='.$idSpectacle);
 
 
 ?>
