@@ -1,7 +1,6 @@
-<?php
+<?php 
 
-class TypeActivite
-{
+class TypeActivite {
     private $IDTypeActivite;
     private $NomActivite;
     private $LieuActivite;
@@ -9,8 +8,7 @@ class TypeActivite
     private $TarifActivite;
     private $CapaciteMaxActivite;
 
-    public function __construct($IDTypeActivite, $NomActivite, $LieuActivite, $DescriptionActivite, $TarifActivite, $CapaciteMaxActivite)
-    {
+    public function __construct($IDTypeActivite, $NomActivite, $LieuActivite, $DescriptionActivite, $TarifActivite, $CapaciteMaxActivite) {
         $this->IDTypeActivite = $IDTypeActivite;
         $this->NomActivite = $NomActivite;
         $this->LieuActivite = $LieuActivite;
@@ -19,82 +17,93 @@ class TypeActivite
         $this->CapaciteMaxActivite = $CapaciteMaxActivite;
     }
 
-    // Getters and Setters
-
-    public function getIDTypeActivite()
-    {
+    // Getters
+    public function getIDTypeActivite() {
         return $this->IDTypeActivite;
     }
 
-    public function setIDTypeActivite($IDTypeActivite)
-    {
-        $this->IDTypeActivite = $IDTypeActivite;
-    }
-
-    public function getNomActivite()
-    {
+    public function getNomActivite() {
         return $this->NomActivite;
     }
 
-    public function setNomActivite($NomActivite)
-    {
-        $this->NomActivite = $NomActivite;
-    }
-
-    public function getLieuActivite()
-    {
+    public function getLieuActivite() {
         return $this->LieuActivite;
     }
 
-    public function setLieuActivite($LieuActivite)
-    {
-        $this->LieuActivite = $LieuActivite;
-    }
-
-    public function getDescriptionActivite()
-    {
+    public function getDescriptionActivite() {
         return $this->DescriptionActivite;
     }
 
-    public function setDescriptionActivite($DescriptionActivite)
-    {
-        $this->DescriptionActivite = $DescriptionActivite;
-    }
-
-    public function getTarifActivite()
-    {
+    public function getTarifActivite() {
         return $this->TarifActivite;
     }
 
-    public function setTarifActivite($TarifActivite)
-    {
-        $this->TarifActivite = $TarifActivite;
-    }
-
-    public function getCapaciteMaxActivite()
-    {
+    public function getCapaciteMaxActivite() {
         return $this->CapaciteMaxActivite;
     }
 
-    public function setCapaciteMaxActivite($CapaciteMaxActivite)
-    {
+    // Setters
+    public function setIDTypeActivite($IDTypeActivite) {
+        $this->IDTypeActivite = $IDTypeActivite;
+    }
+
+    public function setNomActivite($NomActivite) {
+        $this->NomActivite = $NomActivite;
+    }
+
+    public function setLieuActivite($LieuActivite) {
+        $this->LieuActivite = $LieuActivite;
+    }
+
+    public function setDescriptionActivite($DescriptionActivite) {
+        $this->DescriptionActivite = $DescriptionActivite;
+    }
+
+    public function setTarifActivite($TarifActivite) {
+        $this->TarifActivite = $TarifActivite;
+    }
+
+    public function setCapaciteMaxActivite($CapaciteMaxActivite) {
         $this->CapaciteMaxActivite = $CapaciteMaxActivite;
     }
 
-
-    public static function fetchListTypeActiviteFromDatabase()
-    {
-        $connexion = DB::connexionDB();
-        $SQL = "SELECT * FROM TYPEACTIVITE";
-        $requete = $connexion->prepare($SQL);
-        $requete->execute();
-        $resultat = $requete->fetchAll();
-        $listeObjetTypeActivite = array();
-        foreach ($resultat as $row) {
-            $activite = new TypeActivite($row['IDTypeActivite'], $row['NomActivite'], $row['LieuActivite'], $row['DescriptionActivite'], $row['TarifActivite'], $row['CapaciteMaxActivite']);
-            array_push($listeObjetTypeActivite, $activite);
+    // Fetch all activity types from the database
+    public static function fetchListActiviteFromDatabase() {
+        $conn = DB::connexionDB();
+        $query = "SELECT * FROM TYPEACTIVITE";
+        $result = $conn->prepare($query);
+        $result->execute();
+        $listeActivite = [];
+        foreach ($result as $row) {
+            $typeActivite = new TypeActivite($row['IDTypeActivite'], $row['NomActivite'], $row['LieuActivite'], $row['DescriptionActivite'], $row['TarifActivite'], $row['CapaciteMaxActivite']);
+            array_push($listeActivite, $typeActivite); 
         }
+        return $listeActivite;
+    }
 
-        return $listeObjetTypeActivite;
+    // Fetch a single activity type by its ID
+    public static function fetchByID($IDTypeActivite) {
+        try {
+            $conn = DB::connexionDB();
+            $query = "SELECT * FROM TYPEACTIVITE WHERE IDTypeActivite = :IDTypeActivite";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':IDTypeActivite', $IDTypeActivite, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return new TypeActivite($row['IDTypeActivite'], $row['NomActivite'], $row['LieuActivite'], $row['DescriptionActivite'], $row['TarifActivite'], $row['CapaciteMaxActivite']);
+            } else {
+                // Return null or handle otherwise if no activity type is found
+                return null;
+            }
+        } catch (Exception $e) {
+            // Handle or log the error
+            error_log("An error occurred while fetching the activity type: " . $e->getMessage());
+            return null;
+        }
     }
 }
+
+
