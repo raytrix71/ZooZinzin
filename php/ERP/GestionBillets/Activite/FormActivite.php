@@ -14,13 +14,14 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
 
 <body>
     <section class="position-relative py-4 py-xl-5" style="background: RGB(217,217,217);">
+    <form id="mainForm" method="post" action="/Fonction_PHP/Gestion_Spectacle/Ajout_activite.php">
         <div class="container position-relative">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout Activité</h2>
-                            <form id="mainForm" method="POST" action="/Fonction_PHP/Gestion_Activite/Ajout_activite.php">
+                            
                                 <div class="mb-3">
                                     <label for="NomActivite" class="form-label">Nom de l'activité</label>
                                     <input type="text" class="form-control" id="NomActivite" name="NomActivite" placeholder="Nom de l'activité" required>
@@ -43,14 +44,10 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                                 </div>
 
                                 <hr>
-                                <div class="mb-3">
-                                    <label for="ImageActivite" class="form-label">Image</label>
-                                    <input class="form-control" type="file" id="ImageActivite" name="ImageActivite" placeholder="Image" accept="image/*">
-                                </div>
-                                <hr>
+                                
 
                                 <button class="btn btn-success d-block w-100" type="button" data-bs-toggle="modal" data-bs-target="#modal-2">Enregistrer</button>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -95,7 +92,7 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
             </div>
         </div>
     </div>
-
+    </form>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
 <script>

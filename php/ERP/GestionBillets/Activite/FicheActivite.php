@@ -30,8 +30,13 @@ if (!$typeActivite) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiche Activité</title>
+    <title>Fiche Activite</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/ERP/NavBar/assets/bootstrap/js/navbar.min.js"></script>
+
+   
 </head>
 <body class="bg-light">
 
@@ -61,7 +66,7 @@ if (!$typeActivite) {
                             <h5 class="modal-title" id="modalLabel<?php echo $activite->getIDActivite(); ?>">Modification de l'activité</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="/Fonction_PHP/Gestion_Activite/MAJinfosActivite.php" method="post">
+                        <form action="/Fonction_PHP/Gestion_Spectacle/MAJinfosActivite.php" method="post">
                             <div class="modal-body">
                                 <input type="hidden" name="IDActivite" value="<?php echo $activite->getIDActivite(); ?>">
                                 <div class="mb-3">
@@ -89,3 +94,28 @@ if (!$typeActivite) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<!-- CSS -->                      
+<style>
+        .card-custom {
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            margin: 20px;
+            border-radius: 20px;
+            background: linear-gradient(136deg, var(--bs-pink) 0%, rgb(255,255,255) 0%, #ffffff 100%, rgb(182,41,164) 100%, var(--bs-emphasis-color) 100%), var(--bs-gray-800);
+            width: 280px;
+            backdrop-filter: opacity(0.96);
+            --bs-primary: #0a6c25;
+            --bs-primary-rgb: 10,108,37;
+            color: rgb(0,0,0);
+        }
+        .btn-custom-color {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        .btn-custom-color:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    </style>

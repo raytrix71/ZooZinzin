@@ -13,7 +13,7 @@ $idTypeActivite = $_GET['IDTypeActivite'] ?? null;
     <title>Reservation d'activité</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 </head>
-<body>
+<body style="background: RGB(217,217,217);">
     <section class="position-relative py-4 py-xl-5" style="background: RGB(217,217,217);">
         <div class="container position-relative">
             <div class="row d-flex justify-content-center">
@@ -21,7 +21,7 @@ $idTypeActivite = $_GET['IDTypeActivite'] ?? null;
                     <div class="card mb-5" style="border-style: solid; border-color: var(--bs-emphasis-color); border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg); border-radius: 25px; border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Réservation d'activité</h2>
-                            <form method="post" action="traitementReservationActivite.php"> <!-- Changez l'action selon votre script de traitement -->
+                            <form method="post" action="/Fonction_PHP/Gestion_Spectacle/AjoutCreneauActivite.php"> <!-- Changez l'action selon votre script de traitement -->
                                 <input type="hidden" name="IDTypeActivite" value="<?php echo htmlspecialchars($idTypeActivite); ?>">
                                 <div class="mb-3">
                                     <label for="DateActivite" class="form-label">Date de l'activité</label>

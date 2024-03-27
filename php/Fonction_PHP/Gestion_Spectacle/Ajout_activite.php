@@ -15,6 +15,7 @@ $sql = "INSERT INTO TYPEACTIVITE (NomActivite, LieuActivite, DescriptionActivite
 $stmt = $connDB->prepare($sql);
 $stmt->execute([$nom_activite, $lieu_activite, $description_activite, $tarif_activite, $capacite_activite]);
 
+if($_POST['reservation'] == 'oui'){
 $sql = "SELECT IDTypeActivite FROM TYPEACTIVITE ORDER BY IDTypeActivite DESC LIMIT 1";
 $stmt = $connDB->query($sql);
 $row = $stmt->fetch();
@@ -27,9 +28,11 @@ $sql = "INSERT INTO ACTIVITE (IDTypeActivite, DateActivite, HeureActivite) VALUE
 
 $stmt = $connDB->prepare($sql);
 $stmt->execute([$IDTypeActivite, $date_activite, $heure_activite]);
+}
 
 ?>
 
 <script>
-    alert("Ajout de l'activité réalisé avec succès");
+    alert("Ajout de l'activité est réalisé avec succès");
     window.location.href = '/ERP/GestionBillets/Activite/ListeActivite.php';
+</script>

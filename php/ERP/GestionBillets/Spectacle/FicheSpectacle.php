@@ -33,6 +33,7 @@ if (!$typeSpectacle) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/ERP/NavBar/assets/bootstrap/js/navbar.min.js"></script>
 
    
 </head>
