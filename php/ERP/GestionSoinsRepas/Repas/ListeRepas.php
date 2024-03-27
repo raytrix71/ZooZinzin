@@ -70,6 +70,46 @@ if(!isset($listeRepas)){$listeRepas=null;};
                     <?php endforeach;?>    
                 <?php endif; ?>
             <?php endforeach;?>
+
+
+            <?php foreach($listeGroupe as $groupe):?>
+               
+               <?php if($groupe->getIDParcelle()==$Parcelle->getIDParcelle()): ?>   
+                   <?php foreach($listeRepas as $repas): ?>
+                       <?php if($groupe->getIDGroupe()==$repas->getIDGroupe()): ?>
+                           
+                           <div class="row">
+                               <div class="col">
+                                   <div class="card" style="background: rgb(217,217,217);">
+                                       <div class="card-body" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;background: var(--bs-body-bg);padding-right: 0px;margin-bottom: 0px;margin-top: 15px;">
+                                           <div class="container">
+                                               <div class="row">
+                                                   <div class="col-md-6">
+                                                       <h4><?php echo "Groupe: ".$groupe->getIDGroupe() ?></h4>
+                                                       <?php foreach($listeAliment as $aliment):?>
+                                                           <?php if($aliment->getIDAliment()==$repas->getIDAliment()): ?>
+                                                               <h5><?php echo $aliment->getNomAliment() ?></h5>
+                                                           <?php endif; ?>
+                                                       <? endforeach; ?>
+                                                       <h6><?php echo $groupe->getNomEspece() ?></h6>
+                                                       <h6 class="text-muted mb-2">Qte: <?php echo " ".$repas->getQteDonnee()." " ?> KG</h6>
+                                                 </div>
+                                                   <div class="col-md-6 d-md-flex d-lg-flex justify-content-md-end align-items-md-center justify-content-lg-end align-items-lg-center"><button onclick="window.location.href='/Fonction_PHP/SoinsRepas/ValidationRepas.php?idRepas=<?php echo $repas->getIDRepas() ?>'" class="btn btn-primary" type="button" style="background: rgb(54,123,34);">Valider</button></div>
+                                               </div>
+                                           </div>
+                                           <h1 style="margin-right: 0px;"></h1>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           
+                       <?php endif; ?>
+                   <?php endforeach;?>    
+               <?php endif; ?>
+           <?php endforeach;?>                                                         
+
+
+
         <?php endif; ?>
     <?php endforeach; ?>
    

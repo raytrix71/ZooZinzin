@@ -17,7 +17,16 @@
                     $_SESSION['nom'] = $employe->get_nomEmploye();
                     $_SESSION['IDzone'] = $employe->get_idzone();
                     header("Location: /ERP/Dashboard/dashboard.php");
-                };
+                }
+                else{
+                    
+                        echo "<script>window.alert('Identifiants incorrects. Veuillez réessayer.');
+                        window.location.href = '/ERP/Login/Login.php';
+                        </script>";
+                      
+                    
+                   
+                }
             
             }
         }
