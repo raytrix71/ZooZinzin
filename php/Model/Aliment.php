@@ -48,6 +48,13 @@ class Aliment{
         $bdd->exec($sql);
     }
 
+    function ajoutDB(){
+        $bdd = DB::connexionDB();
+        $sql = "INSERT INTO ALIMENT (NomAliment) VALUES ('$this->nomAliment')";
+        $bdd->exec($sql);
+    }
+
+
     function getIDAliment(){
         return $this->idAliment;
     }
