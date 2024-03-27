@@ -20,5 +20,6 @@ $sql = "INSERT INTO EMPLOYE (PrenomEmploye, NomEmploye, AdresseEmploye, CPEmploy
 
 }
 $connDB->exec($sql);
+header('Location: /ERP/Dashboard/dashboard.php');
 
 ?>

@@ -1,6 +1,5 @@
 
 <?php
-include('/var/www/html/Fonction_PHP/Erreur.php');
 include('/var/www/html/Fonction_PHP/connexionDB.php');
 $nom_espece = $_POST['nom_espece'];
 $esperance = $_POST['esperance'];
@@ -38,8 +37,7 @@ if(!isset($TxHumMax) || !isset($TxHumMin) || $TxHumMax === '' || $TxHumMin === '
 }
 
 if($TempMax<=$TempMin || $TempMin>=$TempMax || !isset($TempMax) || !isset($TempMin)){
-    $msgerreur="Erreur dans les températures, attention a ce que la température minimale soit inférieure à la température maximale";
-    erreur($msgerreur);
+    header('Location: /ERP/Gestion_animaux/Ajout_Espece/AjoutEspece.php');
 }
 
 else{
@@ -79,19 +77,23 @@ else{
                     
                 } 
                 
-                else {
-                    echo "Le fichier téléchargé n'est pas une image.";
-                }
+                
         } 
         
-        else {
-            echo "Aucun fichier n'a été téléchargé.";
-        }
+        
 
     $connDB = connexionDB();
     $sql = "INSERT INTO ESPECE (NomEspece, Esperance, TailleMoyenne, PoidsMoyen, DescriptionEspece, TempsGestation, Effectif, TempMax, TempMin, PHMax, PHMin, TxHumMax, TxHumMin, protege, individuel, IDZone,Alim1,Qte1,Alim2,Qte2,Alim3,Qte3) VALUES (:nom_espece, :esperance, :taille, :poids, :description, :gestation, :effectif, :TempMax, :TempMin, :PHMax, :PHMin, :TxHumMax, :TxHumMin, :protege, :individuel, :zone, :Alim1, :Qte1, :Alim2, :Qte2, :Alim3, :Qte3)";
     $req=$connDB->prepare($sql);
     $req->execute(['nom_espece'=>$nom_espece, 'esperance'=>$esperance, 'taille'=>$taille,  'poids'=>$poids,'description'=>$description, 'gestation'=>$gestation,'effectif'=>$effectif,'TempMax'=>$TempMax,'TempMin'=>$TempMin,'PHMax'=>$PHMax,'PHMin'=>$PHMin,'TxHumMax'=>$TxHumMax,'TxHumMin'=>$TxHumMin,'protege'=>$protege,'individuel'=>$individuel,'zone'=>$zone,'Alim1'=>$Aliment1,'Qte1'=>$Qte1,'Alim2'=>$Aliment2,'Qte2'=>$Qte2,'Alim3'=>$Aliment3, 'Qte3'=>$Qte3]);            
    
-    header('Location: /ERP/Gestion_animaux/ListeAntagonistes/ListeAntagonistes.php?nomespece='.$nom_espece);
-}
+    
+};
+
+?>
+
+<script>
+    window.alert("L'espèce a bien été ajoutée");
+    document.location.href = '/ERP/Gestion_animaux/ListeAntagonistes/ListeAntagonistes.php?nomespece=<?php echo $nom_espece ?>';
+</script>
+

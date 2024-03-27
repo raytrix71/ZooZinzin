@@ -96,7 +96,7 @@ function afficherZone(){
     $reponse = $connexion->fetchAll();
     
     foreach($reponse as $column){
-        echo "<option value=\"" . $column['IDZone'] . "\" selected>{$column['NomCategorieEspece']}</option>\n";
+        echo "<option value=\"" . $column['IDZone'] . "\" selected>{$column['NomCategorieEspece']} {$column['IDZone']}</option>\n";
     }
 
 }
