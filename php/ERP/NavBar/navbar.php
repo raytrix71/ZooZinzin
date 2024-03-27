@@ -27,6 +27,7 @@
                     <li class="nav-item"></li>
                 </ul>
             </div>
+            <?php if($_SESSION['role']=="Veterinaire" || $_SESSION['role']=="Soignant" ): ?>
             <div>
                 <hr class="mt-0">
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -37,9 +38,11 @@
                                 <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
                                 <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"></path>
                             </svg>Liste Especes</a></li>
+                <?php if($_SESSION['role']=="Veterinaire"): ?>
                     <li class="nav-item"><a class="nav-link link-body-emphasis" href="/ERP/Gestion_animaux/Ajout_Espece/AjoutEspece.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus me-2">
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
                             </svg>Ajout Espece</a></li>
+                <?php endif; ?>
                     <li class="nav-item"><a class="nav-link link-body-emphasis" href="/ERP/Gestion_animaux/ListeParcelle/ListeParcelle.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bookshelf me-2">
                                 <path d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5M3 14h10v-3H3zm0-4h10V7H3zm0-4h10V3H3z"></path>
                             </svg> Gestion enclos</a></li>
@@ -47,6 +50,8 @@
                     <li class="nav-item"></li>
                 </ul>
             </div>
+            <?php endif; ?>
+            <?php if($_SESSION['role']=="Veterinaire" || $_SESSION['role']=="Soignant" ): ?>
             <div>
                 <hr class="mt-0">
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -62,6 +67,8 @@
                     <li class="nav-item"></li>
                 </ul>
             </div>
+            <?php endif; ?>
+            <?php if($_SESSION['role']=="Veterinaire" ): ?>
             <div>
                 <hr class="mt-0">
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -78,6 +85,8 @@
                     <li class="nav-item"></li>
                 </ul>
             </div>
+            <?php endif; ?>
+            <?php if($_SESSION['role']=="admin" ): ?>
             <div>
                 <hr class="mt-0">
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -109,6 +118,8 @@
                     <li class="nav-item"></li>
                 </ul>
             </div>
+            <?php endif; ?>
+            <?php if($_SESSION['role']=="admin" || $_SESSION['role']=="crewmember" ): ?>
             <div>
                 <hr class="mt-0">
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -138,11 +149,12 @@
                     <li class="nav-item"></li>
                 </ul>
             </div>
+            <?php endif; ?>
             <div>
                 <hr>
-                <div class="dropdown"><a class="dropdown-toggle link-body-emphasis d-flex align-items-center text-decoration-none" aria-expanded="false" data-bs-toggle="dropdown" role="button"><strong>NOMEMPLOYE&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></a>
-                    <div class="dropdown-menu shadow text-small" data-popper-placement="top-start"><a class="dropdown-item" href="#">Paramètres</a><a class="dropdown-item" href="#">Profile</a>
-                        <div class="dropdown-divider"></div><a class="dropdown-item" href="/ERP/Login/logout.php">Deconnexion</a>
+                <div class="dropdown"><a class="dropdown-toggle link-body-emphasis d-flex align-items-center text-decoration-none" aria-expanded="false" data-bs-toggle="dropdown" role="button"><strong><?php echo $_SESSION['prenom'] ?>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong></a>
+                    <div class="dropdown-menu shadow text-small" data-popper-placement="top-start">
+                       <a class="dropdown-item" href="/ERP/Login/logout.php">Deconnexion</a>
                     </div>
                 </div>
             </div>

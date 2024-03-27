@@ -31,6 +31,6 @@ window.location.href = "/ERP/GestionBillets/ScanEntree/ScannerBilletEntree.php";
 <?php else: ?>
     <script>
     window.alert("Aucun billet trouvé");
-    header('Location: /ERP/GestionBillets/ScanEntree/ScannerBilletEntree.php');
+    window.location.href = "/ERP/GestionBillets/ScanEntree/ScannerBilletEntree.php";
     </script>
 <?php endif; ?>
