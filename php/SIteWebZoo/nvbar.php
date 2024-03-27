@@ -23,7 +23,7 @@
                 <ul class="navbar-nav links">
                     <li class="nav-item"><a class="nav-link" href="#" style="margin-left: 182px;">Horaires du parc</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="margin-left: 70px;">Découvrir le parc</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ListeResa.php" style="margin-left: 70px;">Liste des réservations</a></li>
                     <li class="nav-item"><a class="nav-link custom-navbar" href="/SiteWebZoo/CheckOut/checkout.php" style="padding-left: 12px;margin-left: 70px;color: var(--bs-success-text-emphasis);">Billeterie</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
