@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '/var/www/html/autoload.php';
 $i=$_POST['i'];
 $j=$_POST['j'];
