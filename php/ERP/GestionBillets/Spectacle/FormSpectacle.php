@@ -12,7 +12,8 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 </head>
 
-<body>
+<body style="background: RGB(217,217,217);">
+<form id="mainForm" method="POST" action="/Fonction_PHP/Gestion_Spectacle/Ajout_spectacle.php">
     <section class="position-relative py-4 py-xl-5" style="background: RGB(217,217,217);">
         <div class="container position-relative">
             <div class="row d-flex justify-content-center">
@@ -20,7 +21,7 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout Spectacle</h2>
-                            <form id="mainForm" method="POST" action="../../../Fonction_PHP/Gestion_Spectacle/Ajout_spectacle.php">
+                            <?php //form?>
                             <div class="mb-3">
                                     <label for="NomSpectacle" class="form-label"></label>
                                     <input type="text" class="form-control" id="NomSpectacle" name="NomSpectacle" placeholder="Nom du spectacle" required>
@@ -43,13 +44,9 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                                 </div>
 
                                 <hr>
-                                <div class="mb-3">
-                                    <p>Image</p><input class="form-control" type="file" id="image" name="image" placeholder="Image" accept="image/*">
-                                </div>
-                                <hr>
-
+                                
                                 <button class="btn btn btn-success d-block w-100" type="button" data-bs-toggle="modal" data-bs-target="#modal-2">Enregistrer</button>
-                            </form>
+                            <?php //ancienne fin form?>
                         </div>
                     </div>
                 </div>
@@ -93,8 +90,9 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
+</form>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
@@ -124,3 +122,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
     nonRadio.addEventListener('change', toggleAdditionalContent);
 });
 </script>
+</body>
+</html>
