@@ -20,3 +20,9 @@ if ($idTypeActivite !== null) {
     echo "Aucun ID de type d'activité fourni.";
 }
 
+?>
+
+<script>
+    alert("Ajout du créneau réalisé avec succès");
+    window.location.href = '/ERP/GestionBillets/Activite/ListeActivite.php';
+</script>

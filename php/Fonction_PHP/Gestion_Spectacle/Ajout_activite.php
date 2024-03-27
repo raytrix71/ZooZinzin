@@ -28,4 +28,8 @@ $sql = "INSERT INTO ACTIVITE (IDTypeActivite, DateActivite, HeureActivite) VALUE
 $stmt = $connDB->prepare($sql);
 $stmt->execute([$IDTypeActivite, $date_activite, $heure_activite]);
 
+?>
 
+<script>
+    alert("Ajout de l'activité réalisé avec succès");
+    window.location.href = '/ERP/GestionBillets/Activite/ListeActivite.php';

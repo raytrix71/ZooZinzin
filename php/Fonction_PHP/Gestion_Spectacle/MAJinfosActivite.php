@@ -23,6 +23,10 @@ if ($heureActivite != null) {
 
 $result->updateActivite();
 
-// Redirection après la mise à jour
-//header('Location: /ERP/GestionActivites/Activite/FicheActivite.php?IDTypeActivite='.$idActivite);
+?>
+
+<script>
+    alert("Mise à jour réalisée avec succès");
+    window.location.href = '/ERP/GestionBillets/Activite/ListeActivite.php';
+</script>
 
