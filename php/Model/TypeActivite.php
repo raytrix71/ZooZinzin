@@ -82,6 +82,21 @@ class TypeActivite {
         return $listeActivite;
     }
 
+    // Fetch all activity types from the database
+    public static function fetchListTypeActiviteFromDatabase() {
+        $conn = DB::connexionDB();
+        $query = "SELECT * FROM TYPEACTIVITE";
+        $result = $conn->prepare($query);
+        $result->execute();
+        $TB = $result->fetchAll(PDO::FETCH_ASSOC);
+        $listeActivite = [];
+        foreach ($TB as $row) {
+            $typeActivite = new TypeActivite($row['IDTypeActivite'], $row['NomActivite'], $row['LieuActivite'], $row['DescriptionActivite'], $row['TarifActivite'], $row['CapaciteMaxActivite']);
+            array_push($listeActivite, $typeActivite); 
+        }
+        return $listeActivite;
+    }
+
     // Fetch a single activity type by its ID
     public static function fetchByID($IDTypeActivite) {
         try {
