@@ -93,7 +93,7 @@ else{
 ?>
 
 <script>
-    window.alert("L'espèce a bien été ajoutée");
+    window.alert("L'espèce a bien été ajoutée, vous pouvez ajouter un antagoniste si vous le souhaitez.");
     document.location.href = '/ERP/Gestion_animaux/ListeAntagonistes/ListeAntagonistes.php?nomespece=<?php echo $nom_espece ?>';
 </script>
 
