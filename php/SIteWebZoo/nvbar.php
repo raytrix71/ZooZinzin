@@ -24,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="#" style="margin-left: 182px;">Horaires du parc</a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="margin-left: 70px;">Découvrir le parc</a></li>
-                    <li class="nav-item"><a class="nav-link custom-navbar" href="/ERP/GestionBillets/VenteBille/ventebillet.php" style="padding-left: 12px;margin-left: 70px;color: var(--bs-success-text-emphasis);">Billeterie</a></li>
+                    <li class="nav-item"><a class="nav-link custom-navbar" href="/SiteWebZoo/CheckOut/checkout.php" style="padding-left: 12px;margin-left: 70px;color: var(--bs-success-text-emphasis);">Billeterie</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="background: var(--bs-form-valid-border-color);"> <img class="dropdown-image" src="assets/img/avatar.jpg"></a>

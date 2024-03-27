@@ -16,7 +16,7 @@
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Création compte</h2>
-                            <form method="post" action="../../Fonction_PHP/SiteWeb/InscriptionClient.php">
+                            <form method="post" action="/Fonction_PHP/SiteWeb/InscriptionClient.php">
                                 <div class="mb-3"><label class="form-label"></label><input class="form-control" type="text" id="NomClient" name="NomClient" required="" style="margin-left: 0px;margin-right: -212px;padding-right: 229px;" placeholder="Nom "></div><input class="form-control" type="text" id="Esperance-1" name="PrenomClient" placeholder="Prénom" required="" style="margin-left: 0px;">
                                 <div class="mb-3"></div><input class="form-control" type="email" id="EmailClient" name="EmailClient" placeholder="Email" required="" style="margin-left: 0px;">
                                 <div class="mb-3"></div>
