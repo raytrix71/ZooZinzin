@@ -1,7 +1,7 @@
 <?php
 include '/var/www/html/autoload.php';
 
-$idSpectacle=$_POST['IDSpectacle'];
+$idSpectacle=$_POST['IDTypeSpectacle'];
 $DateSpectacle=$_POST['DateSpectacle'];
 $heure_spectacle=$_POST['HeureSpectacle'];
 $result;
