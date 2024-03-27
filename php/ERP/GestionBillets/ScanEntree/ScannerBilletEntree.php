@@ -22,7 +22,7 @@ include '/var/www/html/ERP/NavBar/navbar.php';?>
                 <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
-                            <h2 class="text-center mb-4">Scanner Entrés</h2>
+                            <h2 class="text-center mb-4">Scanner Entrées</h2>
                             <div id="QR" class="QR">
                                 <div id="qr-reader"></div>
                                 <div id="qr-reader-results"></div>

@@ -120,9 +120,8 @@ class Animal
 {
     $conn = DB::connexionDB(); 
 
-    $query = "INSERT INTO ANIMAL (IDAnimal, IDParcelle, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO ANIMAL ( IDAnimal,IDParcelle, NomEspece, NomAnimal, DateNaissance, Poids, Taille, Sexe, Description) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-
     $stmt->bindParam(1, $this->IDParcelle);
     $stmt->bindParam(2, $this->NomEspece);
     $stmt->bindParam(3, $this->NomAnimal);
@@ -131,7 +130,6 @@ class Animal
     $stmt->bindParam(6, $this->Taille);
     $stmt->bindParam(7, $this->Sexe);
     $stmt->bindParam(8, $this->Description);
-
     $stmt->execute();
 }
 

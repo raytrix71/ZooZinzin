@@ -8,5 +8,5 @@ $aliment->ajoutDB();
 
 <script>
     window.alert("Aliment <?php echo $nomaliment ?> ajouté avec succès");
-    window.location.href = "/ERP/GestionStock/Aliment/ajoutAliment.php";
+    window.location.href = "/ERP/GestionStock/AjoutAliment/ajoutAliment.php";
 </script>

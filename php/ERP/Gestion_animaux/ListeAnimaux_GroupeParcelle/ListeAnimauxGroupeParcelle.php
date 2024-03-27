@@ -82,8 +82,12 @@ $idparcelle=$_GET['idparcelle'];
     <?php endforeach; ?>
 
 
-
-
+<?php if(empty($listeanimal)&& empty($listegroupe)): ?>
+<script>
+    alert("Il n'y a pas d'animaux ou de groupes dans cette parcelle");
+    window.location.href = "/ERP/Gestion_animaux/ListeParcelle/ListeParcelle.php";
+</script>
+<?php endif;?>
 
 
 
