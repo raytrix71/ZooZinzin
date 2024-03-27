@@ -37,7 +37,6 @@ else{ $_SESSION['logStatut']='loggedout';
                                         <div class="mb-3"><input class="form-control" type="email" name="mail" placeholder="Email" id="mail" ></div>
                                         <div class="mb-3"><input class="form-control" type="password" name="mdp" placeholder="Mot de passe" id="mdp" ></div>
                                         <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(99,103,109);">Login</button></div>
-                                        <p class="text-muted">Forgot your password?</p>
                                     </form>
                                 </div>
                             </div>
