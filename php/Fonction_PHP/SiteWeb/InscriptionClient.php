@@ -14,5 +14,5 @@ $client->ajoutDB();
 
 <script>
         alert("Inscription réalisée avec succès");
-        window.location.href = '/ERP/SITEWEB/Center.php';
+        window.location.href = '/SiteWebZoo/Log.php';
 </script>  

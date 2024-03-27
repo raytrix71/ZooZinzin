@@ -16,5 +16,5 @@ foreach($listeclient as $client){
 ?>
 
 <script>
-    window.location.href = '/ERP/SITEWEB/Center.php';
+    window.location.href = '/SiteWebZoo/Calendrier.php';
 </script>
