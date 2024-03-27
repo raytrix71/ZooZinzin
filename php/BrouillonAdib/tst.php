@@ -16,8 +16,15 @@
     <link rel="stylesheet" href="assets/css/Swiper-Slider-Card-For-Blog-Or-Product-untitled.css">
 </head>
 
-<body class="vh-100 vw-100">
-    <div class="row">
+<body class="d-flex flex-column vh-100 vw-100">
+<?php
+if (file_exists('nvbar.php')) {
+    include 'nvbar.php';
+} else {
+    echo 'Le fichier nvbar.php n\'a pas été trouvé.';
+}
+?>
+    <div class="container-fluid d-flex flex-column flex-grow-1">
         <div class="col-xxl-12 offset-xl-2 offset-xxl-0" style="background: url(&quot;file:///C:/Users/bida/Downloads/Rectangle%201%20(1).png&quot;);">
             <div class="row d-grid d-xl-flex justify-content-center m-auto justify-content-xl-end align-items-xl-center" style="width: 1304px;height: 575.3333px;background: url(&quot;assets/img/Rectangle%201.png&quot;) center;">
                 <div class="col-md-10 col-xxl-10 offset-md-1 offset-xl-1" style="border-color: var(--bs-emphasis-color);">
@@ -99,7 +106,7 @@
                         <div class="blog-slider mt-md-3" style="padding-bottom: 109px;margin-top: 0px;">
                             <div class="row" style="padding-bottom: 0px;margin-bottom: 106px;">
                                 <div class="col">
-                                    <h1 class="text-center"><span style="color: rgb(0, 0, 0);">CALANDAR</span></h1>
+                                    <h1 class="text-center"><span style="color: rgb(0, 0, 0);">Calendrier</span></h1>
                                 </div>
                             </div>
                             <div class="row">
@@ -114,6 +121,7 @@
             </div>
         </div>
     </div>
+    <?php include 'Footer.php'; ?>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Swiper-Slider-Card-For-Blog-Or-Product-swiper.min.js"></script>
 </body>

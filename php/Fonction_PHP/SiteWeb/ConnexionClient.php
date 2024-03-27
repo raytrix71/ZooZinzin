@@ -9,8 +9,11 @@ foreach($listeclient as $client){
         $_SESSION['prenomclient']=$client->getPrenomClient();
         $_SESSION['nomclient']=$client->getNomClient();
         $_SESSION['idclient']=$client->getIdClient();
-        //header('Location: index.php'); mettre le bon header vers page accueil 
     }
 }   
 
 ?>
+
+<script>
+    window.location.href = '/ERP/SITEWEB/Center.php';
+</script>

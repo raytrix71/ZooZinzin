@@ -113,7 +113,7 @@ public static function getListeClient(){
     $stmt->execute();
     $result = $stmt->fetchAll();
     foreach($result as $row){
-        $client = new Client($row['IDClient'],$row['PrenomClient'],$row['NomClient'],$row['MailClient'],$row['AdresseClient'],$row['CPClient'],$row['TelClient'],$row['MDPClient']);
+        $client = new Client($row['IDClient'],$row['PrenomClient'],$row['NomClient'],$row['EmailClient'],$row['AdresseClient'],$row['CPClient'],$row['TelClient'],$row['MDPClient']);
         array_push($liste,$client);
 
     }
@@ -122,11 +122,11 @@ public static function getListeClient(){
 
 public function ajoutDB(){
     $conn = DB::connexionDB();
-    $sql = "INSERT INTO CLIENT (PrenomClient, NomClient, MailClient, AdresseClient, CPClient, TelClient, MDPClient) VALUES (:PrenomClient, :NomClient, :MailClient, :AdresseClient, :CPClient, :TelClient, :MDPClient)";
+    $sql = "INSERT INTO CLIENT (PrenomClient, NomClient, EmailClient, AdresseClient, CPClient, TelClient, MDPClient) VALUES (:PrenomClient, :NomClient, :EmailClient, :AdresseClient, :CPClient, :TelClient, :MDPClient)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':PrenomClient', $this->prenomClient);
     $stmt->bindParam(':NomClient', $this->nomClient);
-    $stmt->bindParam(':MailClient', $this->emailClient);
+    $stmt->bindParam(':EmailClient', $this->emailClient);
     $stmt->bindParam(':AdresseClient', $this->adresseClient);
     $stmt->bindParam(':CPClient', $this->cpClient);
     $stmt->bindParam(':TelClient', $this->telClient);
