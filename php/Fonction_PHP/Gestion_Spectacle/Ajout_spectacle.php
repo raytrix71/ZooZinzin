@@ -16,8 +16,6 @@ $sql = "INSERT INTO TYPESPECTACLE (NomSpectacle, LieuSpectacle, DescriptionSpect
 
 $connDB->exec($sql);
 
-//Récuperer le dernier IDTypeSpectacle pour l'ajouter à la table SPECTACLE 
-
 $sql = "SELECT IDTypeSpectacle FROM TYPESPECTACLE ORDER BY IDTypeSpectacle DESC";
 $stmt = $connDB->query($sql);
 $row = $stmt->fetch();
@@ -36,3 +34,6 @@ $connDB->exec($sql);
         alert("Ajout du spectacle réalisé avec succès");
         window.location.href = '/ERP/GestionBillets/Spectacle/ListeSpectacle.php';
 </script>
+
+
+
