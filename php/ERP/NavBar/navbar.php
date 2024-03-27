@@ -5,20 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>MenuNav</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
-    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="/ERP/NavBar/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ERP/NavBar/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/ERP/NavBar/assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="/ERP/NavBar/assets/css/Navbar-Right-Links-icons.css">
 </head>
 
 <body>
+<script src="/ERP/NavBar/assets/bootstrap/js/bootstrap.min.js"></script>
     <nav class="navbar navbar-expand-md py-3" style="background: rgb(54,123,34);box-shadow: 0px 0px 20px;">
         <div class="container"><button class="btn btn-primary" type="button" data-bs-target="#offcanvas-menu" data-bs-toggle="offcanvas" style="background: rgb(217,217,217);color: var(--bs-navbar-brand-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-list" style="width: 30px;height: 20px;">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"></path>
                 </svg></button></div>
     </nav>
     <div class="offcanvas offcanvas-start bg-body" tabindex="-1" data-bs-backdrop="false" id="offcanvas-menu" style="width: 250px;">
-        <div class="offcanvas-header" style="background: rgb(33,81,23);padding-bottom: 20px;margin-bottom: -1px;"><a class="link-body-emphasis d-flex align-items-center me-md-auto mb-3 mb-md-0 text-decoration-none" href="/"><img class="img-fluid" src="assets/img/Rectangle%2020%20copie%202.png" style="width: 90px;color: var(--bs-body-bg);margin-right: -11px;"><span class="fs-4">ZooZinZin</span></a><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="offcanvas"></button></div>
+        <div class="offcanvas-header" style="background: rgb(33,81,23);padding-bottom: 20px;margin-bottom: -1px;"><a class="link-body-emphasis d-flex align-items-center me-md-auto mb-3 mb-md-0 text-decoration-none" href="/"><img class="img-fluid" src="/ERP/NavBar/assets/img/Rectangle%2020%20copie%202.png" style="width: 90px;color: var(--bs-body-bg);margin-right: -11px;"><span class="fs-4">ZooZinZin</span></a><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="offcanvas"></button></div>
         <div class="offcanvas-body d-flex flex-column justify-content-between pt-0" style="background: #D9D9D9;">
             <div>
                 <hr class="mt-0">
@@ -68,11 +69,11 @@
                     <li class="nav-item">
                         <h1>Gestion stock</h1>
                     </li>
-                    <li class="nav-item"><a class="nav-link link-body-emphasis" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-list-ul me-2">
+                    <li class="nav-item"><a class="nav-link link-body-emphasis" href="/ERP/GestionStock/ListeAliment/ListeAliment.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-list-ul me-2">
                                 <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"></path>
                             </svg>Liste des aliments</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link link-body-emphasis" href="/ERP/"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus me-2">
+                    <li class="nav-item"><a class="nav-link link-body-emphasis" href="/ERP/GestionStock/AjoutAliment/ajoutAliment.php"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus me-2">
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
                             </svg>Ajouter Aliment</a></li>
                     <li class="nav-item"></li>
@@ -142,7 +143,7 @@
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/ERP/NavBar/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

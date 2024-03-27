@@ -5,7 +5,7 @@ $listegroupe=Groupe::fetchListGroupeFromDatabase();
 $idAnimal=$_POST['IDAnimal'];
 $idGroupe=$_POST['IDGroupe'];
 $idParcelle=$_POST['IDParcelle'];
-if($idGroupe==null){
+if($idGroupe=='no'){
     foreach($listeanimal as $animal){
         if($animal->getIDAnimal()==$idAnimal){
             $animal->setIDParcelle($idParcelle);

@@ -34,11 +34,11 @@ $liste=Parcelle::getEnclosComptatible($espece);
                                 <div class="mb-3"><input value="<?php echo $espece ?>" class="form-control" type="text" id="NomEspece" name="NomEspece" placeholder="Nom Espece" required="" readonly=""></div>
                                 <?php if($idGroupe=='null'): ?>
                                     <h6>ID Animal</h6>
-                                    <input type="hidden" value="NULL" name="IDGroupe">
+                                    <input type="hidden" value="no" name="IDGroupe">
                                 <div class="mb-3"><input value="<?php echo $idAnimal ?>" class="form-control" type="text" id="IDAnimal" name="IDAnimal" placeholder="ID Animal"  readonly=""></div>
                                 <?php else: ?>
                                     <h6>ID Groupe</h6>
-                                    <input type="hidden" value="NULL" name="IDAnimal">
+                                    <input type="hidden" value="no" name="IDAnimal">
                                 <div class="mb-3"><input value="<?php echo $idGroupe ?>" class="form-control" type="text" id="IDGroupe" name="IDGroupe" placeholder="ID Groupe"  readonly=""></div>
                                 <?php endif; ?>
                                 <h6>Enclos</h6>

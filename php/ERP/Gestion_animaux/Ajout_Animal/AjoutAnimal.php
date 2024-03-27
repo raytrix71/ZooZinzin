@@ -52,9 +52,10 @@ $nomespece=$_GET['nomEspece'];
                                      <input class="form-control" type="number" id="Taille"  min="0" max = "20000" name="Taille" placeholder="Taille (cm) ">
                                  </div>
                                  <br>
-                                 <div class="mb-3"><select class="form-select" name="Sexe">
-                                        <option value="">M</option>
-                                        <option value="">F</option>
+                                 <div class="mb-3">
+                                    <select class="form-select" id="sexe" name="Sexe">
+                                        <option value="M">M</option>
+                                        <option value="F">F</option>
                                     </select>                           
                                 </div>
                                 <br>
