@@ -7,3 +7,8 @@ $a->ajoutAntagonisteToDB();
 header('Location: /ERP/Gestion_animaux/ListeAntagonistes/ListeAntagonistes.php?nomespece='.$espece);
 
 ?>
+
+<script>
+        alert("Ajout réalisé avec succès");
+        window.location.href = '/ERP/Gestion_animaux/ListeEspece/ListeEspece.php';
+</script>
