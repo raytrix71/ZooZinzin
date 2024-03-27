@@ -83,13 +83,13 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                                 <h3 class="text-center">Régime alimentaire</h3>
                                 <div class="mb-3"><select class="form-select" required="" name="aliment1">
                                         <?php afficherAliment() ?>
-                                    </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte1" placeholder="Quantité aliment 1 (KG)" required=""></div>
+                                    </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte1" placeholder="Quantité aliment 1 (KG)" required="" step="0.001"></div>
                                 <div class="mb-3"><select class="form-select" required="" name="aliment2">
                                         <?php afficherAliment() ?>
-                                    </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte2" placeholder="Quantité aliment 2 (KG)" required=""></div>
+                                    </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte2" placeholder="Quantité aliment 2 (KG)" required="" step="0.001"></div>
                                 <div class="mb-3"><select class="form-select" required="" name="aliment3" style="margin-bottom: 0px;">
                                         <?php afficherAliment() ?>
-                                    </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte3" placeholder="Quantité aliment 3 (KG)" required=""></div>
+                                    </select><input class="form-control" type="number" style="margin-right: 0px;margin-top: 9px;" name="qte3" placeholder="Quantité aliment 3 (KG)" required="" step="0.001"></div>
                                 <hr>
                                 <h3 class="text-center">Environnement</h3>
                                 <div>
