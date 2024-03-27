@@ -127,6 +127,7 @@ class Activite {
         $sql = 'SELECT * FROM ACTIVITE';
         $connexion = $bdd->query($sql);
         $resultat = $connexion->fetchAll();
+        $listeActivite = [];
         foreach($resultat as $row){
             $activite = new Activite($row['IDActivite'], $row['IDTypeActivite'], $row['DateActivite'], $row['HeureActivite']);
             array_push($listeActivite, $activite);
