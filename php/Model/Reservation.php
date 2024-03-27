@@ -100,7 +100,7 @@ class Reservation
         // Perform the query to retrieve the last reservation for the given IDClient
         $query = "SELECT * FROM RESERVATION WHERE IDEmploye = :IDEmploye ORDER BY DateReservation DESC LIMIT 1";
         $result = $db->prepare($query);
-        $result->bindParam(':IDClient', $IDEmploye);
+        $result->bindParam(':IDEmploye', $IDEmploye);
         $result->execute(); // Execute the prepared statement
         $row = $result->fetch(); // Fetch the first row from the result set
 

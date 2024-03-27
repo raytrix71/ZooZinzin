@@ -106,6 +106,15 @@ function afficherEspeceAntagonisteSelect($nomespece){
     $listeAntagoniste = ResultatAntagoniste::antagonisteEspeceDB($nomespece);
     $especesAffichees = array();
 
+    // Récupérer l'ID de la zone de l'espèce recherchée
+    $idZoneEspeceCherchee = null;
+    foreach($listeEspece as $espece){
+        if($espece->getNomEspece() == $nomespece){
+            $idZoneEspeceCherchee = $espece->getIDZone();
+            break;
+        }
+    }
+
     foreach($listeEspece as $espece){
         $afficherEspece = true;
 
@@ -121,8 +130,8 @@ function afficherEspeceAntagonisteSelect($nomespece){
             }
         }
 
-        // Afficher l'espèce si elle n'est pas déjà affichée
-        if($afficherEspece && !in_array($espece->getNomEspece(), $especesAffichees)){
+        // Vérifier si l'espèce appartient à la même zone
+        if($afficherEspece && $espece->getIDZone() == $idZoneEspeceCherchee && !in_array($espece->getNomEspece(), $especesAffichees)){
             echo "<option value=\"" . $espece->getNomEspece() . "\" selected>{$espece->getNomEspece()}</option>\n";
             $especesAffichees[] = $espece->getNomEspece();
         }

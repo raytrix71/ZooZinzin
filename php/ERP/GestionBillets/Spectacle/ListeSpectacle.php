@@ -45,7 +45,7 @@ $listeSpectacles = TypeSpectacle::fetchListSpectacleFromDatabase();
     <?php if($i==0):?>
     <script>
         alert("Il n'y a pas de spectacle prévu");
-        window.location.href = '/ERP/GestionBillets/Spectacle/ListeSpectacle.php';
+        window.location.href = '/ERP/Dashboard/Dashboard.php';
     </script>    
     <?php endif;?>
     <script src="//assets/bootstrap/js/bootstrap.min.js"></script>

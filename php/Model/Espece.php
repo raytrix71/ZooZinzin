@@ -287,6 +287,21 @@ class Espece
         return $listEspece;
     }
 
+    public static function fetchListEspeceFromDatabaseID($ID)
+    {
+        $db = DB::connexionDB();
+        $query = "SELECT * FROM ESPECE WHERE IDZone = :zone";
+        $result = $db->prepare($query);
+        $result->bindParam(':zone', $ID);
+        $result->execute();
+        $listEspece = [];
+        foreach ($result as $row) {
+            $espece = new Espece($row['NomEspece'], $row['Esperance'], $row['TailleMoyenne'], $row['PoidsMoyen'], $row['DescriptionEspece'], $row['TempsGestation'], $row['Effectif'], $row['TempMax'], $row['TempMin'], $row['PHMAX'], $row['PHMin'], $row['TxHumMax'], $row['TxHumMin'], $row['Protege'], $row['Individuel'], $row['IDZone'], $row['Alim1'], $row['Qte1'], $row['Alim2'], $row['Qte2'], $row['Alim3'], $row['Qte3']);
+            array_push($listEspece, $espece);
+        }
+        return $listEspece;
+    }
+
     public function saveToDatabase()
     {
         $db = DB::connexionDB();

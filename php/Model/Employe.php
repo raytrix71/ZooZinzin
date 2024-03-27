@@ -1,5 +1,4 @@
 <?php
-include ('../Fonction_PHP/connexionDB.php');
 class Employe{
 
     static $listeEmploye=array();
@@ -57,8 +56,8 @@ class Employe{
 
     static function queryEmploye(){
         // Code goes here
-        $bdd = connexionDB();
-        $sql = 'SELECT * FROM EMPLOYE';
+        $bdd = DB::connexionDB();
+        $sql = 'SELECT * FROM EMPLOYE ORDER BY Role';
         $connexion = $bdd->query($sql);
         $resultat = $connexion->fetchAll();
         foreach($resultat as $row){
@@ -68,11 +67,12 @@ class Employe{
             $employe = new Employe($row['IDEmploye'],$row['PrenomEmploye'],$row['NomEmploye'],$row['AdresseEmploye'],$row['CPEmploye'],$row['MailEmploye'],$row['MDPEmploye'],$row['TelEmploye'],$row['IDZone'],$row['Role']);
             array_push(self::$listeEmploye,$employe);
         }
+        return self::$listeEmploye;
 
     }
     
     function ajoutEmployeDB(){
-        $bdd = connexionDB();
+        $bdd = DB::connexionDB();
         $sql = "INSERT INTO EMPLOYE (PrenomEmploye, NomEmploye, AdresseEmploye, CPEmploye, MailEmploye, MDPEmploye, TelEmploye,IDZone, Role ) VALUES ( '$this->prenomEmploye', '$this->nomEmploye', '$this->adresse', '$this->CP', '$this->mailEmploye', '$this->mdpEmploye', '$this->tel', '$this->roleEmploye' ,'$this->idzone')";
         $bdd->exec($sql);
     }

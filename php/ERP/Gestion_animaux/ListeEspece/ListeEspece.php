@@ -35,6 +35,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
                             <div class="col-md-6">
                                 <h4><?php echo $espece->getNomEspece(); ?></h4>
                                 <h6 class="text-muted mb-2">Zone:<?php echo " ".$espece->getIDZONE(); ?>&nbsp;</h6>
+                                <div class="col-md-6"><h6>Description:<?php echo " ".$espece->getDescriptionEspece() ?><h6></div> 
                                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: RGB(54,123,34);">Gérer&nbsp;</button>
                                     <?php if($espece->getIndividuel()==1):?>
                                         <div class="dropdown-menu"><a class="dropdown-item" href="/ERP/Gestion_animaux/ListeAnimaux/ListeAnimaux.php?nomespece=<?php echo $espece->getNomEspece() ?>">Afficher liste animaux</a>
@@ -46,6 +47,7 @@ $liste=Espece::fetchListEspeceFromDatabase();
                                 </div>
                             </div>
                             <div class="col-md-6"><img  src="/Image/Espece/<?php echo$espece->getNomEspece()?>.jpg" width="200" height="100" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;margin-top: 13px;margin-left: 0px;"></div>
+                                       
                         </div>
                     </div>
                     <h1 style="margin-right: 0px;"></h1>

@@ -11,15 +11,19 @@ $code_postal = $_POST['CPEmploye'];
 $motdepasse = password_hash($_POST['MDPEmploye'],PASSWORD_DEFAULT);
 $role = $_POST['role'];
 
-
 if ($role == "Soignant" || $role == "Veterinaire") {
     $zone = $_POST['zone'];
     $sql = "INSERT INTO EMPLOYE (PrenomEmploye, NomEmploye, AdresseEmploye, CPEmploye, MailEmploye, role, TelEmploye, MDPEmploye, IDZone) VALUES ('$prenom_employe', '$nom_employe', '$adresse_postale', '$code_postal','$adresse_email', '$role','$num_tel', '$motdepasse', '$zone')";
 } else {
-$sql = "INSERT INTO EMPLOYE (PrenomEmploye, NomEmploye, AdresseEmploye, CPEmploye, MailEmploye, role, TelEmploye, MDPEmploye) VALUES ('$prenom_employe', '$nom_employe', '$adresse_postale', '$code_postal','$adresse_email', '$role','$num_tel', '$motdepasse')";
-
+    $sql = "INSERT INTO EMPLOYE (PrenomEmploye, NomEmploye, AdresseEmploye, CPEmploye, MailEmploye, role, TelEmploye, MDPEmploye) VALUES ('$prenom_employe', '$nom_employe', '$adresse_postale', '$code_postal','$adresse_email', '$role','$num_tel', '$motdepasse')";
 }
+
 $connDB->exec($sql);
-header('Location: /ERP/Dashboard/dashboard.php');
+
+
 
 ?>
+<script>
+    window.alert("Employé ajouté avec succès");
+    window.location.href = "/ERP/GestionAdmin/ListeEmploye/ListeEmploye.php";
+</script>

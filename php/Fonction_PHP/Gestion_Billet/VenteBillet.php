@@ -1,10 +1,12 @@
 <?php
+session_start();
 include '/var/www/html/autoload.php';
+include '/var/www/html/fpdf186/fpdf.php';
 $i=$_POST['i'];
 $j=$_POST['j'];
 $k=$_POST['k'];
 $dateResaBillet=$_POST['date'];
-$idemploye=$_Session['id'];
+$idemploye=$_SESSION['id'];
 $dateAjd = date('Y-m-d');
 $newresa=new Reservation(null,null,$idemploye,$dateAjd);
 $newresa->saveReservation();

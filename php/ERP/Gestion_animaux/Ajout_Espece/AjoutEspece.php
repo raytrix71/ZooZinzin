@@ -63,8 +63,8 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                             <form name="myForm" method="post" action="/Fonction_PHP/Gestion_Animaux/ajout_EspeceSQL.php"  enctype="multipart/form-data" onsubmit="return validateForm() && checkEspece()">
                                 <div class="mb-3"><input class="form-control" type="text" id="NomEspece" name="nom_espece" placeholder="Nom Espèce" required="" onchange=" checkEspece()" ></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="Esperance" name="esperance" placeholder="Espérance de vie" required=""></div>
-                                <div class="mb-3"><input class="form-control" type="number" id="taille" name="taille" placeholder="Taille moyenne (m)" required="" style="margin-top: 0px;"></div>
-                                <div class="mb-3" style="margin-bottom: 13px;"><input class="form-control" type="number" id="poids" name="poids" placeholder="Poids moyen (KG)" required=""></div>
+                                <div class="mb-3"><input class="form-control" type="number" id="taille" name="taille" placeholder="Taille moyenne (m)" required="" style="margin-top: 0px;" step="0.001"></div>
+                                <div class="mb-3" style="margin-bottom: 13px;"><input class="form-control" type="number" id="poids" name="poids" placeholder="Poids moyen (KG)" required="" step="0.001"></div>
                                 <div class="mb-3"><input class="form-control" type="number" id="gestation" name="gestation" placeholder="Temps gestation (mois)" required=""></div>
                                 <div class="mb-3"><input class="form-control" type="text" id="descriptiom-1" name="description" placeholder="Description" required=""></div>
                                 <div class="mb-3">
