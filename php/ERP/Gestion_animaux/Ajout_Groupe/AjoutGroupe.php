@@ -5,6 +5,7 @@ header("Location: /ERP/Login/Login.php");
 };
 include '/var/www/html/autoload.php';
 include '/var/www/html/Fonction_PHP/Gestion_Animaux/FonctionFomulaireSelect.php';
+include '/var/www/html/ERP/NavBar/navbar.php';
 $nomespece = $_GET['nomEspece'];
  ?>
  
@@ -17,7 +18,7 @@ $nomespece = $_GET['nomEspece'];
      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
  </head>
  
- <body>
+ <body style="background: RGB(217,217,217);">
      <section class="position-relative py-4 py-xl-5" style="background: RGB(217,217,217);">
          <div class="container position-relative">
              <div class="row d-flex justify-content-center">

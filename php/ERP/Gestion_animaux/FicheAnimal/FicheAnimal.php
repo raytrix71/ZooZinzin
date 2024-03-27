@@ -1,11 +1,10 @@
 <?php 
 session_start();
-    session_start();
 if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
     header("Location: /ERP/Login/Login.php");
 };
-include '/var/www/html/autoload.php';
 include '/var/www/html/ERP/NavBar/navbar.php';
+include '/var/www/html/autoload.php';
 $id=$_GET['idAnimal'];
 $listeanimal=Animal::fetchListAnimalFromDatabase();
 foreach($listeanimal as $animal){

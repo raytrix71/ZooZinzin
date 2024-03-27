@@ -1,6 +1,5 @@
 <?php 
 session_start();
-    session_start();
 if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
     header("Location: /ERP/Login/Login.php");
 };

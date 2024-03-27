@@ -148,8 +148,8 @@ $date = date("Y-m-d");
         
     
         </script>
-    <?php $listeactivite=Activite::fetchListActivite();
-    $listetypeactivite=TypeActivite::fetchListTypeActiviteFromDatabase();?>
+    <?php $listeactivite=Activite::fetchListFicheActiviteFromDatabase();
+    $listetypeactivite=TypeActivite::fetchListActiviteFromDatabase();?>
     <?php foreach($listetypeactivite as $typeactivite) : ?>
         <?php foreach($listeactivite as $activite): ?>
             <?php if($activite-> getIDTypeActivite()==$typeactivite-> getIDTypeActivite() && $activite->getDateActivite()==$date) : ?>
