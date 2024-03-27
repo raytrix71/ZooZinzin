@@ -107,6 +107,7 @@ class Client
     }
 
 public static function getListeClient(){
+    $liste = array();
     $conn=DB::connexionDB();
     $sql = "SELECT * FROM CLIENT";
     $stmt = $conn->prepare($sql);

@@ -1,4 +1,5 @@
-<?php include_once '/var/www/html/autoload.php';
+<?php session_start();
+include_once '/var/www/html/autoload.php';
 $typebilletEntree=TypeBilletEntree::fetchListTypeBilletEntreeFromDatabase();
 $i=0;
 $j=0;
