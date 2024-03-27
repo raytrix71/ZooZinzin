@@ -22,5 +22,9 @@ if($heure_spectacle!=null){
 }
 
 $result->updatespectacle();
+?> 
 
-//header('Location: /ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle='.$idSpectacle);
+<script>
+        alert("Ajout du créneau réalisé avec succès");
+        window.location.href = '/ERP/GestionBillets/Spectacle/ListeSpectacle.php';
+</script>

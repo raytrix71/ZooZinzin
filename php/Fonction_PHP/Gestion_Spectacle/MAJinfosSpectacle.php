@@ -21,9 +21,10 @@ if($heure_spectacle!=null){
     $result->setHeureSpectacle($heure_spectacle);
 }
 
-$result->updatespectacle();
+$result->updatespectacle(); ?>
 
-//header('Location: /ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle='.$idSpectacle);
+<script>
+        alert("Mise à jour réalisée avec succès");
+        window.location.href = '/ERP/GestionBillets/Spectacle/ListeSpectacle.php';
+</script>
 
-
-?>

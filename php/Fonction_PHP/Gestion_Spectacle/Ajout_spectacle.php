@@ -31,3 +31,8 @@ $sql = "INSERT INTO SPECTACLE (IDTypeSpectacle, DateSpectacle, HeureSpectacle) V
 $connDB->exec($sql);
 
 ?>
+
+<script>
+        alert("Ajout du spectacle réalisé avec succès");
+        window.location.href = '/ERP/GestionBillets/Spectacle/ListeSpectacle.php';
+</script>
