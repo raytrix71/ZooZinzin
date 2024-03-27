@@ -1,27 +1,13 @@
 <?php
 include '/var/www/html/autoload.php';
 
-$idSpectacle=$_POST['IDTypeSpectacle'];
+$idTypeSpectacle=$_POST['IDTypeSpectacle'];
 $DateSpectacle=$_POST['DateSpectacle'];
 $heure_spectacle=$_POST['HeureSpectacle'];
-$result;
-$listeSpectacles=Spectacle::fetchListFicheSpectacleFromDatabase();
 
-foreach($listeSpectacles as $spectacles){
-    if($spectacles->getIDSpectacle()==$idSpectacle){
-        $result=$spectacles;
-    }
-}
+$spectacle= new Spectacle(null,$idTypeSpectacle,$DateSpectacle,$heure_spectacle);
+$spectacle->saveToDatabase();
 
-if($DateSpectacle!=null){
-    $result->setDateSpectacle($DateSpectacle);
-}
-
-if($heure_spectacle!=null){
-    $result->setHeureSpectacle($heure_spectacle);
-}
-
-$result->updatespectacle();
 ?> 
 
 <script>

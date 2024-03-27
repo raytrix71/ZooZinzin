@@ -26,14 +26,14 @@ $listeSpectacles = TypeSpectacle::fetchListSpectacleFromDatabase();
         <?php $listeSpectacle = TypeSpectacle::fetchListSpectacleFromDatabase();?>
     <?php foreach ($listeSpectacle as $typespectacle): ?>
         <?php $i++;?>
-        <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;"><img class="card-img-top w-100 d-block" width="298" height="80">
+        <div class="card" style="width: 300px;max-width: 300px;min-width: 300px;margin-top: 5px;margin-right: 10px;margin-bottom: 5px;height: 400px;min-height: 400px;max-height: 400px;border: 2px solid var(--bs-emphasis-color) ;">
             <div class="card-body">
                 <h4 class="card-title"><?php echo $typespectacle->getNomSpectacle() ?></h4>
                 <hr>
                 <div>
                     
                     <h5>Lieu : <?php echo $typespectacle->getLieuSpectacle(); ?></h5>
-                    <h5>Description : <?php echo $typespectacle->getDescriptionSpectacle() ?> kg</h5>
+                    <h5>Description : <?php echo $typespectacle->getDescriptionSpectacle() ?></h5>
                     <h5>Tarif : <?php echo $typespectacle->getTarifSpectacle() ?> €</h5>
                     <h5>Capacité : <?php echo $typespectacle->getCapaciteMaxSpectacle() ?></h5>
                 </div><button class="btn btn-primary" onclick="window.location.href='/ERP/GestionBillets/Spectacle/FicheSpectacle.php?IDTypeSpectacle=<?php echo urlencode($typespectacle->getIDTypeSpectacle()); ?>'" type="button" style="margin-top: 30px;background: RGB(54,123,34);">Voir details</button>

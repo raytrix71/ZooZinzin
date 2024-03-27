@@ -48,4 +48,10 @@ for($e=1;$e<=$k;$e++){
 }
 
 
+
 ?>
+
+<script>
+    window.alert('Rservation enregistrée. Le numero de reservation est <?php echo $idResa ?>');
+    window.location.href = '/Fonction_PHP/Gestion_Billet/VenteBillet.php';
+</script>

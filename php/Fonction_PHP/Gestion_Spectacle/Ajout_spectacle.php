@@ -34,6 +34,3 @@ $connDB->exec($sql);
         window.location.href = '/ERP/GestionBillets/Spectacle/ListeSpectacle.php';
 </script>
 
-
-
-

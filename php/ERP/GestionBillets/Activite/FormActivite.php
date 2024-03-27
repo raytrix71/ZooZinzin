@@ -20,7 +20,7 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                     <div class="card mb-5" style="border-style: solid;border-color: var(--bs-emphasis-color);border-radius: 25px;">
                         <div class="card-body p-sm-5" style="background: var(--bs-body-bg);border-radius: 25px;border-color: var(--bs-emphasis-color);">
                             <h2 class="text-center mb-4">Ajout Activité</h2>
-                            <form id="mainForm" method="POST" action="../../../Fonction_PHP/Gestion_Activite/Ajout_activite.php">
+                            <form id="mainForm" method="POST" action="/Fonction_PHP/Gestion_Activite/Ajout_activite.php">
                                 <div class="mb-3">
                                     <label for="NomActivite" class="form-label">Nom de l'activité</label>
                                     <input type="text" class="form-control" id="NomActivite" name="NomActivite" placeholder="Nom de l'activité" required>
@@ -73,8 +73,7 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
                         <label class="form-check-label" for="oui">Oui</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio"
-                        name="reservation" id="non" value="non" checked>
+                        <input class="form-check-input" type="radio" name="reservation" id="non" value="non" checked>
                         <label class="form-check-label" for="non">Non</label>
                     </div>
 
