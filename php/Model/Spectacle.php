@@ -13,10 +13,6 @@ class Spectacle {
         $this->DateSpectacle = $DateSpectacle;
         $this->HeureSpectacle = $HeureSpectacle;
     }
-
-
-    // Méthodes getters et setters...
-
    
 
     public function getIDSpectacle() {

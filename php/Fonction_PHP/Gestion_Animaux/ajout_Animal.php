@@ -61,6 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']['tmp_name']) 
 else {
     echo "Aucun fichier n'a été téléchargé.";
 }
+?> 
+
+<script>
+        alert("Ajout réalisé avec succès");
+        window.location.href = '/ERP/Gestion_animaux/ListeEspece/ListeEspece.php';
+</script>
 
 
 
