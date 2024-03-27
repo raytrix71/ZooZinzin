@@ -1,6 +1,7 @@
 <?php
+include '/var/www/html/autoload.php';
 $mdp=$_POST['MDPClient'];
-$mail=$_POST['MailClient'];
+$mail=$_POST['EmailClient'];
 $listeclient=Client::getListeClient();
 foreach($listeclient as $client){
     if($client->getEmailClient()==$mail && password_verify($mdp,$client->getMdpClient())){

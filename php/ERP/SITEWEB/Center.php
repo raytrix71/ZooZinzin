@@ -1,3 +1,5 @@
+<?php session_start()?>
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -35,8 +37,8 @@
                 <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" alt="crocodiles on brown soil" src="assets/img/photo-1522888399947-f4289525d288.jpg">
                 <button class="btn btn-success d-xl-flex justify-content-xl-end align-items-xl-center" type="button" style="text-align: center;">ESPECES PROTEGEES</button></a></div>
 
-                <div class="col item"><a href="/ERP/GestionBillets/VenteBille/ventebillet.php"><img class="img-fluid" alt="three dolphin jumps to swimmer" src="assets/img/photo-1532639766504-227d1fd0f2ff-1.jpg">
-                <button class="btn btn-success" type="button" href="/ERP/GestionBillets/VenteBille/ventebillet.php">JE RESERVE</button></a></div>
+                <div class="col item"><a href="Log.php"><img class="img-fluid" alt="three dolphin jumps to swimmer" src="assets/img/photo-1532639766504-227d1fd0f2ff-1.jpg">
+                <button class="btn btn-success" type="button" href="Log.php">JE RESERVE</button></a></div>
                 <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" alt="two giraffe and three zebra on green grass field under trees at daytime" src="assets/img/photo-1534567153574-2b12153a87f0-1.jpg">
                 <button class="btn btn-success" type="button">VOIR PLUS</button></a></div>
             </div>

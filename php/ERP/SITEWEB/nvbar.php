@@ -28,7 +28,7 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="background: var(--bs-form-valid-border-color);"> <img class="dropdown-image" src="assets/img/avatar.jpg"></a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Settings </a><a class="dropdown-item" href="#">Payments </a><a class="dropdown-item" href="#">Logout </a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Settings </a><a class="dropdown-item" href="#">Logout </a></div>
                     </li>
                 </ul>
             </div>
