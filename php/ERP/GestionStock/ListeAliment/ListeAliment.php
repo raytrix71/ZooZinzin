@@ -1,5 +1,6 @@
 <?php
 include '/var/www/html/autoload.php';
+include '/var/www/html/ERP/NavBar/navbar.php';
 $listealiment=Aliment::queryAliment();
 
 ?>
