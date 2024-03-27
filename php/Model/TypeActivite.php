@@ -73,8 +73,9 @@ class TypeActivite {
         $query = "SELECT * FROM TYPEACTIVITE";
         $result = $conn->prepare($query);
         $result->execute();
+        $TB = $result->fetchAll(PDO::FETCH_ASSOC);
         $listeActivite = [];
-        foreach ($result as $row) {
+        foreach ($TB as $row) {
             $typeActivite = new TypeActivite($row['IDTypeActivite'], $row['NomActivite'], $row['LieuActivite'], $row['DescriptionActivite'], $row['TarifActivite'], $row['CapaciteMaxActivite']);
             array_push($listeActivite, $typeActivite); 
         }

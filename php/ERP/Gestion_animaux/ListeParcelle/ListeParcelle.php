@@ -59,8 +59,10 @@ $listeparcelle=Parcelle::fetchParcelleFromDB();
                     <h4 class="modal-title">Ajouter une parcelle</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form><input class="form-control" type="number" style="margin-bottom: 23px;" name="dimension" placeholder="Dimension m2" required="">
-                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal" data-bs-target="#modal-1" data-bs-toggle="modal">Fermer</button><button class="btn btn-primary" type="button" style="background: RGB(54,123,34);">Sauvegarder</button></div>
+                    <form method="post" action="/Fonction_PHP/Gestion_Animaux/ajoutenclos.php">
+                        <input class="form-control" type="number" style="margin-bottom: 23px;" name="dimension" placeholder="Dimension m2" required="">
+                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal" data-bs-target="#modal-1" data-bs-toggle="modal">Fermer</button>
+                        <button class="btn btn-primary" type="submit" style="background: RGB(54,123,34);">Sauvegarder</button></div>
                     </form>
                 </div>
             </div>

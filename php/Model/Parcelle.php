@@ -59,10 +59,9 @@ class Parcelle
 
     public function ajoutParcelle(){
         $bdd=DB::connexionDB();
-        $sql='INSERT INTO PARCELLE(IDParcelle,IDZone,Dimension) VALUES(:IDParcelle,:IDZone,:Dimension)';
+        $sql='INSERT INTO PARCELLE(IDZone,Dimension) VALUES(:IDZone,:Dimension)';
         $query=$bdd->prepare($sql);
         $query->execute(array(
-            'IDParcelle'=>$this->IDParcelle,
             'IDZone'=>$this->IDZone,
             'Dimension'=>$this->Dimension
         ));

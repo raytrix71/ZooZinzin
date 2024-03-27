@@ -5,6 +5,7 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
 };
 include '/var/www/html/ERP/NavBar/navbar.php';
 include_once '/var/www/html/autoload.php';
+error_reporting(E_ALL & ~E_NOTICE);
 $typebilletEntree=TypeBilletEntree::fetchListTypeBilletEntreeFromDatabase();
 $i=0;
 $j=0;
@@ -151,8 +152,8 @@ $date = date("Y-m-d");
     <?php $listeactivite=Activite::fetchListFicheActiviteFromDatabase();
     $listetypeactivite=TypeActivite::fetchListActiviteFromDatabase();?>
     <?php foreach($listetypeactivite as $typeactivite) : ?>
-        <?php foreach($listeactivite as $activite): ?>
-            <?php if($activite-> getIDTypeActivite()==$typeactivite-> getIDTypeActivite() && $activite->getDateActivite()==$date) : ?>
+        <?php foreach($listeactivite as $activite) : ?>
+            <?php if($activite->getIDTypeActivite()==$typeactivite->getIDTypeActivite() && $activite->getDateActivite()==$date): ?>
             <?php $k++; ?>   
         <div class="container" style="margin-top: 30px;border-style:solid;border-color:black;border-radius:25px;padding-bottom:10px">
             <h2 class="d-lg-flex justify-content-lg-start"><?php echo $typeactivite->getNomActivite()." à ".$activite->getHeureActivite()." h"?></h2>
