@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>MenuNav</title>
-    <link rel="stylesheet" href="/ERP/NavBar/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ERP/NavBar/assets/bootstrap/css/navbar.min.css">
     <link rel="stylesheet" href="/ERP/NavBar/assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="/ERP/NavBar/assets/fonts/material-icons.min.css">
     <link rel="stylesheet" href="/ERP/NavBar/assets/css/Navbar-Right-Links-icons.css">
 </head>
 
 <body>
-<script src="/ERP/NavBar/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/ERP/NavBar/assets/bootstrap/js/navbar.min.js"></script>
     <nav class="navbar navbar-expand-md py-3" style="background: rgb(54,123,34);box-shadow: 0px 0px 20px;">
         <div class="container"><button class="btn btn-primary" type="button" data-bs-target="#offcanvas-menu" data-bs-toggle="offcanvas" style="background: rgb(217,217,217);color: var(--bs-navbar-brand-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-list" style="width: 30px;height: 20px;">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"></path>
@@ -143,7 +143,7 @@
             </div>
         </div>
     </div>
-    <script src="/ERP/NavBar/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/ERP/NavBar/assets/bootstrap/js/navbar.min.js"></script>
 </body>
 
 </html>
