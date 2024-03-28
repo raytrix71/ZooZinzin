@@ -2,7 +2,8 @@
     session_start();
 if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
     header("Location: /ERP/Login/Login.php");
-};?>
+};
+include '/var/www/html/ERP/NavBar/navbar.php';?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 <head>
@@ -12,7 +13,7 @@ if(!isset($_SESSION['logStatut']) || $_SESSION['logStatut']=="loggedout"){
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 </head>
 
-<body>
+<body style="background: RGB(217,217,217);">
     <section class="position-relative py-4 py-xl-5" style="background: RGB(217,217,217);">
     <form id="mainForm" method="post" action="/Fonction_PHP/Gestion_Spectacle/Ajout_activite.php">
         <div class="container position-relative">

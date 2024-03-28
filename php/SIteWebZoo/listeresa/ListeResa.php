@@ -34,7 +34,7 @@ $idClient = $_SESSION['idclient'];
                                 <h3>N*réservation:<?php echo $reservation->getIDReservation()?>&nbsp;</h3>
                                 <h4>Date:<?php echo $reservation->getDateReservation()?>&nbsp;</h4>
                                 <hr>
-                                <div class="d-lg-flex justify-content-lg-center"><button data-bs-target="#modal-<?php echo $reservation->getIDReservation()?>" data-bs-toggle="modal" class="btn btn-primary" type="button" style="background: rgb(83,165,81);">Button</button></div>
+                                <div class="d-lg-flex justify-content-lg-center"><button data-bs-target="#modal-<?php echo $reservation->getIDReservation()?>" data-bs-toggle="modal" class="btn btn-primary" type="button" style="background: rgb(83,165,81);">AfficherQR</button></div>
                             </div>
                         </div>
                         <div class="modal fade" role="dialog" tabindex="-1" id="modal-<?php echo $reservation->getIDReservation()?>">

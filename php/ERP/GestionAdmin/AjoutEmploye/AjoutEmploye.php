@@ -35,10 +35,10 @@ include '/var/www/html/ERP/NavBar/navbar.php';?>
                                 <input class="form-control" type="text" id="TelEmploye" name="TelEmploye" placeholder="N°Téléphone" required="" style="margin-top: 15px;"></div>
                                 <select onchange="AttribuerZone()" class="form-select" id="role" name="role">
                                     <optgroup label="Sélectionner le rôle">
-                                    <option value="Crewmember" >Crew member</option>
+                                    <option value="crewmember" >Crew Member</option>
                                     <option value="Soignant" selected>Soignant</option>
-                                    <option value="Admin">Administrateur</option>
-                                    <option value="Veterinaire">Vétérinaire</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="Veterinaire">Véterinaire</option>
                                     </optgroup>
                                 </select>
                                 <div class="mb-3"></div>
