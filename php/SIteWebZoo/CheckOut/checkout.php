@@ -1,4 +1,7 @@
 <?php session_start();
+if(!isset($_SESSION['connecte'])){
+    header('Location: /SiteWebZoo/Log.php');
+}
 include_once '/var/www/html/autoload.php';
 $typebilletEntree=TypeBilletEntree::fetchListTypeBilletEntreeFromDatabase();
 $i=0;

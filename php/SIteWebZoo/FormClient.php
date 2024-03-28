@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['connecte'])){
+    header('Location: /SiteWebZoo/listeresa/ListeResa.php');
+}
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 

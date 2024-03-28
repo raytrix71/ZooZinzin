@@ -93,8 +93,6 @@ if (!$typeActivite) {
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
-<!-- CSS -->                      
 <style>
         .card-custom {
             padding: 16px;
@@ -119,3 +117,6 @@ if (!$typeActivite) {
             border-color: #1e7e34;
         }
     </style>
+</html>
+                
+
